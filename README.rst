@@ -1,17 +1,15 @@
-ckanext-canada
+ckanext-ottawa
 ==============
 
-Government of Canada CKAN Extension - Extension à CKAN du Gouvernement du Canada
+City of Ottawa CKAN Extension
 
-Team: 
-
-Ian Ward, Ross Thompson, Peder Jakobsen
+Originally forked from the Government of Canada CKAN Extension: https://github.com/open-data/ckanext-canada
 
 
 Features:
 
-	Forms and Validation for GoC Metadata Schema
-	Batch import of data
+	Integrates the Web Experience Toolkit: https://github.com/wet-boew
+	Implements Bilingual metadata for datasets
 	
 Installation:
 

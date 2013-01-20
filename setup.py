@@ -4,19 +4,19 @@ import sys, os
 version = '0.1.1'
 
 setup(
-	name='ckanext-canada',
+	name='ckanext-ottawa',
 	version=version,
-	description="data.gc.ca CKAN extension",
+	description="City of Ottawa CKAN extension",
 	long_description="""\
 	""",
 	classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
 	keywords='',
-	author='Government of Canada',
-	author_email='Michel.Gendron@statcan.gc.ca',
+	author='City of Ottawa',
+	author_email='deniszgonjanin@gmail.com',
 	url='',
 	license='MIT',
 	packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-	namespace_packages=['ckanext', 'ckanext.canada'],
+	namespace_packages=['ckanext', 'ckanext.ottawa'],
 	include_package_data=True,
 	zip_safe=False,
 	install_requires=[
@@ -25,6 +25,6 @@ setup(
 	entry_points=\
 	"""
         [ckan.plugins]
-	canada_public=ckanext.canada.plugins:DataGCCAPublic
+	    ottawa_public=ckanext.ottawa.plugins:OttawaPublic
 	""",
 )

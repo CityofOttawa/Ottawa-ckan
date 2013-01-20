@@ -1,0 +1,17 @@
+COPYING
+COPYING.fr
+MANIFEST.in
+setup.py
+ckanext/__init__.py
+ckanext/ottawa/__init__.py
+ckanext/ottawa/plugins.py
+ckanext/ottawa/web.py
+ckanext/ottawa/metadata_schema/__init__.py
+ckanext/ottawa/metadata_schema/interface.py
+ckanext_ottawa.egg-info/PKG-INFO
+ckanext_ottawa.egg-info/SOURCES.txt
+ckanext_ottawa.egg-info/dependency_links.txt
+ckanext_ottawa.egg-info/entry_points.txt
+ckanext_ottawa.egg-info/namespace_packages.txt
+ckanext_ottawa.egg-info/not-zip-safe
+ckanext_ottawa.egg-info/top_level.txt
