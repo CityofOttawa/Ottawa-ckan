@@ -12,29 +12,12 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>${page_title()} - ${g.site_title}</title>
+    <title>${page_title()} | ${g.site_title}</title>
     <meta name="description" content="none" />
-    <meta name="author" content="Government of Canada" />
-    <meta name="dcterms.creator" content="Government of Canada, Treasury Board of Canada Secretariat, Chief Information Officer Branch, IT Project Review and Oversight, Web Standards Office" />
-    <meta name="dcterms.title" content="Web Experience Toolkit (WET)" />
-    <meta name="dcterms.issued" title="W3CDTF" content="2012-05-11" />
-    <meta name="dcterms.modified" title="W3CDTF" content="2012-10-10" />
-    <meta name="dcterms.subject" title="gccore" content="Internet;Standards;Design" />
-    <meta name="dcterms.language" title="ISO639-2" content="eng" />
+    <meta name="author" content="City of Ottawa" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="${h.url_for_static(g.favicon)}" />
     <script type="text/javascript" src="${h.url_for_static('/scripts/vendor/jquery/1.7.1/jquery.js')}"></script>
-    
-    <?python
-      from pylons import config
-      base_theme_enabled = config.get('wet_base_enabled', 'no')
-      if base_theme_enabled == 'yes':
-        wet_css = '/build/theme-base/css/theme-min.css'
-        wet_no_css = '/build/theme-base/css/theme-ns-min.css'
-      else:
-        wet_css = '/build/theme-gcwu-fegc/css/theme-min.css'
-        wet_no_css = '/build/theme-gcwu-fegc/css/theme-ns-min.css'
-    ?>
     
     <!--
     <py:choose>
@@ -55,7 +38,8 @@
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util-min.css')}"/>
     <link rel="stylesheet" href="${h.url_for_static('/build/js/css/pe-ap-min.css')}"/>
-    <link rel="stylesheet" href="${h.url_for_static(wet_css)}"/>
+    <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/theme-min.css')}"/>
+    <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/ottawa.css')}"/>
 
     <!--<![endif]-->
     <noscript>
