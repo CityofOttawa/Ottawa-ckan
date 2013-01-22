@@ -5,3 +5,24 @@
 #wb-head-in{
     background-image:none;
 }
+
+#gcwu-wmms-fip{
+    background: url(/build/theme-gcwu-fegc/images/ottawa_logo.png) no-repeat 4px 0 transparent;
+}
+
+#gcwu-wmms{
+    top: 14px;
+}
+
+#gcwu-wmms-in{
+    height:60px;
+}
+
+#gcwu-gcnb{
+    background-color: #ededed;
+    /*background: url(/build/theme-gcwu-fegc/images/topbarbg_ottawa.png) repeat-x bottom;*/
+}
+
+#gcwu-gcnb a {
+    color: rgb(25, 101, 235);
+}
