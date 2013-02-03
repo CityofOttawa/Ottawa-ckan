@@ -26,5 +26,6 @@ setup(
 	"""
         [ckan.plugins]
 	    ottawa_public=ckanext.ottawa.plugins:OttawaPublic
+	    ottawa_bilingual_dataset=ckanext.ottawa.forms:OttawaDatasetForm
 	""",
 )

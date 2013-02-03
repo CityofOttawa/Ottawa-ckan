@@ -4,6 +4,7 @@ MANIFEST.in
 setup.py
 ckanext/__init__.py
 ckanext/ottawa/__init__.py
+ckanext/ottawa/forms.py
 ckanext/ottawa/plugins.py
 ckanext/ottawa/web.py
 ckanext/ottawa/metadata_schema/__init__.py
