@@ -1,15 +1,14 @@
 import os
 import logging
 from ckan.authz import Authorizer
-from ckan.logic.converters import convert_to_extras,\
-    convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
+import ckan.logic.converters as converters
 from ckan.logic import get_action, NotFound
 from ckan.logic.schema import package_form_schema, group_form_schema
 from ckan.lib.base import c, model
 from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer
 from ckan.plugins import IGenshiStreamFilter
 from ckan.plugins import implements, SingletonPlugin
-from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty
+import ckan.lib.navl.validators as validators
 import ckan.lib.plugins
 
 log = logging.getLogger(__name__)
@@ -37,10 +36,10 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         return 'package/read.html'
 
     def is_fallback(self):
-        return False
+        return True
 
     def package_types(self):
-        return ["dataset2"]
+        return ["dataset"]
 
 
     def form_to_db_schema(self):
@@ -50,9 +49,9 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.form_to_db_package_schema()
         
-        schema.update({'owner_name': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema['owner_name'] = [validators.ignore_missing, unicode, converters.convert_to_extras]
         schema.update({'owner_organization': [validators.ignore_missing, unicode, converters.convert_to_extras]})
-        schema.update({'owner_email_field': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'owner_email': [validators.ignore_missing, unicode, converters.convert_to_extras]})
 
         return schema
 
@@ -63,14 +62,8 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.db_to_form_package_schema()
         
-        schema.update({'owner_name': [converters.convert_from_extras, validators.ignore_missing]})
-        schema.update({'owner_organization': [converters.convert_from_extras, validators.ignore_missing]})
-        schema.update({'owner_email_field': [converters.convert_from_extras, validators.ignore_missing]})
+        schema['owner_name'] = [converters.convert_from_extras, unicode, validators.ignore_missing]
+        schema.update({'owner_organization': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'owner_email': [converters.convert_from_extras, unicode, validators.ignore_missing]})
 
         return schema
-
-    def check_data_dict(self, data_dict):
-        """
-        Check if the return data is correct and raises a DataError if not.
-        """
-        return
