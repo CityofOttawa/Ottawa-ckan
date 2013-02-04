@@ -32,12 +32,15 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
 
     def package_form(self):
         return 'forms/ottawa_dataset_form.html'
+        
+    def read_template(self):
+        return 'package/read.html'
 
     def is_fallback(self):
-        return True
+        return False
 
     def package_types(self):
-        return ["ottawa_dataset_form"]
+        return ["dataset2"]
 
 
     def form_to_db_schema(self):
@@ -45,7 +48,11 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         Returns the schema for mapping package data from a form to a format
         suitable for the database.
         """
-        schema = package_form_schema()
+        schema = ckan.logic.schema.form_to_db_package_schema()
+        
+        schema.update({'owner_name': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'owner_organization': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'owner_email_field': [validators.ignore_missing, unicode, converters.convert_to_extras]})
 
         return schema
 
@@ -54,7 +61,11 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         Returns the schema for mapping package data from the database into a
         format suitable for the form (optional)
         """
-        schema = package_form_schema()
+        schema = ckan.logic.schema.db_to_form_package_schema()
+        
+        schema.update({'owner_name': [converters.convert_from_extras, validators.ignore_missing]})
+        schema.update({'owner_organization': [converters.convert_from_extras, validators.ignore_missing]})
+        schema.update({'owner_email_field': [converters.convert_from_extras, validators.ignore_missing]})
 
         return schema
 

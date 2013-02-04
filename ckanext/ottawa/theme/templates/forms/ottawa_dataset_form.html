@@ -9,6 +9,7 @@
 
 <xi:include href="../_util.html" />
 
+<p>Hello Ottawa</p>
 <div class="alert alert-error error-explanation" py:if="error_summary">
 <h2>Errors in form</h2>
 <p>The form contains invalid entries:</p>
@@ -78,6 +79,47 @@
         </py:for>
       </select>
       <p id="license-instructions">(Don't worry if you don't know which license the data has been released under).</p>
+    </div>
+  </div>
+  
+  <h3>Data Owner Details </h3>
+  
+  <div class="control-group owner_name">
+    <label class="control-label" for="owner_name">Individual Name</label>
+    <div class="controls">
+      <input id="owner_name"
+        class="js-owner_name"
+        name="owner_name" type="text"
+        value="${data.get('owner_name', '')}"
+        placeholder="${_('Name of the contact person')}"
+      />
+      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
+    </div>
+  </div>
+  
+  <div class="control-group owner_organization">
+    <label class="control-label" for="owner_organization">Organization</label>
+    <div class="controls">
+      <input id="owner_organization"
+        class="js-owner_organization"
+        name="owner_organization" type="text"
+        value="${data.get('owner_organization', '')}"
+        placeholder="${_('Organization releasing this dataset')}"
+      />
+      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
+    </div>
+  </div>
+  
+  <div class="control-group owner_email_field">
+    <label class="control-label" for="owner_email">Email</label>
+    <div class="controls">
+      <input id="owner_email"
+        class="js-owner_email"
+        name="owner_email" type="text"
+        value="${data.get('owner_email', '')}"
+        placeholder="${_('Owner Email')}"
+      />
+      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
     </div>
   </div>
 
@@ -189,7 +231,7 @@
   </div>
 </fieldset>
 
-<fieldset class="tab-pane fade" id='further-information'>
+<fieldset class="tab-pane" id='further-information' style="display:block;">
   <div class="control-group">
     <label class="control-label field_opt" for="author">Author</label>
     <div class="controls">
@@ -230,7 +272,7 @@
   </div>
 </fieldset>
 
-<fieldset class="tab-pane fade" id='extras'>
+<fieldset class="tab-pane" id='extras' style="display:block;">
   <p>Adding custom fields to the dataset such as "location:uk" can help users find it in the search engine. This data will also appear under <strong>Additional Information</strong> when viewing the dataset.</p>
   <py:with vars="extras = data.get('extras', [])">
     <py:for each="num, extra in enumerate(extras)">
