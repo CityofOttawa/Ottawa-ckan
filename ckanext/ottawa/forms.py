@@ -50,8 +50,6 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         schema = ckan.logic.schema.form_to_db_package_schema()
         
         schema.update({'titre': [validators.ignore_missing, unicode, converters.convert_to_extras]})
-        schema.update({'owner_organization': [validators.ignore_missing, unicode, converters.convert_to_extras]})
-        schema.update({'owner_email': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'organisme': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'resume': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'date_published': [validators.ignore_missing, unicode, converters.convert_to_extras]})
@@ -71,9 +69,7 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.db_to_form_package_schema()
         
-        schema.update({'owner_name': [converters.convert_from_extras, unicode, validators.ignore_missing]})
-        schema.update({'owner_organization': [converters.convert_from_extras, unicode, validators.ignore_missing]})
-        schema.update({'owner_email': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'titre': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'organisme': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'resume': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'date_published': [converters.convert_from_extras, unicode, validators.ignore_missing]})
