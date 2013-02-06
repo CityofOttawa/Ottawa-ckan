@@ -9,7 +9,6 @@
 
 <xi:include href="../_util.html" />
 
-<p>Hello Ottawa</p>
 <div class="alert alert-error error-explanation" py:if="error_summary">
 <h2>Errors in form</h2>
 <p>The form contains invalid entries:</p>
@@ -45,6 +44,19 @@
       <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
     </div>
   </div>
+  
+  <div class="control-group title-field">
+    <label class="control-label" for="title">Titre</label>
+    <div class="controls">
+      <input id="titre"
+        class="js-title"
+        name="titre" type="text"
+        value="${data.get('titre', '')}"
+        placeholder="${_('Title (french) ')}"
+      />
+      <p class="field_error" py:if="errors.get('titre', '')">${errors.get('titre', '')}</p>
+    </div>
+  </div>
 
   <div class="control-group name-field">
     <label class="control-label" for="name">Url</label>
@@ -75,7 +87,7 @@
     <div class="controls">
       <select id="license_id" name="license_id">
         <py:for each="licence_desc, licence_id in c.licences">
-          <option value="${licence_id}" py:attrs="{'selected': 'selected' if data.get('license_id', '') == licence_id else None}" >${licence_desc}</option>
+          <option value="${licence_id}" selected="selected">${licence_desc}</option>
         </py:for>
       </select>
       <p id="license-instructions">(Don't worry if you don't know which license the data has been released under).</p>
@@ -84,42 +96,42 @@
   
   <h3>Data Owner Details </h3>
   
-  <div class="control-group owner_name">
-    <label class="control-label" for="owner_name">Individual Name</label>
+  <div class="control-group">
+    <label class="control-label field_opt" for="author">Author</label>
     <div class="controls">
-      <input id="owner_name"
-        class="js-owner_name"
-        name="owner_name" type="text"
-        value="${data.get('owner_name', '')}"
-        placeholder="${_('Name of the contact person')}"
+      <input id="author" name="author" type="text" value="${data.get('author', '')}" 
+      placeholder="${_('The name of the main contact')}"
       />
-      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="author_email">Author email</label>
+    <div class="controls">
+      <input id="author_email" name="author_email" type="text" value="${data.get('author_email', '')}" />
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="maintainer">Maintainer</label>
+    <div class="controls">
+      <input id="maintainer" name="maintainer" type="text" value="${data.get('maintainer', '')}" 
+      placeholder="${_('The organization releasing this dataset')}"
+      />
+      
     </div>
   </div>
   
-  <div class="control-group owner_organization">
-    <label class="control-label" for="owner_organization">Organization</label>
+  <div class="control-group organisme">
+    <label class="control-label" for="organisme">Organisme</label>
     <div class="controls">
-      <input id="owner_organization"
-        class="js-owner_organization"
-        name="owner_organization" type="text"
-        value="${data.get('owner_organization', '')}"
-        placeholder="${_('Organization releasing this dataset')}"
+      <input id="organisme"
+        class="js-organisme"
+        name="organisme" type="text"
+        value="${data.get('organisme', '')}"
+        placeholder="${_('Organization (french)')}"
       />
-      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
-    </div>
-  </div>
-  
-  <div class="control-group owner_email">
-    <label class="control-label" for="owner_email">Email</label>
-    <div class="controls">
-      <input id="owner_email"
-        class="js-owner_email"
-        name="owner_email" type="text"
-        value="${data.get('owner_email', '')}"
-        placeholder="${_('Owner Email')}"
-      />
-      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
+      <p class="field_error" py:if="errors.get('organisme', '')">${errors.get('organisme', '')}</p>
     </div>
   </div>
 
@@ -128,6 +140,68 @@
     <label class="control-label" for="notes">Description</label>
     <div class="controls">
       ${markdown_editor('notes', data.get('notes'), 'notes', _('Start with a summary sentence ...'))}
+    </div>
+  </div>
+  
+  <div class="control-group resume-field">
+    <label class="control-label" for="notes">Résumé</label>
+    <div class="controls">
+      ${markdown_editor('resume', data.get('resume'), 'resume', _('Description (french)'))}
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label field_opt" for="date_published">Date Published</label>
+    <div class="controls">
+      <input id="date_published" name="date_published" type="text" value="${data.get('date_published', '')}"
+      />
+      
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label field_opt" for="update_frequency">Update Frequency</label>
+    <div class="controls">
+      <input id="update_frequency" name="update_frequency" type="text" value="${data.get('update_frequency', '')}" 
+      placeholder="${_('How frequently is this dataset updated')}"
+      />
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label field_opt" for="frequence_a_jour">Fréquence des mises à jour</label>
+    <div class="controls">
+      <input id="frequence_a_jour" name="frequence_a_jour" type="text" value="${data.get('frequence_a_jour', '')}" 
+      placeholder="${_('Update frequency (french)')}"
+      />
+    </div>
+  </div>
+  
+  <div class="control-group description-field">
+    <label class="control-label" for="accuracy">Accuracy</label>
+    <div class="controls">
+      ${markdown_editor('accuracy', data.get('accuracy'), 'accuracy', _('Notes on data accuracy'))}
+    </div>
+  </div>
+  
+  <div class="control-group resume-field">
+    <label class="control-label" for="exactitude">Exactitude des données</label>
+    <div class="controls">
+      ${markdown_editor('exactitude', data.get('exactitude'), 'exactitude', _('Notes on accuracy (french)'))}
+    </div>
+  </div>
+  
+  <div class="control-group description-field">
+    <label class="control-label" for="attributes">Attributes</label>
+    <div class="controls">
+      ${markdown_editor('attributes', data.get('attributes'), 'attributes', _('Extra attributes'))}
+    </div>
+  </div>
+  
+  <div class="control-group resume-field">
+    <label class="control-label" for="supplementaires">Métadonnées supplémentaires</label>
+    <div class="controls">
+      ${markdown_editor('supplementaires', data.get('supplementaires'), 'supplementaires', _('Extra Attributes (french)'))}
     </div>
   </div>
 
@@ -231,7 +305,7 @@
   </div>
 </fieldset>
 
-<fieldset class="tab-pane" id='further-information' style="display:block;">
+<fieldset class="tab-pane fade" id='further-information'>
   <div class="control-group">
     <label class="control-label field_opt" for="author">Author</label>
     <div class="controls">
@@ -272,7 +346,7 @@
   </div>
 </fieldset>
 
-<fieldset class="tab-pane" id='extras' style="display:block;">
+<fieldset class="tab-pane fade" id='extras'>
   <p>Adding custom fields to the dataset such as "location:uk" can help users find it in the search engine. This data will also appear under <strong>Additional Information</strong> when viewing the dataset.</p>
   <py:with vars="extras = data.get('extras', [])">
     <py:for each="num, extra in enumerate(extras)">

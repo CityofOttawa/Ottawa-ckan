@@ -49,10 +49,19 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.form_to_db_package_schema()
         
-        schema['owner_name'] = [validators.ignore_missing, unicode, converters.convert_to_extras]
+        schema.update({'titre': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'owner_organization': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'owner_email': [validators.ignore_missing, unicode, converters.convert_to_extras]})
-
+        schema.update({'organisme': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'resume': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'date_published': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'update_frequency': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'frequence_a_jour': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'accuracy': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'exactitude': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'attributes': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'supplementaires': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        
         return schema
 
     def db_to_form_schema(self):
@@ -62,8 +71,17 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.db_to_form_package_schema()
         
-        schema['owner_name'] = [converters.convert_from_extras, unicode, validators.ignore_missing]
+        schema.update({'owner_name': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'owner_organization': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'owner_email': [converters.convert_from_extras, unicode, validators.ignore_missing]})
-
+        schema.update({'organisme': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'resume': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'date_published': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'update_frequency': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'frequence_a_jour': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'accuracy': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'exactitude': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'attributes': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        schema.update({'supplementaires': [converters.convert_from_extras, unicode, validators.ignore_missing]})
+        
         return schema
