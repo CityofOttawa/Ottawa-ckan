@@ -27,8 +27,14 @@
     color: rgb(25, 101, 235);
 }
 
+/* footer */
 #gcwu-sft-in {
     background-image:none;
+    padding-top: 60px;
+}
+
+#footer-logo img{
+    width:auto;
 }
 
 /* header */
@@ -52,4 +58,9 @@
     background: #004c90;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+}
+
+.social img {
+    width: auto;
+    margin-right: 10px;
 }
