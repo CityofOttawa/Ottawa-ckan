@@ -1,0 +1,14 @@
+[{
+  "domain_content": false,
+   "domain_data": false,
+   "domain_software": false,
+   "family": "",
+   "id": "ottawa",
+   "is_generic": true,
+   "is_okd_compliant": false,
+   "is_osi_compliant": false,
+   "maintainer": "",
+   "status": "active",
+   "title": "City of Ottawa Open Data Terms of Use",
+   "url": "http://ottawa.ca/en/open-data-terms-use"
+}]

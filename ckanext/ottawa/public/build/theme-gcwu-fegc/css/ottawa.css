@@ -19,8 +19,8 @@
 }
 
 #gcwu-gcnb{
-    background-color: #ededed;
-    /*background: url(/build/theme-gcwu-fegc/images/topbarbg_ottawa.png) repeat-x bottom;*/
+    /*background-color: #ededed;*/
+    background: url(/build/theme-gcwu-fegc/images/topbarbg_ottawa.png) repeat-x bottom;
 }
 
 #gcwu-gcnb a {
@@ -29,4 +29,27 @@
 
 #gcwu-sft-in {
     background-image:none;
+}
+
+/* header */
+#wb-head-in {
+    background-color: white;
+}
+
+/* site title */
+#gcwu-title, #gcwu-title a {
+    color: #29639c;
+    text-shadow: rgb(169, 187, 224) 1px 1px 1px;
+}
+
+/* header navigation */
+#gcwu-psnb .mb-menu, #gcwu-psnb .mb-menu li {
+    background: #004c90;
+}
+
+/* search box */
+#gcwu-srchbx {
+    background: #004c90;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
