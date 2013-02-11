@@ -15,6 +15,7 @@ a:hover{
 
 #wb-body{
     background-image:none;
+    background-color: #EDEDED;
 }
 
 #wb-head-in{
@@ -43,9 +44,14 @@ a:hover{
 }
 
 /* footer */
+
+#gcwu-sft {
+    background-position: center -23px;
+}
+
 #gcwu-sft-in {
     background-image:none;
-    padding-top: 60px;
+    padding-top: 40px;
 }
 
 #footer-logo img{
