@@ -31,7 +31,7 @@ count_label
   
 -->
 <py:def function="facet_div(name, title, limit=10, label_function=lambda item: item.display_name, if_empty=None, count_label=lambda c: ' (%d)'%c)">
-    <div py:if="if_empty is not None or h.unselected_facet_items(name, limit)">
+    <div class="facet span-2" py:if="if_empty is not None or h.unselected_facet_items(name, limit)">
         <h3>${h.facet_title(title)}</h3>
         <ul class="wet-boew-zebra" data-load="zebra">
             ${facet_li(name, limit=limit, label_function=label_function, if_empty=None, count_label=count_label)}

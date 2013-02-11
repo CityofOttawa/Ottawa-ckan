@@ -93,6 +93,7 @@ a:hover{
 .dataset_listing {
     margin: 0 15px 15px 15px;
     border-bottom: 1px solid #ececec;
+    padding-bottom: 2px;
 }
 
 .openness {
@@ -102,4 +103,5 @@ a:hover{
 
 .closed img {
     float: left;
+    width: auto;
 }
