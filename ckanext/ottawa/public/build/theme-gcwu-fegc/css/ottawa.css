@@ -94,6 +94,8 @@ a:hover{
     margin: 0 15px 15px 15px;
     border-bottom: 1px solid #ececec;
     padding-bottom: 2px;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 20px;
 }
 
 .openness {
@@ -104,4 +106,14 @@ a:hover{
 .closed img {
     float: left;
     width: auto;
+}
+
+.clearfix {
+    display: inline-block;
+    width: 100%;
+}
+
+.facet ul {
+    list-style-type: none;
+    margin-left: 0px;
 }
