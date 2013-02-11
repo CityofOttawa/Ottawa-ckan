@@ -1,6 +1,6 @@
 <form
   py:with="tab_mode=(c.action=='edit')"
-  class="${'tab-content' if tab_mode else ''} ${'has-errors' if errors else ''} form-horizontal"
+  class="${'tab-content' if tab_mode else ''} ${'has-errors' if errors else ''}"
   id="dataset-edit"
   method="post"
   xmlns:i18n="http://genshi.edgewall.org/i18n"
@@ -62,7 +62,7 @@
     <label class="control-label" for="name">Url</label>
     <div class="controls">
       <div class="input-prepend">
-        <span class="add-on">${h.url(controller='package', action='search')+'/'}</span>
+        <code class="add-on">${h.url(controller='package', action='search')+'/'}</code>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
       </div>
       <p class="js-url-is-valid">&nbsp;</p>

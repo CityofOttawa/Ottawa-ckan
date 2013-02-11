@@ -53,7 +53,10 @@
     ${h.literal(getattr(g, 'template_head_end', ''))}
   </head>
 
-  <body>
+  <body class="${request.environ.get('pylons.routes_dict', {}).get('action')}
+               ${request.environ.get('pylons.routes_dict', {}).get('controller').split(':')[-1]}
+               ${defined('body_class') and body_class()}
+    ">
     <div id="wb-body">
 
       <div id="wb-skip">
@@ -101,7 +104,7 @@
               <div id="gcwu-bnr-in">
                 <div id="gcwu-wmms">
                   <div id="gcwu-wmms-in">
-                    <div id="gcwu-wmms-fip" title="Symbol of the Government of Canada"><img src="${h.url_for_static('build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
+                    <div id="gcwu-wmms-fip" title="Symbol of the Government of Canada"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
                     </div>
                   </div>
                 </div>
@@ -346,7 +349,7 @@
                     <div class="span-2">
                       <div class="boxes-box-content">
                         <div class="logo" id="footer-logo">
-                          <img src="${h.url_for_static('build/theme-gcwu-fegc/images/footer-ottawalogo.png')}" alt="Ottawa Logo" width="107" height="47"/>
+                          <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/footer-ottawalogo.png')}" alt="Ottawa Logo" width="107" height="47"/>
                           <p>© 2001-2013 City of Ottawa</p>
                           <p>110 Laurier Avenue West <br/> Ottawa, Ontario, K1P 1J1</p>
                         </div>
@@ -361,10 +364,10 @@
                   <section>
                     <div class="span-2">
                       <div class="social">
-                        <a href="http://www.youtube.com/user/cityottawa"><img src="${h.url_for_static('build/theme-gcwu-fegc/images/youtube.png')}" alt="Youtube" width="24" height="25"/></a>
-                        <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
-                        <a href="http://ottawa.ca/en/twitter-protocol"><img src="${h.url_for_static('build/theme-gcwu-fegc/images/twitter.png')}" alt="Twitter" width="30" height="24"/></a>
-                        <a href="http://ottawa.ca/en/rss-feeds"><img src="${h.url_for_static('build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
+                        <a href="http://www.youtube.com/user/cityottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/youtube.png')}" alt="Youtube" width="24" height="25"/></a>
+                        <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
+                        <a href="http://ottawa.ca/en/twitter-protocol"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/twitter.png')}" alt="Twitter" width="30" height="24"/></a>
+                        <a href="http://ottawa.ca/en/rss-feeds"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
                       <p>Access the city’s social media streams</p>
                       </div>
                     </div>
@@ -399,7 +402,7 @@
         <xi:include href="js_strings.html" />
         <!-- finally our application js that sets everything up-->
 
-        <!--
+        
         <script type="text/javascript" src="${h.url_for_static('/scripts/application.js?lang=${c.locale}')}"></script>
         <script type="text/javascript" src="${h.url_for_static('/scripts/templates.js')}"></script>
 
@@ -428,7 +431,7 @@
         $(".chzn-select").chosen();
         });
         </script>
-        -->
+        
 
         <py:if test="h.asbool(config.get('ckan.tracking_enabled', 'false'))">
           ${ h.snippet('snippets/internal-tracking.html') }

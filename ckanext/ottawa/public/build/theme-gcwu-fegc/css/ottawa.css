@@ -96,6 +96,10 @@ a:hover{
     font-size: 1.2em;
 }
 
+.datasets {
+    margin-top: 15px;
+}
+
 .dataset_listing {
     margin: 0 15px 15px 15px;
     border-bottom: 1px solid #ececec;
@@ -122,4 +126,9 @@ a:hover{
 .facet ul {
     list-style-type: none;
     margin-left: 0px;
+}
+
+/* dataset forms */
+.wet-boew-formvalid{
+    display:block !important;
 }
