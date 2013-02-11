@@ -1,3 +1,18 @@
+/* remove underlines from anchors, to conform with city of ottawa website */
+a, a:hover, a:visited {
+    text-decoration: none;
+    color: #004990;
+}
+
+/* override font to match city of ottawa website */
+#wb-main h1, #wb-main h2, #wb-main h3, #wb-main h4, #wb-main h5, #wb-main h6 {
+    font-family: "Arial", sans-serif;
+}
+
+a:hover{
+    border-bottom: 1px dotted #004990;
+}
+
 #wb-body{
     background-image:none;
 }
@@ -63,4 +78,28 @@
 .social img {
     width: auto;
     margin-right: 10px;
+}
+
+/* Dataset search & listing pges */
+.search_meta {
+    float: right;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.dataset_listing {
+    margin: 0 15px 15px 15px;
+    border-bottom: 1px solid #ececec;
+}
+
+.openness {
+    padding-top: 5px;
+    float: right;
+}
+
+.closed img {
+    float: left;
 }
