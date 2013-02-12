@@ -67,7 +67,7 @@
       </div>
       <p class="js-url-is-valid">&nbsp;</p>
       <p class="url-is-long">Warning: URL is very long. Consider changing it to something shorter.</p>
-      <p>2+ characters, lowercase, using only 'a-z0-9' and '-_'</p>
+      <p class="margin-top-none">2+ characters, lowercase, using only 'a-z0-9' and '-_'</p>
       <p class="field_error" py:if="errors.get('name', '')">${errors.get('name', '')}</p>
     </div>
   </div>
@@ -90,7 +90,7 @@
           <option value="${licence_id}" selected="selected">${licence_desc}</option>
         </py:for>
       </select>
-      <p id="license-instructions">(Don't worry if you don't know which license the data has been released under).</p>
+      <p class="margin-top-none" id="license-instructions">(Don't worry if you don't know which license the data has been released under).</p>
     </div>
   </div>
   

@@ -130,7 +130,7 @@ a:hover{
 
 /* dataset forms */
 .wet-boew-formvalid{
-    display:block !important;
+    
     margin-left: 20px;
 }
 
@@ -145,4 +145,12 @@ a:hover{
 .form-input-prepend .form-addon{
     padding-bottom: 2px;
     margin-right: -8px !important;
+}
+
+.js-url-is-valid{
+    margin:0px !important;
+}
+
+.control-label{
+    font-weight: bold;
 }
