@@ -61,8 +61,8 @@
   <div class="control-group name-field">
     <label class="control-label" for="name">Url</label>
     <div class="controls">
-      <div class="input-prepend">
-        <code class="add-on">${h.url(controller='package', action='search')+'/'}</code>
+      <div class="form-input-prepend">
+        <span class="form-addon">${h.url(controller='package', action='search')+'/'}</span>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
       </div>
       <p class="js-url-is-valid">&nbsp;</p>

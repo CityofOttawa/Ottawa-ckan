@@ -131,4 +131,18 @@ a:hover{
 /* dataset forms */
 .wet-boew-formvalid{
     display:block !important;
+    margin-left: 20px;
+}
+
+.wet-boew-formvalid img{
+    width:auto;
+}
+
+.homepage-field{
+    display: none;
+}
+
+.form-input-prepend .form-addon{
+    padding-bottom: 2px;
+    margin-right: -8px !important;
 }
