@@ -108,6 +108,10 @@ a:hover{
     padding-right: 20px;
 }
 
+.dataset_formats{
+    text-align: right;
+}
+
 /* pagination div in CKAN is baked into source, so we cannot add classes to it 
 Instead, we duplicate two wet classes here to apply them to the pagination div
 For reference, CKAN pagination code is in ckan/lib/helpers.py:512
