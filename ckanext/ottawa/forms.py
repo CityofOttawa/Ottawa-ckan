@@ -60,6 +60,8 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         schema.update({'attributes': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         schema.update({'supplementaires': [validators.ignore_missing, unicode, converters.convert_to_extras]})
         
+        schema.update({'__junk': [validators.ignore]})
+        
         return schema
 
     def db_to_form_schema(self):

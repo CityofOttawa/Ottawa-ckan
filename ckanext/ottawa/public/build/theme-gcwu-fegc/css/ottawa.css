@@ -108,6 +108,68 @@ a:hover{
     padding-right: 20px;
 }
 
+/* pagination div in CKAN is baked into source, so we cannot add classes to it 
+Instead, we duplicate two wet classes here to apply them to the pagination div
+For reference, CKAN pagination code is in ckan/lib/helpers.py:512
+*/
+.pagination ul li a{
+    /* wet-boew button class */
+    background-repeat: repeat-x;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset,0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset,0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset,0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    line-height: 16px;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #eee;
+    border-color: #c8c8c8 #c8c8c8 #bbb;
+    color: #222!important;
+    text-shadow: white 0 1px 1px;
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#eee),color-stop(100%,#d4d4d4));
+    background-image: -webkit-linear-gradient(#eee,#d4d4d4);
+    background-image: -moz-linear-gradient(#eee,#d4d4d4);
+    background-image: -o-linear-gradient(#eee,#d4d4d4);
+    background-image: linear-gradient(#eee,#d4d4d4);
+    
+    /* wet-boew button-small class */
+    font-size: 80%;
+    line-height: 14px;
+    padding: 2px 6px;
+}
+
+.pagination ul{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.pagination ul li{
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0;
+    white-space: nowrap;
+    display: inline;
+    float: left;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+/* End Pagination css hack */
+
 .openness {
     padding-top: 5px;
     float: right;
