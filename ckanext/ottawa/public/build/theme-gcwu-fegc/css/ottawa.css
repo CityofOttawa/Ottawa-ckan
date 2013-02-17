@@ -226,3 +226,19 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     width: auto;
     margin-bottom: 0;
 }
+
+#notes-remainder{
+    height: auto !important;
+}
+
+.sidebar_nav_list li a img{
+    margin-bottom: 0;
+}
+
+.sidebar_nav_list li a:hover{
+    border-bottom: none;
+}
+
+.wb-sec-def section h3 a:hover{
+    border-bottom: none;
+}

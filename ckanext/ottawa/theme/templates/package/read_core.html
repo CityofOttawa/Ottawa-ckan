@@ -15,10 +15,6 @@
           ${c.pkg_notes_formatted}
         </div>
         <div id="notes-remainder"></div>
-        <div id="notes-toggle" style="display: none;">
-          <button class="more btn"><img src="/images/chevron-down.png"/></button>
-          <button class="less btn" style="display: none;"><img src="/images/chevron-up.png"/></button>
-        </div>
       </div>
 
       <!-- Resources -->
@@ -51,7 +47,7 @@
         ${h.subnav_link(_('(settings)'), controller='package', action='edit', id=c.pkg.name)}
       </py:if></h3>
     <div id="dataset-information">
-    <table class="table table-striped table-bordered table-condensed">
+    <table class="table table-striped table-bordered table-condensed span-6">
       <thead>
         <tr>
           <th scope="col">Field</th>
