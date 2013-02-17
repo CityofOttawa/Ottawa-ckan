@@ -86,10 +86,10 @@
                     </div>
                     <ul>
                       <li id="gcwu-gcnb1">
-                        <a rel="external" href="http://ottawa.ca/en/">Home</a>
+                        <a rel="external" href="http://ottawa.ca/en/">${_('Home')}</a>
                       </li>
                       <li id="gcwu-gcnb2">
-                        <a rel="external" href="http://ottawa.ca/en/contact">Contact Us</a>
+                        <a rel="external" href="http://ottawa.ca/en/contact">${_('Contact Us')}</a>
                       </li>
                       <li id="gcwu-gcnb-lang">
                         <a href="/fr" lang="fr">Français</a>
@@ -116,12 +116,12 @@
 
                 <section role="search">
                   <div id="gcwu-srchbx">
-                    <h2>Search</h2>
+                    <h2>${_('Search')}</h2>
                     <form action="${h.url(controller='package', action='search')}" method="GET">
                       <div id="gcwu-srchbx-in">
                         <label for="gcwu-srch">Search website</label>
                         <input name="q" value="${c.q if hasattr(c, 'q') else ''}" class="search" placeholder="${_('Find datasets')}" id="gcwu-srch" size="27" maxlength="150" />
-                        <input id="gcwu-srch-submit" name="gcwu-srch-submit" type="submit" value="Search" data-icon="search" />
+                        <input id="gcwu-srch-submit" name="gcwu-srch-submit" type="submit" value="${_('Search')}" data-icon="search" />
                       </div>
                     </form>
                   </div>
