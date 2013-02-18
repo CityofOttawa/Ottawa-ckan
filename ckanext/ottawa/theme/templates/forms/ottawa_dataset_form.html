@@ -65,7 +65,7 @@
         <span class="form-addon">${h.url(controller='package', action='search')+'/'}</span>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
         
-        <p class="js-url-is-valid">&nbsp;</p>
+        <p class="js-url-is-valid extra_description">&nbsp;</p>
         <p class="url-is-long">Warning: URL is very long. Consider changing it to something shorter.</p>
         <p class="margin-top-none">2+ characters, lowercase, using only 'a-z0-9' and '-_'</p>
         <p class="field_error" py:if="errors.get('name', '')">${errors.get('name', '')}</p>
@@ -136,7 +136,7 @@
     </div>
   </div>
 
-
+<h3>General Information</h3>
   <div class="control-group description-field">
     <label class="control-label row-start span-2" for="notes">Description</label>
     <div class="controls row-end span-4">
@@ -240,36 +240,36 @@
     <div class="controls row-end span-4">
       <input class="long autocomplete-tag" id="tag_string" name="tag_string" size="60" type="text"
                value="${data.get('tag_string') or ', '.join([tag['name'] for tag in data.get('tags', []) if not tag.get('vocabulary_id')])}" />
-      <p i18n:msg="">Comma-separated terms that may link this dataset to similar ones. For more information on conventions, see <a href="http://wiki.ckan.org/Managing_Datasets#Tag_Conventions">this wiki page</a>.</p>
-      <p>e.g. pollution, rivers, water quality</p>
+      <p class="extra_description" i18n:msg="">Comma-separated terms that may link this dataset to similar ones. For more information on conventions, see <a href="http://wiki.ckan.org/Managing_Datasets#Tag_Conventions">this wiki page</a>.</p>
+      <p class="extra_description">e.g. pollution, rivers, water quality</p>
       <p class="field_error" py:if="errors.get('tag_string', '')">${errors.get('tag_string', '')}</p>
     </div>
   </div>
 </fieldset>
 
 <fieldset class="tab-pane" id="resources">
-  <legend>Add Resources</legend>
+  <h3>Add Resources</h3>
   <div class="instructions">
     <p>Upload or link data files, APIs and other materials related to your dataset.</p>
   </div>
-  <div class="row">
-    <div class="span4">
-      <ul class="resource-list resource-list-edit drag-drop-list">
+  <div class="span-6">
+    <div class="span-2" style="margin-right:0;">
+      <ul class="resource-list resource-list-edit drag-drop-list list-bullet-none">
       </ul>
-      <ul class="resource-list resource-list-add">
+      <ul class="resource-list resource-list-add list-bullet-none">
         <li><a href="#" class="js-resource-add">${h.icon('page_white_add')}New resource...</a></li>
       </ul>
     </div>
-    <div class="span8">
+    <div class="span-4" style="margin-left:0;">
       <div style="display: none;" class="resource-panel">
-        <button class="btn btn-danger resource-panel-close">x</button>
-        <div class="resource-details resource-add">
-          <ul class="nav nav-tabs">
+        <button class="button button-attention resource-panel-close">x</button>
+        <div class="resource-details resource-add wet-boew-tabbedinterface tabs-style-1">
+          <ul class="nav tabs">
             <li><a data-toggle="tab" href="#link-file">Link to a file</a></li>
             <li><a data-toggle="tab" href="#link-api">Link to an API</a></li>
             <li><a data-toggle="tab" href="#upload-file">Upload a file</a></li>
           </ul>
-          <div class="tab-content">
+          <div class="tab-content tabs-panel">
             <div class="tab-pane" id="link-file">
               <div class="form-inline js-add-url-form">
                 <label class="field_opt" for="url">File URL</label>
@@ -307,47 +307,18 @@
 </fieldset>
 
 <fieldset class="tab-pane fade" id='further-information'>
-  <div class="control-group">
-    <label class="control-label field_opt" for="author">Author</label>
-    <div class="controls">
-      <input id="author" name="author" type="text" value="${data.get('author', '')}" />
-      <p>The name of the main contact, for enquiries about this particular dataset, using the e-mail address in the following field.</p>
-    </div>
-  </div>
 
   <div class="control-group">
-    <label class="control-label field_opt" for="author_email">Author email</label>
-    <div class="controls">
-      <input id="author_email" name="author_email" type="text" value="${data.get('author_email', '')}" />
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label field_opt" for="maintainer">Maintainer</label>
-    <div class="controls">
-      <input id="maintainer" name="maintainer" type="text" value="${data.get('maintainer', '')}" />
-      <p>If there is another important contact person (in addition to the person in the Author field) then provide details here.</p>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label field_opt" for="maintainer_email">Maintainer email</label>
-    <div class="controls">
-      <input id="maintainer_email" name="maintainer_email" type="text" value="${data.get('maintainer_email', '')}" />
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label field_opt" for="version">Version</label>
-    <div class="controls">
+    <label class="control-label field_opt row-start span-2" for="version">Version</label>
+    <div class="controls row-end span-4">
       <input id="version" maxlength="100" name="version" type="text" value="${data.get('version', '')}" />
-      <p>A number representing the version (if applicable)</p>
-      <p>e.g. 1.2.0</p>
+      <p class="extra_description">A number representing the version (if applicable)</p>
+      <p class="extra_description">e.g. 1.2.0</p>
     </div>
   </div>
 </fieldset>
 
-<fieldset class="tab-pane fade" id='extras'>
+<fieldset class="tab-pane fade" id='extras' style="display:none">
   <p>Adding custom fields to the dataset such as "location:uk" can help users find it in the search engine. This data will also appear under <strong>Additional Information</strong> when viewing the dataset.</p>
   <py:with vars="extras = data.get('extras', [])">
     <py:for each="num, extra in enumerate(extras)">
@@ -381,7 +352,7 @@
   </py:with>
 </fieldset>
 
-<fieldset id='delete' class="tab-pane fade" py:if="c.is_sysadmin or c.auth_for_change_state">
+<fieldset id='delete' class="tab-pane fade" style="display:none" py:if="c.is_sysadmin or c.auth_for_change_state">
   <dl>
     <dt>Delete</dt>
     <dd>
@@ -399,32 +370,33 @@
 
 <fieldset id='summary'>
   <div class="control-group">
-    <label class="control-label" for="log_message">Summary</label>
-    <div class="controls">
+    <label class="control-label row-start span-2" for="log_message">Summary</label>
+    <div class="controls row-end span-4">
       <p>Briefly describe the changes you have made...</p>
       <textarea id="log_message" name="log_message">${data.get('log_message', h.auto_log_message())}</textarea>
     </div>
   </div>
 </fieldset>
 
-<div class="author-box ckan-logged-in" style="display: none;">
-  <p>Author: ${c.author}</p>
-</div>
-<div class="author-box ckan-logged-out">
-  <label>Author: ${c.author}</label>
-  <p i18n:msg="" class="hints">
-    Since you have not signed in this will just be your IP address.
-    <a href="${h.url_for(controller='user', action='login', id=None)}" target="_blank">Click here to sign in</a> before saving (opens in new window).
-  </p>
-</div>
+<div class="span-6">
+  <div class="author-box ckan-logged-in span-2" style="display: none;">
+    <p>Author: ${c.author}</p>
+  </div>
+  <div class="author-box ckan-logged-out span-4">
+    <label>Author: ${c.author}</label>
+    <p i18n:msg="" class="hints span-4">
+      Since you have not signed in this will just be your IP address.
+      <a href="${h.url_for(controller='user', action='login', id=None)}" target="_blank">Click here to sign in</a> before saving (opens in new window).
+    </p>
+  </div>
 
-<div class="form-actions">
-  <input id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
-  <py:if test="c.pkg">
-    <input id="cancel" class="btn href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='package', action='read', id=c.pkg.name)}" />
-  </py:if>
-  <p class="hints"><strong>Important:</strong> By submitting content, you agree to release your contributions under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>. Please <strong>refrain</strong> from editing this page if you are <strong>not</strong> happy to do this.</p>
+  <div class="form-actions">
+    <input id="save" class="button button-confirm" name="save" type="submit" value="${_('Save Changes')}" />
+    <py:if test="c.pkg">
+      <input id="cancel" class="button button-alert href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='package', action='read', id=c.pkg.name)}" />
+    </py:if>
+    <p class="hints span-4"><strong>Important:</strong> By submitting content, you agree to release your contributions under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>. Please <strong>refrain</strong> from editing this page if you are <strong>not</strong> happy to do this.</p>
+  </div>
 </div>
-
 
 </form>

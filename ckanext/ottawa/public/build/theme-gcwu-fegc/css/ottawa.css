@@ -217,7 +217,7 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     margin-right: -8px !important;
 }
 
-.js-url-is-valid{
+.extra_description{
     margin:0px !important;
 }
 
@@ -253,4 +253,18 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .sidebar-section a img{
     margin-bottom: 0;
+}
+
+.resource-panel .resource-panel-close {
+    position: absolute;
+    right: -8px;
+    top: -12px;
+    width: 20px;
+    padding: 0;
+    text-align: center;
+    z-index: 9999;
+}
+
+.tabs-panel{
+    min-height: 30px;
 }
