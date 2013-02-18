@@ -225,6 +225,12 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     font-weight: bold;
 }
 
+.markdown-input{
+    margin-left:10px;
+    height: 70px;
+    width: 80%;
+}
+
 /* dataset read pages */
 .resource-list li a img{
     width: auto;
