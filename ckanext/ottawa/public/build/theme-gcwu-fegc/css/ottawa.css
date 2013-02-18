@@ -242,3 +242,11 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 .wb-sec-def section h3 a:hover{
     border-bottom: none;
 }
+
+.follow_button{
+    margin:10px;
+}
+
+.sidebar-section a img{
+    margin-bottom: 0;
+}

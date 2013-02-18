@@ -5,7 +5,7 @@
   py:strip=""
   >
   <py:choose test="following">
-    <a py:when="True" id="${obj_type}_follow_button" class="button button-attention" data-obj-id="${obj_id}" data-state="unfollow">Unfollow</a>
-    <a py:otherwise="" id="${obj_type}_follow_button" class="button button-confirm" data-obj-id="${obj_id}" data-state="follow">Follow</a>
+    <a py:when="True" id="${obj_type}_follow_button" class="button button-attention follow_button" data-obj-id="${obj_id}" data-state="unfollow">Unfollow</a>
+    <a py:otherwise="" id="${obj_type}_follow_button" class="button button-confirm follow_button" data-obj-id="${obj_id}" data-state="follow">Follow</a>
   </py:choose>
 </html>

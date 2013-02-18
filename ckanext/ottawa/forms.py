@@ -83,3 +83,12 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         schema.update({'supplementaires': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         
         return schema
+        
+
+    def setup_template_variables(self, context, data_dict):
+        data_dict.update({'available_only': True})
+        
+        toolkit.c.groups_available = toolkit.c.userobj and \
+            toolkit.c.userobj.get_groups('organization') or []
+        toolkit.c.licences = [('', '')] + base.model.Package.get_license_options()
+        toolkit.c.is_sysadmin = authz.Authorizer().is_sysadmin(toolkit.c.user)
