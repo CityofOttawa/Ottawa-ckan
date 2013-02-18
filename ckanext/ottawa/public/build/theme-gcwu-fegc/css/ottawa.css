@@ -200,6 +200,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     margin-left: 20px;
 }
 
+.form-inline label{
+    display: inline-block !important;
+}
+
 .wet-boew-formvalid img{
     width:auto;
 }
