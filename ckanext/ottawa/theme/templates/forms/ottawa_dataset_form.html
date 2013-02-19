@@ -119,7 +119,13 @@
       <input id="maintainer" name="maintainer" type="text" value="${data.get('maintainer', '')}" 
       placeholder="${_('The organization releasing this dataset')}"
       />
-      
+    </div>
+  </div>
+  
+  <div class="control-group" style="display:none">
+    <label class="control-label field_opt" for="maintainer_email">Maintainer email</label>
+    <div class="controls">
+      <input id="maintainer_email" name="maintainer_email" type="text" value="${data.get('maintainer_email', '')}" />
     </div>
   </div>
   
