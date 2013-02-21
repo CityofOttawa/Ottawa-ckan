@@ -54,6 +54,10 @@ a:hover{
     padding-top: 40px;
 }
 
+#footer-logo {
+    text-align: center;
+}
+
 #footer-logo img{
     width:auto;
 }
@@ -67,6 +71,30 @@ a:hover{
 #gcwu-title, #gcwu-title a {
     color: #29639c;
     text-shadow: rgb(169, 187, 224) 1px 1px 1px;
+}
+
+/* header image */
+#gcwu-sig {
+    height: 34px;
+    margin-top: 3px;
+}
+
+#gcwu-sig img{
+    height: 100% !important;
+    width: auto !important;
+    position: static;
+}
+
+/* footer image */
+.footer_open_logo {
+    height: 90px;
+    text-align: center;
+}
+
+.footer_open_logo img {
+    height: 100% !important;
+    width: auto !important;
+    position: static;
 }
 
 /* header navigation */
