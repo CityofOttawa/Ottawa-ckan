@@ -79,8 +79,9 @@
                 <h2>Government of Canada navigation bar</h2>
                 <div id="gcwu-gcnb-in">
                   <div id="gcwu-gcnb-fip">
-                    <div id="gcwu-sig">
-                      <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
+                    <div py:choose="c.language" id="gcwu-sig">
+                      <img py:when="'en'"  src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
+                      <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo"/>
                     </div>
                     <ul>
                       <li id="gcwu-gcnb1">
@@ -89,8 +90,9 @@
                       <li id="gcwu-gcnb2">
                         <a rel="external" href="http://ottawa.ca/en/contact">${_('Contact Us')}</a>
                       </li>
-                      <li id="gcwu-gcnb-lang">
-                        <a href="/fr" lang="fr">Français</a>
+                      <li py:choose="c.language" id="gcwu-gcnb-lang">    
+                        <a py:when="'en'" href="${h.url(action=c.action, controller=c.controller, locale='fr')}" lang="fr">Français</a>
+                        <a py:otherwise="'fr'" href="${h.url(action=c.action, controller=c.controller, locale='en')}" lang="en">English</a>
                       </li>
                     </ul>
                   </div>
@@ -102,7 +104,7 @@
               <div id="gcwu-bnr-in">
                 <div id="gcwu-wmms">
                   <div id="gcwu-wmms-in">
-                    <div id="gcwu-wmms-fip" title="Symbol of the Government of Canada"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
+                    <div id="gcwu-wmms-fip" title="City of Ottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
                     </div>
                   </div>
                 </div>
@@ -254,8 +256,9 @@
                   </section>
                   <section>
                     <div class="span-4">
-                      <div class="footer_open_logo">
-                        <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
+                      <div py:choose="c.language" class="footer_open_logo">
+                        <img py:when="'en'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
+                        <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
                         </div>
                     </div>
                   </section>

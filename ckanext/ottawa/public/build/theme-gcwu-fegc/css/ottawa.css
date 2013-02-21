@@ -92,7 +92,7 @@ a:hover{
 }
 
 .footer_open_logo img {
-    height: 100% !important;
+    height: auto !important;
     width: auto !important;
     position: static;
 }
