@@ -30,22 +30,22 @@
     </py:choose>
     -->
     <!--[if lte IE 8]>
-    <script src="${h.url_for_static('/build/js/polyfills/html5shiv-min.js')}"></script>
-    <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util-ie-min.css')}"/>
-    <link rel="stylesheet" href="${h.url_for_static('/build/js/css/pe-ap-ie-min.css')}"/>
-    <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/theme-ie-min.css')}"/>
+    <script src="/build/js/polyfills/html5shiv-min.js"></script>
+    <link rel="stylesheet" href="/build/grids/css/util-ie-min.css"/>
+    <link rel="stylesheet" href="/build/js/css/pe-ap-ie-min.css"/>
+    <link rel="stylesheet" href="/build/theme-gcwu-fegc/css/theme-ie-min.css"/>
     <![endif]-->
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util-min.css')}"/>
     <link rel="stylesheet" href="${h.url_for_static('/build/js/css/pe-ap-min.css')}"/>
     <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/theme-min.css')}"/>
-    <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/ottawa.css')}"/>
 
     <!--<![endif]-->
     <noscript>
       <link  rel="stylesheet" href="${h.url_for_static()}"/>
     </noscript>
-
+    
+    <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/ottawa.css')}"/>
     <py:if test="defined('optional_head')">
       ${optional_head()}
     </py:if>
