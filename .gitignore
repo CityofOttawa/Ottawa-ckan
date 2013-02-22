@@ -5,3 +5,4 @@ ckanext_canada.egg-info
 
 dist
 *.swp
+.DS_Store
