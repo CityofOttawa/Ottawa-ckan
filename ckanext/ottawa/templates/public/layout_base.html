@@ -76,7 +76,7 @@
             <!-- HeaderStart -->
             <nav role="navigation">
               <div id="gcwu-gcnb">
-                <h2>Government of Canada navigation bar</h2>
+                <h2>Navigation Bar</h2>
                 <div id="gcwu-gcnb-in">
                   <div id="gcwu-gcnb-fip">
                     <div py:choose="c.language" id="gcwu-sig">
@@ -93,6 +93,12 @@
                       <li py:choose="c.language" id="gcwu-gcnb-lang">    
                         <a py:when="'en'" href="${h.url(action=c.action, controller=c.controller, locale='fr')}" lang="fr">Français</a>
                         <a py:otherwise="'fr'" href="${h.url(action=c.action, controller=c.controller, locale='en')}" lang="en">English</a>
+                      </li>
+                      <li py:if="c.userobj" id="gcwu-gcnb3">
+                        <a href="${h.url_for('/user/_logout')}">Logout</a>
+                      </li>
+                      <li py:if="not c.userobj" id="gcwu-gcnb3">
+                        <a href="${h.url_for(controller='user',action='login')}">Login</a>
                       </li>
                     </ul>
                   </div>
