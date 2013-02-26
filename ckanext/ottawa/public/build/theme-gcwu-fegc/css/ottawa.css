@@ -323,3 +323,9 @@ div.activity {
     padding: 3px;
     margin-bottom: 3px;
 }
+
+.userlist img {
+    width: auto;
+    margin-bottom: 0px;
+    margin-right: 5px;
+}
