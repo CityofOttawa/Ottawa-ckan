@@ -11,8 +11,11 @@
   import ckan.lib.helpers as h
 ?>
 
-${w.render_new_dataset(
-  template=_("{actor} created a new dataset: {object}"), 
-  activity=activity)}
+${h.activity_div(
+  template=_("{actor} created the dataset {object}"),
+  activity=activity,
+  actor=h.linked_user(activity.user_id),
+  object=h.dataset_link(activity.data.package),
+  )}
   
 </html>
