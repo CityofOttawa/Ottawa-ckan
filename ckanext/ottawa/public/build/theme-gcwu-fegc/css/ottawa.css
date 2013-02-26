@@ -1,5 +1,5 @@
 /* remove underlines from anchors, to conform with city of ottawa website */
-a, a:hover, a:visited {
+a, a:visited {
     text-decoration: none;
     color: #004990;
 }
@@ -10,6 +10,8 @@ a, a:hover, a:visited {
 }
 
 a:hover{
+    text-decoration: none;
+    color: #004990;
     border-bottom: 1px dotted #004990;
 }
 
@@ -301,4 +303,14 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .tabs-panel{
     min-height: 30px;
+}
+
+/* User & Dashboard Pages */
+.actor img {
+    width: auto;
+    margin-bottom: 0;
+}
+
+.wb-sec-def a:hover {
+    border-bottom: none;
 }

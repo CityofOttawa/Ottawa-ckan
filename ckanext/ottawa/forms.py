@@ -83,6 +83,27 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         schema.update({'attributes': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'supplementaires': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         
+        # Put a few more keys into the schema so they don't get removed by
+        # validation. This stops the user profile page from crashing when the
+        # user has some datasets.
+        schema.update({'isopen': [validators.ignore_missing]})
+        schema['tags'] = {
+            'name': [validators.not_missing,
+                    validators.not_empty,
+                    unicode,
+                    ],
+            'vocabulary_id': [validators.ignore_missing, unicode],
+            'revision_timestamp': [validators.ignore],
+            'state': [validators.ignore],
+            'display_name': [validators.ignore_missing, unicode],
+            }
+        schema.update({'tracking_summary': [validators.ignore_missing]})
+
+        # This fixes a crash when viewing historical versions of datasets.
+        schema.update({'revision_id': [validators.ignore_missing, unicode]})
+        schema.update({'revision_timestamp':
+            [validators.ignore_missing, unicode]})
+        
         return schema
         
 
@@ -93,3 +114,4 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
             toolkit.c.userobj.get_groups('organization') or []
         toolkit.c.licences = [('', '')] + base.model.Package.get_license_options()
         toolkit.c.is_sysadmin = authz.Authorizer().is_sysadmin(toolkit.c.user)
+        
