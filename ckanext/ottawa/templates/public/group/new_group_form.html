@@ -1,5 +1,5 @@
 <form
-  class="form-horizontal ${'has-errors' if errors else ''}"
+  class="form-horizontal span-6 ${'has-errors' if errors else ''}"
   id="group-edit"
   action=""
   method="post"
@@ -19,16 +19,16 @@
 
 <fieldset id="basic-information">
   <div class="control-group">
-    <label for="name" class="control-label">Title</label>
-    <div class="controls">
+    <label for="name" class="control-label row-start span-2">Title</label>
+    <div class="controls row-end span-4">
       <input class="js-title" id="title" name="title" type="text" value="${data.get('title', '')}"/>
     </div>
   </div>
   <div class="control-group">
-    <label for="title" class="control-label">Url</label>
-    <div class="controls">
-      <div class="input-prepend">
-        <span class="add-on">${h.url(controller='group', action='index')+'/'}</span>
+    <label for="title" class="control-label row-start span-2">Url</label>
+    <div class="controls row-end span-4">
+      <div class="input-prepend form-input-prepend">
+        <span class="form-addon" style="padding-bottom:4px;">${h.url(controller='group', action='index')+'/'}</span>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
       </div>
       <p class="js-url-is-valid">&nbsp;</p>
@@ -38,21 +38,21 @@
     </div>
   </div>
   <div class="control-group">
-    <label for="" class="control-label">Description</label>
-    <div class="controls">
+    <label for="" class="control-label row-start span-2">Description</label>
+    <div class="controls row-end span-4">
       ${markdown_editor('description', data.get('description'), 'notes', _('Start with a summary sentence ...'))}
     </div>
   </div>
   <div class="control-group">
-    <label for="name" class="control-label">Image URL:</label>
-    <div class="controls">
+    <label for="name" class="control-label row-start span-2">Image URL:</label>
+    <div class="controls row-end span-4">
       <input id="image_url" name="image_url" type="text" value="${data.get('image_url', '')}"/>
       <p>The URL for the image that is associated with this group.</p>
     </div>
   </div>
   <div class="state-field control-group" py:if="c.is_sysadmin or c.auth_for_change_state">
-    <label for="" class="control-label">State</label>
-    <div class="controls">
+    <label for="" class="control-label row-start span-2">State</label>
+    <div class="controls row-end span-4">
       <select id="state" name="state" >
         <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
         <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
@@ -61,7 +61,7 @@
   </div>
 </fieldset>
 
-<fieldset id="extras">
+<fieldset id="extras" style="display:none">
   <h3>Extras</h3>
   <dl>
     <py:with vars="extras = data.get('extras', [])">
@@ -115,17 +115,23 @@
 
   <h3>Add datasets</h3>
   <div class="control-group">
-    <label class="control-label" for="packages__${len(data.get('packages', []))}__name">Dataset</label>
-    <div class="controls">
+    <label class="control-label row-start span-1" for="packages__${len(data.get('packages', []))}__name">Dataset</label>
+    <div class="controls row-end span-5">
       <input class="autocomplete-dataset" id="datasets__${len(data.get('packages', []))}__name" name="packages__${len(data.get('packages', []))}__name" type="text" />
     </div>
   </div>
 </fieldset>
 
 <div class="form-actions">
-  <input id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
-  <py:if test="c.group">
-    <input id="cancel" class="btn href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='group', action='read', id=c.group.name)}" />
-  </py:if>
+  <ul class="menu-horizontal">
+    <li>
+      <input id="save" class="button button-accent" name="save" type="submit" value="${_('Save Changes')}" />
+    </li>
+    <py:if test="c.group">
+      <li>
+        <input id="cancel" class="button href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='group', action='read', id=c.group.name)}" />
+      </li>
+    </py:if>
+  </ul>
 </div>
 </form>

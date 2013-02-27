@@ -251,8 +251,9 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     margin:0px !important;
 }
 
-.control-label{
+.control-label {
     font-weight: bold;
+    margin-right: 10px !important;
 }
 
 .markdown-input{
@@ -342,4 +343,13 @@ div.activity {
     margin-bottom: 0;
     margin-right: 5px;
 }
+
+.ui-autocomplete {
+    width: 300px;
+    list-style-type: none!important;
+    background-color: #f9f9f9;
+    outline: 1px solid #d4d4d4;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    padding: 1px 0;
 }
