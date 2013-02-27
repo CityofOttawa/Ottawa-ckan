@@ -353,3 +353,9 @@ div.activity {
     margin-bottom: 3px;
     padding: 1px 0;
 }
+
+.authz_group img {
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 4px;
+}
