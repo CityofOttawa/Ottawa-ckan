@@ -329,3 +329,17 @@ div.activity {
     margin-bottom: 0px;
     margin-right: 5px;
 }
+
+/* Group pages */
+#gcwu-aside img {
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+
+#group-revisions img {
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+}

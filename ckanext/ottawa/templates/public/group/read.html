@@ -21,27 +21,25 @@ py:strip="">
 
 
     <aside role="complementary">
-      <div id="gcwu-aside">
+      <div id="gcwu-aside" class="span-2">
         <h2>Supplemental content</h2>
         <section>
-          <ul style="list-style-type: none">
-            <li class="widget-container widget_text">
-              <ul style="list-style-type: none">
-                <py:if test="c.group_admins">
-                  <li>
-                    <h4>${_('Administrators')}</h4>
-                    <ul style="list-style-type: none">
-                      <li py:for="admin in c.group_admins">
-                        ${h.linked_user(admin)}
-                      </li>
-                    </ul>
-                  </li>
-                </py:if>
-              </ul>
-            </li>
+          <div>
+            <div class="widget-container widget_text">
+              <py:if test="c.group_admins">
+                <div>
+                  <h3>${_('Administrators')}</h3>
+                  <ul style="list-style-type: none">
+                    <li py:for="admin in c.group_admins">
+                      ${h.linked_user(admin)}
+                    </li>
+                  </ul>
+                </div>
+              </py:if>
+            </div>
             ${facet_div('tags', _('Tags'))}
             ${facet_div('res_format', _('Resource Formats'))}
-          </ul>
+          </div>
         </section>
       </div>
     </aside>
