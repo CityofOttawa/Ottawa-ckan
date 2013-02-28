@@ -11,6 +11,7 @@ from ckan.plugins import implements, SingletonPlugin
 import ckan.lib.navl.validators as validators
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.plugins
+import ckan.logic as logic
 
 log = logging.getLogger(__name__)
 
@@ -114,4 +115,27 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
             toolkit.c.userobj.get_groups('organization') or []
         toolkit.c.licences = [('', '')] + base.model.Package.get_license_options()
         toolkit.c.is_sysadmin = authz.Authorizer().is_sysadmin(toolkit.c.user)
+        
+        ## This is messy as auths take domain object not data_dict
+        context_pkg = context.get('package', None)
+        pkg = context_pkg or toolkit.c.pkg
+        if pkg:
+            try:
+                if not context_pkg:
+                    context['package'] = pkg
+                logic.check_access('package_change_state', context)
+                toolkit.c.auth_for_change_state = True
+            except logic.NotAuthorized:
+                toolkit.c.auth_for_change_state = False
+             
+        if 'titre' in toolkit.c.pkg_dict:
+            toolkit.c.titre = toolkit.c.pkg_dict['titre']
+        else:
+            toolkit.c.titre = ''   
+        
+        if 'organisme' in toolkit.c.pkg_dict:
+            toolkit.c.organisme = toolkit.c.pkg_dict['organisme']
+        else:
+            toolkit.c.organisme = ''
+        
         
