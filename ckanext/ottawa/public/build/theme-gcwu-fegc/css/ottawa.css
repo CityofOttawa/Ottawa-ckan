@@ -359,3 +359,7 @@ div.activity {
     margin-bottom: 0;
     margin-right: 4px;
 }
+
+.ui-datepicker-calendar td {
+    background-color: white;
+}
