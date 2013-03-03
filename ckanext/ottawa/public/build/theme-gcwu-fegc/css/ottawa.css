@@ -42,6 +42,10 @@ a:hover{
 }
 
 #gcwu-gcnb a {
+    border-left: none;
+}
+
+#gcwu-gcnb a {
     color: rgb(25, 101, 235);
 }
 

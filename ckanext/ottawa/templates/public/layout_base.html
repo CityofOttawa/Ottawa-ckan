@@ -80,8 +80,10 @@
                 <div id="gcwu-gcnb-in">
                   <div id="gcwu-gcnb-fip">
                     <div py:choose="c.language" id="gcwu-sig">
-                      <img py:when="'en'"  src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
-                      <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo"/>
+                      <a href="/">
+                        <img py:when="'en'"  src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
+                        <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo"/>
+                      </a>
                     </div>
                     <ul>
                       <li id="gcwu-gcnb1">
@@ -142,6 +144,12 @@
                         <li>
                           <section>
                             <h3><a href="${h.url_for('/dataset')}">Browse Datasets</a></h3>
+                            
+                          </section>
+                        </li>
+                        <li>
+                          <section>
+                            <h3><a href="${h.url_for('/group')}">Browse by Department</a></h3>
                             
                           </section>
                         </li>
