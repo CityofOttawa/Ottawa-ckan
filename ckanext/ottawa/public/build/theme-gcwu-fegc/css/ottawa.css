@@ -262,6 +262,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     width: 80%;
 }
 
+.sidebar-section img {
+    width: auto;
+}
+
 /* dataset read pages */
 .resource-list li a img{
     width: auto;
@@ -354,6 +358,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .resource-details .control-group {
     width: 95%;
+}
+
+.resource-details img {
+    width: auto;
 }
 
 /* End CKAN Resource edit ridiculousness */

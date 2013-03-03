@@ -19,8 +19,8 @@
   </py:def>
 
   <py:match path="primarysidebar">
-
-    <div py:if="c.pkg.license_id" id="dataset-license" class="sidebar-section">
+    <div class="span-2"></div>
+    <div py:if="c.pkg.license_id" id="dataset-license" class="sidebar-section span-6">
       <strong>License:</strong>
         <py:choose test="">
           <span py:when="c.pkg_dict.get('license_url')"><a
@@ -42,13 +42,15 @@
             </span>
         </py:if>
     </div>
-
-    <div py:if="c.pkg_dict.get('tags')" class="sidebar-section">
+    
+    <div class="span-2"></div>
+    <div py:if="c.pkg_dict.get('tags')" class="sidebar-section span-6">
       <h3>Tags</h3>
       ${tag_list(c.pkg_dict.get('tags', ''))}
     </div>
 
-    <div py:if="'groups' in c.pkg_dict" class="sidebar-section">
+    <div class="span-2"></div>
+    <div py:if="'groups' in c.pkg_dict" class="sidebar-section span-6">
       <h3>Groups</h3>
       <ul class="groups menu-horizontal">
         <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
@@ -57,7 +59,8 @@
       </ul>
     </div>
 
-    <li py:if="c.package_relationships" class="sidebar-section">
+    <div class="span-2"></div>
+    <li py:if="c.package_relationships" class="sidebar-section span-6">
       <h3>Related Datasets</h3>
       <ul class="related-datasets">
         <py:for each="pkg, relationship_str, comment in c.package_relationships">

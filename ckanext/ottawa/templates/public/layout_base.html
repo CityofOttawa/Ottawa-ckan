@@ -95,10 +95,7 @@
                         <a py:otherwise="'fr'" href="${h.url(action=c.action, controller=c.controller, locale='en')}" lang="en">English</a>
                       </li>
                       <li py:if="c.userobj" id="gcwu-gcnb3">
-                        <a href="${h.url_for('/user/_logout')}">Logout</a>
-                      </li>
-                      <li py:if="not c.userobj" id="gcwu-gcnb3">
-                        <a href="${h.url_for(controller='user',action='login')}">Login</a>
+                        <a href="${h.url_for(controller='user',action='me')}">${c.user}</a>
                       </li>
                     </ul>
                   </div>
@@ -276,6 +273,14 @@
                         <a href="http://ottawa.ca/en/twitter-protocol"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/twitter.png')}" alt="Twitter" width="30" height="24"/></a>
                         <a href="http://ottawa.ca/en/rss-feeds"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
                       <p>Access the city’s social media streams</p>
+                      
+                      <div py:if="c.userobj" id="gcwu-gcnb3">
+                        <a href="${h.url_for('/user/_logout')}">Logout</a>
+                      </div>
+                      <div py:if="not c.userobj" id="gcwu-gcnb3">
+                        <a href="${h.url_for(controller='user',action='login')}">Login</a>
+                      </div>
+                      
                       </div>
                     </div>
                   </section>
