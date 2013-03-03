@@ -346,22 +346,6 @@
   </py:with>
 </fieldset>
 
-<fieldset id='delete' class="tab-pane fade" style="display:none" py:if="c.is_sysadmin or c.auth_for_change_state">
-  <dl>
-    <dt>Delete</dt>
-    <dd>
-      <p>Do you really want to change the state of this dataset? &nbsp;&nbsp;<button class="dataset-delete btn">Yes!</button></p>
-      <span>
-      This dataset is&nbsp;&nbsp;
-      <select id="state" class="dataset-delete" name="state" style="display:inline;">
-        <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
-        <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
-      </select>
-      </span>
-    </dd>
-  </dl>
-</fieldset>
-
 <fieldset id='summary'>
   <div class="control-group">
     <label class="control-label row-start span-2" for="log_message">Summary</label>
@@ -372,7 +356,27 @@
   </div>
 </fieldset>
 
+<h3>Administration</h3>
 <div class="span-6">
+
+  <fieldset id='delete' class="tab-pane fade" py:if="c.is_sysadmin or c.auth_for_change_state">
+    <div class="span-2">
+      <p>Make dataset inactive</p>
+    </div>
+    <div class="span-2 module-attention">
+      <div>
+        <button class="dataset-delete button button-attention">Change Active State</button>
+      </div>
+        <p>
+        This dataset is&nbsp;&nbsp;
+        <select id="state" class="dataset-delete" name="state" style="display:inline;">
+          <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
+          <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
+        </select>
+        </p>
+    </div>
+  </fieldset>
+  
   <div class="author-box ckan-logged-in span-2" style="display: none;">
     <p>Author: ${c.author}</p>
   </div>
@@ -385,12 +389,16 @@
   </div>
 
   <div class="form-actions">
-    <input id="save" class="button button-confirm" name="save" type="submit" value="${_('Save Changes')}" />
-    <py:if test="c.pkg">
-      <input id="cancel" class="button button-alert href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='package', action='read', id=c.pkg.name)}" />
-    </py:if>
+    <ul class="menu-horizontal">
+      <li><input id="save" class="button button-confirm" name="save" type="submit" value="${_('Save Changes')}" /></li>
+      <py:if test="c.pkg">
+        <li><input id="cancel" class="button button-alert href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='package', action='read', id=c.pkg.name)}" /></li>
+      </py:if>
+    </ul>
+      
     <p class="hints span-4"><strong>Important:</strong> By submitting content, you agree to release your contributions under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>. Please <strong>refrain</strong> from editing this page if you are <strong>not</strong> happy to do this.</p>
   </div>
+  
 </div>
 
 </form>
