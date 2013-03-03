@@ -292,6 +292,7 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     margin-bottom: 0;
 }
 
+/* CKAN hard-codes the resource edit forms into it, so we need some hacks to override */
 .resource-panel .resource-panel-close {
     position: absolute;
     right: -8px;
@@ -301,6 +302,61 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     text-align: center;
     z-index: 9999;
 }
+
+.resource-details {
+    background-color: #f9f9f9;
+    outline: 1px solid #d4d4d4;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    padding: 1px 0;
+}
+
+.resource-details label {
+    padding-top: 3px;
+    text-align: right;
+    float:left;
+    width: 150px;
+}
+
+.resource-details .control-group {
+    display: inline-block;
+    width: 100%;
+    margin: 10px;
+}
+
+.resource-details .markdown-editor {
+    background-color: #f9f9f9;
+    outline: 1px solid #d4d4d4;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    padding: 1px 0;
+}
+
+.resource-details .button-row {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.resource-details .button-row li {
+    margin-bottom: 5px;
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0;
+    white-space: nowrap;
+    display: inline;
+    float: left;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.resource-details .control-group {
+    width: 95%;
+}
+
+/* End CKAN Resource edit ridiculousness */
 
 .tabs-panel{
     min-height: 30px;
@@ -358,8 +414,4 @@ div.activity {
     width: auto;
     margin-bottom: 0;
     margin-right: 4px;
-}
-
-.ui-datepicker-calendar td {
-    background-color: white;
 }
