@@ -73,7 +73,7 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
         """
         schema = ckan.logic.schema.db_to_form_package_schema()
         
-        schema.update({'titre': [validators.ignore_missing, unicode, converters.convert_to_extras]})
+        schema.update({'titre': [converters.convert_from_extras, validators.ignore_missing, unicode]})
         schema.update({'organisme': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'resume': [converters.convert_from_extras, unicode, validators.ignore_missing]})
         schema.update({'date_published': [converters.convert_from_extras, unicode, validators.ignore_missing]})
@@ -128,14 +128,5 @@ class OttawaDatasetForm(SingletonPlugin, ckan.lib.plugins.DefaultDatasetForm):
             except logic.NotAuthorized:
                 toolkit.c.auth_for_change_state = False
              
-        if 'titre' in toolkit.c.pkg_dict:
-            toolkit.c.titre = toolkit.c.pkg_dict['titre']
-        else:
-            toolkit.c.titre = ''   
-        
-        if 'organisme' in toolkit.c.pkg_dict:
-            toolkit.c.organisme = toolkit.c.pkg_dict['organisme']
-        else:
-            toolkit.c.organisme = ''
         
         
