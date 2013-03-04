@@ -27,5 +27,7 @@ setup(
         [ckan.plugins]
 	    ottawa_public=ckanext.ottawa.plugins:OttawaPublic
 	    ottawa_bilingual_dataset=ckanext.ottawa.forms:OttawaDatasetForm
+	    ottawa_bilingual_search_listing=ckanext.ottawa.listing:OttawaPackageListing
+	    ottawa_route_overrides=ckanext.ottawa.routes:OttawaRoutes
 	""",
 )
