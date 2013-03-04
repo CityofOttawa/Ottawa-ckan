@@ -8,12 +8,29 @@
   <div id="dataset" class="dataset">
     <!-- Overview Section -->
     <div id="dataset-overview">
-
+      <py:choose test="c.language">
+        <py:when test="'en'">
+          <h1>${c.pkg.title}</h1>
+        </py:when>
+        <py:when test="'fr'">
+          <h1>${c.pkg.extras['titre']}</h1>
+        </py:when>
+      </py:choose>
+      
       <!-- Description -->
-      <div class="notes" py:if="str(c.pkg_notes_formatted).strip()">
-        <div id="notes-extract">
-          ${c.pkg_notes_formatted}
-        </div>
+      <div class="" py:if="str(c.pkg_notes_formatted).strip()">
+        <py:choose test="c.language">
+          <py:when test="'en'">
+            <div id="notes-extract">
+              ${c.pkg_notes_formatted}
+            </div>
+          </py:when>
+          <py:when test="'fr'">
+            <div id="notes-extract">
+              ${c.pkg_dict['resume']}
+            </div>
+          </py:when>
+        </py:choose>
         <div id="notes-remainder"></div>
       </div>
 
@@ -21,7 +38,7 @@
       <div id="dataset-resources" class="resources subsection">
         <h3>Resources
         <py:if test="h.check_access('package_update',{'id':c.pkg.id})"> &nbsp;
-          ${h.subnav_link(_('(Edit Resources)'), controller='package', action='editresources', id=c.pkg.name)}
+          ${h.subnav_link(_('(edit)'), controller='package', action='editresources', id=c.pkg.name)}
         </py:if></h3>
         <ul class="resource-list list-bullet-none">
           <py:for each="res in c.pkg_dict.get('resources', [])">
@@ -44,7 +61,7 @@
     <!-- Dataset Information Section -->
     <h3>Additional Information
       <py:if test="h.check_access('package_update',{'id':c.pkg.id})"> &nbsp;
-        ${h.subnav_link(_('(Edit Metadata)'), controller='package', action='edit', id=c.pkg.name)}
+        ${h.subnav_link(_('(edit)'), controller='package', action='edit', id=c.pkg.name)}
       </py:if></h3>
     <div id="dataset-information">
     <table class="table table-striped table-bordered table-condensed span-6">
@@ -54,51 +71,147 @@
           <th scope="col">Value</th>
         </tr>
       </thead>
-      <tbody>
-        <tr py:if="c.pkg.url">
-          <td class="dataset-label">Source</td>
-          <td class="dataset-details" property="foaf:homepage">${c.pkg_url_link}</td>
-        </tr>
+      
+      <!-- English Metadata Table -->
+      <py:choose test="c.language">
+        <py:when test="'en'">
+          <tbody>
+            <tr py:if="c.pkg.url">
+              <td class="dataset-label">Source</td>
+              <td class="dataset-details" property="foaf:homepage">${c.pkg_url_link}</td>
+            </tr>
 
-        <tr py:if="c.pkg_author_link">
-          <td class="dataset-label">Author</td>
-          <td class="dataset-details" property="dc:creator">${c.pkg_author_link}</td>
-        </tr>
+            <tr py:if="c.pkg_author_link">
+              <td class="dataset-label">Author</td>
+              <td class="dataset-details" property="dc:creator">${c.pkg_author_link}</td>
+            </tr>
 
-        <tr py:if="c.pkg_maintainer_link">
-          <td class="dataset-label">Maintainer</td>
-          <td class="dataset-details" property="dc:contributor">${c.pkg_maintainer_link}</td>
-        </tr>
+            <tr py:if="c.pkg_maintainer_link">
+              <td class="dataset-label">Maintainer</td>
+              <td class="dataset-details" property="dc:contributor">${c.pkg_maintainer_link}</td>
+            </tr>
 
-        <tr py:if="c.pkg.version">
-          <td class="dataset-label">Version</td>
-          <td class="dataset-details">${c.pkg.version}</td>
-        </tr>
+            <tr py:if="c.pkg.version">
+              <td class="dataset-label">Version</td>
+              <td class="dataset-details">${c.pkg.version}</td>
+            </tr>
 
-        <tr py:if="c.eu_country">
-          <td class="dataset-label">Country</td>
-          <td class="dataset-details">${h.code_to_country(c.eu_country)}</td>
-        </tr>
+            <tr py:if="c.eu_country">
+              <td class="dataset-label">Country</td>
+              <td class="dataset-details">${h.code_to_country(c.eu_country)}</td>
+            </tr>
 
-        <tr py:if="h.check_access('package_update',{'id':c.pkg.id})">
-          <td class="dataset-label">State</td>
-          <td class="dataset-details">${c.pkg.state}</td>
-        </tr>
+            <tr py:if="h.check_access('package_update',{'id':c.pkg.id})">
+              <td class="dataset-label">State</td>
+              <td class="dataset-details">${c.pkg.state}</td>
+            </tr>
 
-        <tr py:if="c.harvest_catalogue_name">
-          <td class="dataset-label">Harvest Source</td>
-          <td class="dataset-details" i18n:msg="harvest_catalogue_name">
-            <a href="${c.harvest_dataset_url}">Dataset page</a> on 
-            <a href="${c.harvest_catalogue_url}">${c.harvest_catalogue_name}</a>
-          </td>
-        </tr>
+            <tr py:if="c.harvest_catalogue_name">
+              <td class="dataset-label">Harvest Source</td>
+              <td class="dataset-details" i18n:msg="harvest_catalogue_name">
+                <a href="${c.harvest_dataset_url}">Dataset page</a> on 
+                <a href="${c.harvest_catalogue_url}">${c.harvest_catalogue_name}</a>
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Accuracy</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['accuracy']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Attributes</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['attributes']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Date Published</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['date_published']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Update Frequency</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['update_frequency']}</td>
+            </tr>
 
-        <tr py:for="i, (key, value) in enumerate(c.pkg_extras)"
-          rel="dc:relation" resource="_:extra${i}">
-          <td class="dataset-label" property="rdfs:label">${_(key)}</td>
-          <td class="dataset-details" property="rdf:value">${value}</td>
-        </tr>
-      </tbody>
+            <!--<tr py:for="i, (key, value) in enumerate(c.pkg_extras)"
+              rel="dc:relation" resource="_:extra${i}">
+              <td class="dataset-label" property="rdfs:label">${_(key)}</td>
+              <td class="dataset-details" property="rdf:value">${value}</td>
+            </tr>-->
+          </tbody>
+        </py:when>
+        
+        <!-- French Metadata Table -->
+        <py:when test="'fr'">
+          <tbody>
+            <tr py:if="c.pkg.url">
+              <td class="dataset-label">Source</td>
+              <td class="dataset-details" property="foaf:homepage">${c.pkg_url_link}</td>
+            </tr>
+
+            <tr py:if="c.pkg_author_link">
+              <td class="dataset-label">Author</td>
+              <td class="dataset-details" property="dc:creator">${c.pkg_author_link}</td>
+            </tr>
+
+            <tr py:if="c.pkg_maintainer_link">
+              <td class="dataset-label">Organisme</td>
+              <td class="dataset-details" property="dc:contributor">${c.pkg_dict['organisme']}</td>
+            </tr>
+
+            <tr py:if="c.pkg.version">
+              <td class="dataset-label">Version</td>
+              <td class="dataset-details">${c.pkg.version}</td>
+            </tr>
+
+            <tr py:if="c.eu_country">
+              <td class="dataset-label">Country</td>
+              <td class="dataset-details">${h.code_to_country(c.eu_country)}</td>
+            </tr>
+
+            <tr py:if="h.check_access('package_update',{'id':c.pkg.id})">
+              <td class="dataset-label">State</td>
+              <td class="dataset-details">${c.pkg.state}</td>
+            </tr>
+
+            <tr py:if="c.harvest_catalogue_name">
+              <td class="dataset-label">Harvest Source</td>
+              <td class="dataset-details" i18n:msg="harvest_catalogue_name">
+                <a href="${c.harvest_dataset_url}">Dataset page</a> on 
+                <a href="${c.harvest_catalogue_url}">${c.harvest_catalogue_name}</a>
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Exactitude des données</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['exactitude']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Métadonnées supplémentaires</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['supplementaires']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Date de publication</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['date_published']}</td>
+            </tr>
+            
+            <tr>
+              <td class="dataset-label" property="rdfs:label">Fréquence des mises à jour</td>
+              <td class="dataset-details" property="rdf:value">${c.pkg_dict['frequence_a_jour']}</td>
+            </tr>
+
+            <!--<tr py:for="i, (key, value) in enumerate(c.pkg_extras)"
+              rel="dc:relation" resource="_:extra${i}">
+              <td class="dataset-label" property="rdfs:label">${_(key)}</td>
+              <td class="dataset-details" property="rdf:value">${value}</td>
+            </tr>-->
+          </tbody>
+        </py:when>
+      </py:choose>
+      
     </table>
 
     </div>
