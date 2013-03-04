@@ -43,9 +43,6 @@ py:strip=""
                   <li style="display:none;" class="ckan-logged-in ${'active' if c.action=='new' else ''}">
                     ${ h.subnav_named_route(_('Add a Group'), "%s_new" % h.default_group_type(), action='new')}
                   </li>
-                  <li class="ckan-logged-out ${'active' if c.action=='new' else ''}">
-                    ${h.subnav_link(_('Login to Add a Group'), controller='group', action='new')}
-                  </li>
                 </py:otherwise>
               </ul>
             </section>

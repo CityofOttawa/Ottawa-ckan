@@ -9,6 +9,10 @@ a, a:visited {
     font-family: "Arial", sans-serif;
 }
 
+body img {
+    width: auto !important;
+}
+
 a:hover{
     text-decoration: none;
     color: #004990;
@@ -123,6 +127,10 @@ a:hover{
 /* Dataset search & listing pges */
 .search_meta {
     float: right;
+}
+
+.filter-entry img {
+    margin-bottom: 0;
 }
 
 .title {
@@ -293,7 +301,7 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 }
 
 .follow_button{
-    margin:10px;
+    margin:10px 20px 10px 10px;
 }
 
 .sidebar-section a img{
@@ -426,4 +434,14 @@ div.activity {
     width: auto;
     margin-bottom: 0;
     margin-right: 4px;
+}
+
+/* resource views */
+.resource-actions {
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+.resource-url-analytics {
+    background-image: none !important;
 }
