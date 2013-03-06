@@ -6,6 +6,11 @@
   py:strip=""
   >
   
+  <?python
+        from genshi.filters import HTMLSanitizer
+        from genshi import Stream
+  ?>
+  
   <div class="datasets">
     <div py:for="package in packages"
         class="${'fullyopen' if (package.isopen and package.get('resources')) else None} dataset_listing">
@@ -19,7 +24,7 @@
             </py:when>
             <py:when test="'fr'">
               <span class="title">
-                ${h.link_to(package.title, h.url_for(controller='package', action='read', id=package.get('name')))}
+                ${h.link_to(package.get('titre'), h.url_for(controller='package', action='read', id=package.get('name')))}
               </span>
             </py:when>
           </py:choose>
@@ -49,9 +54,20 @@
         </div>
       </div>
 		</div>
-		<div class="extract">
-			${h.markdown_extract(package.notes)}
-		</div>
+		
+		<py:choose test="c.language">
+      <py:when test="'en'">
+        <div class="extract">
+   			  ${h.markdown_extract(package.notes)}
+   		  </div>
+      </py:when>
+      <py:when test="'fr'">
+        <div class="extract">
+    			${h.markdown_extract(package.resume)}
+    		</div>
+      </py:when>
+    </py:choose>
+		
         <!--ul py:if="package.tags" class="tags">
           <li py:for="tag in package.tags">${tag.name}</li>
         </ul-->
