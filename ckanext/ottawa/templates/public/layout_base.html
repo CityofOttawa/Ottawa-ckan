@@ -92,9 +92,12 @@
                       <li id="gcwu-gcnb2">
                         <a rel="external" href="http://ottawa.ca/en/contact">${_('Contact Us')}</a>
                       </li>
-                      <li py:choose="c.language" id="gcwu-gcnb-lang">    
-                        <a py:when="'en'" href="${h.url(action=c.action, controller=c.controller, locale='fr')}" lang="fr">Français</a>
-                        <a py:otherwise="'fr'" href="${h.url(action=c.action, controller=c.controller, locale='en')}" lang="en">English</a>
+                      <li py:choose="c.language" id="gcwu-gcnb-lang"> 
+                        <?python
+                          current_url = request.environ['CKAN_CURRENT_URL']
+                        ?>   
+                        <a py:when="'en'" href="${h.url(current_url, locale='fr')}" lang="fr">Français</a>
+                        <a py:otherwise="'fr'" href="${h.url(current_url, locale='en')}" lang="en">English</a>
                       </li>
                       <li py:if="c.userobj" id="gcwu-gcnb3">
                         <a href="${h.url_for(controller='user',action='me')}">${c.user}</a>
