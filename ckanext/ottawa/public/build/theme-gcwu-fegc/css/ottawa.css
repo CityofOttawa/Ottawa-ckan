@@ -220,6 +220,17 @@ a:hover {
     text-align: right;
 }
 
+.module-summary {
+    padding-top: 0px !important;
+}
+
+.module-summary h3 {
+    padding-left: 20px;
+    padding-top: 3px;
+    color: white;
+    border-bottom: none !important;
+}
+
 /* pagination div in CKAN is baked into source, so we cannot add classes to it 
 Instead, we duplicate two wet classes here to apply them to the pagination div
 For reference, CKAN pagination code is in ckan/lib/helpers.py:512
@@ -440,6 +451,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .resource-details img {
     width: auto;
+}
+
+.resource-actions img {
+    width:auto;
 }
 
 /* End CKAN Resource edit ridiculousness */
