@@ -207,6 +207,7 @@ a:hover {
 
 .datasets {
     margin-top: 15px;
+    min-height: 600px;
 }
 
 .dataset_listing {
@@ -384,6 +385,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .sidebar-section a img{
     margin-bottom: 0;
+}
+
+.dropdown-menu li {
+    overflow-x: hidden;
 }
 
 /* CKAN hard-codes the resource edit forms into it, so we need some hacks to override */
