@@ -9,10 +9,6 @@ a, a:visited {
     font-family: "Arial", sans-serif;
 }
 
-body img {
-    width: auto !important;
-}
-
 a:hover{
     text-decoration: none;
     color: #004990;
@@ -117,6 +113,60 @@ a:hover{
     background: #004c90;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    display: block;
+}
+
+@media screen and (max-width: 960px) {
+    #gcwu-srchbx form {
+        padding: 10px 0 0 10px;
+    }
+    
+    #gcwu-sig {
+        display: block;
+        float:left;
+        width: 250px;
+    }
+    
+    #header_logo {
+        padding: 0 !important;
+    }
+    
+    #gcwu-gcnb-fip {
+        height: 0;
+    }
+    
+    #gcwu-gcnb-fip ul{
+        display: block;
+    }
+    
+    #gcwu-gcnb-lang {
+        display: block !important;
+    }
+    
+    #gcwu-psnb {
+        display: block;
+    }
+    
+    #wb-foot {
+        display: block;
+    }
+    
+    #footer-logo p {
+        text-align: left;
+    }
+    
+    .footer_open_logo {
+        display: none;
+    }
+    
+    .social a {
+        float: left;
+    }
+    
+    .social p {
+        display: inline-block;
+        width: 100%;
+    }
 }
 
 .social img {

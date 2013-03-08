@@ -6,7 +6,7 @@
 <html lang="en" class="no-js ie8" xmlns:i18n="http://genshi.edgewall.org/i18n" xmlns:py="http://genshi.edgewall.org/" xmlns:xi="http://www.w3.org/2001/XInclude">
 <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="" lang="en" xmlns:i18n="http://genshi.edgewall.org/i18n" xmlns:py="http://genshi.edgewall.org/" xmlns:xi="http://www.w3.org/2001/XInclude">
+<html class="no-js" lang="en" xmlns:i18n="http://genshi.edgewall.org/i18n" xmlns:py="http://genshi.edgewall.org/" xmlns:xi="http://www.w3.org/2001/XInclude">
   <!--<![endif]-->
   <xi:include href="_util.html" />
   <head>
@@ -36,8 +36,8 @@
     <link rel="stylesheet" href="/build/theme-gcwu-fegc/css/theme-ie.css"/>
     <![endif]-->
     <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util-min.css')}"/>
-    <link rel="stylesheet" href="${h.url_for_static('/build/js/css/pe-ap-min.css')}"/>
+    <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util.css')}"/>
+    <link rel="stylesheet" href="${h.url_for_static('/build/js/css/pe-ap.css')}"/>
     <link rel="stylesheet" href="${h.url_for_static('/build/theme-gcwu-fegc/css/theme.css')}"/>
 
     <!--<![endif]-->
@@ -80,7 +80,7 @@
                 <div id="gcwu-gcnb-in">
                   <div id="gcwu-gcnb-fip">
                     <div py:choose="c.language" id="gcwu-sig">
-                      <a href="/">
+                      <a id="header_logo" href="/">
                         <img py:when="'en'"  src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
                         <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo"/>
                       </a>
