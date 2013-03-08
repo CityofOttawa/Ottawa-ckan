@@ -9,15 +9,19 @@ a, a:visited {
     font-family: "Arial", sans-serif;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
     color: #004990;
     border-bottom: 1px dotted #004990;
 }
 
-#wb-body{
+#wb-body {
     background-image:none;
     background-color: #EDEDED;
+}
+
+#content {
+    min-height: 600px;
 }
 
 #wb-head-in{
@@ -77,10 +81,18 @@ a:hover{
     height: 100%;
 }
 
+#header_logo:hover {
+    border-bottom: none;
+}
+
 /* site title */
 #gcwu-title, #gcwu-title a {
     color: #29639c;
     text-shadow: rgb(169, 187, 224) 1px 1px 1px;
+}
+
+#gcwu-title a:hover {
+    text-decoration: none;
 }
 
 /* header image */
