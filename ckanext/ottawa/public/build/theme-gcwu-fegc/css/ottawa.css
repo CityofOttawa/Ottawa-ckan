@@ -93,6 +93,7 @@ a:hover {
 
 #gcwu-title a:hover {
     text-decoration: none;
+    border-bottom:none;
 }
 
 /* header image */
@@ -461,6 +462,11 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .resource-actions img {
     width:auto;
+}
+
+.resource-actions a:hover {
+    text-decoration: none;
+    border-bottom:none;
 }
 
 /* End CKAN Resource edit ridiculousness */
