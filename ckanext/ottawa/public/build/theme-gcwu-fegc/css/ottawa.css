@@ -73,6 +73,10 @@ a:hover{
     background-color: white;
 }
 
+#header_logo {
+    height: 100%;
+}
+
 /* site title */
 #gcwu-title, #gcwu-title a {
     color: #29639c;
