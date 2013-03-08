@@ -20,7 +20,7 @@ a:hover {
     background-color: #EDEDED;
 }
 
-#content {
+#wb-core-in {
     min-height: 600px;
 }
 
@@ -197,6 +197,7 @@ a:hover {
 
 .filter-entry img {
     margin-bottom: 0;
+    width: auto;
 }
 
 .title {

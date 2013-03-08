@@ -9,11 +9,15 @@ class OttawaPackageListing(SingletonPlugin):
     
     def after_search(self, search_results, search_params):
         
-        for result in search_results['results']:
-            result['titre'] = filter(lambda extra:extra['key']=='titre', 
-                                result['extras'])[0]['value'][1:-1:].decode('unicode-escape')
+        if search_results['count'] > 0:
+            for result in search_results['results']:
+            
+                titre = filter(lambda extra:extra['key']=='titre', result['extras'])
+                if len(titre) > 0:
+                    result['titre'] = titre[0]['value'][1:-1:].decode('unicode-escape')
                                      
-            result['resume'] =  filter(lambda extra:extra['key']=='resume', 
-                                result['extras'])[0]['value'][1:-1:].decode('unicode-escape')
+                resume = filter(lambda extra:extra['key']=='resume', result['extras'])
+                if len(resume) > 0:
+                    result['resume'] =  resume[0]['value'][1:-1:].decode('unicode-escape')
         
         return search_results

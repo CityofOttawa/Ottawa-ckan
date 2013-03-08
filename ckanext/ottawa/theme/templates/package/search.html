@@ -16,26 +16,30 @@ py:strip="">
   <py:match path="primarysidebar">
 
     ${facet_div('tags', _('Tags'))}
+    <div class="span-6"></div>
     ${facet_div('res_format', _('Resource Formats'))}
+    <div class="span-6"></div>
     ${facet_div('groups', _('Groups'))}
 
-
-      <h3>Other access</h3>
-      <?python
-      from pylons import config
-      dumps_url = config.get('ckan.dumps_url')
-      dumps_format = config.get('ckan.dumps_format', '')
-      ?>
-      <p>
-        You can also access this registry using the
-        ${h.link_to(_('API'), h.url_for(controller='api', action='get_api', id=None, ver=1))}
-        (see ${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')})
-        <py:if test="dumps_url">
-          or download a <a href="${dumps_url}">full ${dumps_format}
-          dump</a>
-        </py:if>
-        .
-      </p>
+      <div class="span-6"></div>
+      <div class="span-2">
+        <h3>Other access</h3>
+        <?python
+        from pylons import config
+        dumps_url = config.get('ckan.dumps_url')
+        dumps_format = config.get('ckan.dumps_format', '')
+        ?>
+        <p>
+          You can also access this registry using the
+          ${h.link_to(_('API'), h.url_for(controller='api', action='get_api', id=None, ver=1))}
+          (see ${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')})
+          <py:if test="dumps_url">
+            or download a <a href="${dumps_url}">full ${dumps_format}
+            dump</a>
+          </py:if>
+          .
+        </p>
+      </div>
 
 
   </py:match>
