@@ -305,6 +305,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     float: right;
 }
 
+.openness a:hover {
+    border-bottom: none;
+}
+
 .closed img {
     float: left;
     width: auto;
