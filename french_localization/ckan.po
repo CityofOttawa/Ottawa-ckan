@@ -4176,3 +4176,7 @@ msgstr: "Coordonnées du propriétaire des données"
 #: ottawa/theme/templates/forms/ottawa_dataset_form:146
 msgid "General Information"
 msgstr "Renseignements généraux"
+
+#: ottawa/templates/public/layout_base:footer
+msgid "Access the city’s social media streams"
+msgstr "Accès aux réseaux sociaux de la Ville"

@@ -68,6 +68,10 @@ a:hover {
     text-align: center;
 }
 
+#footer-logo a{
+    border-bottom: none;
+}
+
 #footer-logo img{
     width:auto;
 }
@@ -545,4 +549,9 @@ div.activity {
 
 .resource-url-analytics {
     background-image: none !important;
+}
+
+.auto-image {
+    width: auto !important;
+    margin-bottom: 0;
 }

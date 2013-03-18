@@ -80,14 +80,17 @@
                 <div id="gcwu-gcnb-in">
                   <div id="gcwu-gcnb-fip">
                     <div py:choose="c.language" id="gcwu-sig">
-                      <a id="header_logo" href="/">
-                        <img py:when="'en'"  src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" alt="City of Ottawa Open Data Logo" />
-                        <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" alt="City of Ottawa Open Data Logo"/>
+                      <a py:when="'en'" id="header_logo" href="http://ottawa.ca/en/mobile-apps-and-open-data">
+                        <img   src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" alt="City of Ottawa Open Data Logo" />
+                      </a>
+                      <a py:when="'fr'" id="header_logo" href="http://ottawa.ca/fr/applications-pour-appareils-mobiles-et-donnees-ouvertes">
+                      <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" alt="City of Ottawa Open Data Logo"/>
                       </a>
                     </div>
                     <ul>
-                      <li id="gcwu-gcnb1">
-                        <a rel="external" href="http://ottawa.ca/en/">${_('Home')}</a>
+                      <li py:choose="c.language" id="gcwu-gcnb1">
+                        <a py:when="'en'" rel="external" href="http://ottawa.ca/en/">${_('Home')}</a>
+                        <a py:when="'fr'" rel="external" href="http://ottawa.ca/fr/">${_('Home')}</a>
                       </li>
                       <li id="gcwu-gcnb2">
                         <a rel="external" href="http://ottawa.ca/en/contact">${_('Contact Us')}</a>
@@ -112,13 +115,14 @@
               <div id="gcwu-bnr-in">
                 <div id="gcwu-wmms">
                   <div id="gcwu-wmms-in">
-                    <div id="gcwu-wmms-fip" title="City of Ottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
-                    </div>
+                    <a href="http://ottawa.ca/"><div id="gcwu-wmms-fip" title="City of Ottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/ottawa_logo.png')}" width="126" height="30" alt="Symbol of the Government of Canada" />
+                    </div></a>
                   </div>
                 </div>
                 <div id="gcwu-title">
-                  <p id="gcwu-title-in">
-                    <a href="/">City of Ottawa Open Data Catalog</a>
+                  <p py:choose="c.language" id="gcwu-title-in">
+                    <a py:when="'en'" href="/en">City of Ottawa Open Data Catalog</a>
+                    <a py:when="'fr'" href="/fr">City of Ottawa Open Data Catalog</a>
                   </p>
                 </div>
 
@@ -249,7 +253,7 @@
                     <div class="span-2">
                       <div class="boxes-box-content">
                         <div class="logo" id="footer-logo">
-                          <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/footer-ottawalogo.png')}" alt="Ottawa Logo" width="107" height="47"/>
+                          <a href="http://ottawa.ca/"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/footer-ottawalogo.png')}" alt="Ottawa Logo" width="107" height="47"/></a>
                           <p>© 2001-2013 City of Ottawa</p>
                           <p>110 Laurier Avenue West <br/> Ottawa, Ontario, K1P 1J1</p>
                         </div>
@@ -265,22 +269,39 @@
                     </div>
                   </section>
                   <section>
-                    <div class="span-2">
-                      <div class="social">
+                    <div py:choose="c.language" class="span-2">
+                      <div py:when="'en'" class="social">
                         <a href="http://www.youtube.com/user/cityottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/youtube.png')}" alt="Youtube" width="24" height="25"/></a>
                         <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
                         <a href="http://ottawa.ca/en/twitter-protocol"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/twitter.png')}" alt="Twitter" width="30" height="24"/></a>
                         <a href="http://ottawa.ca/en/rss-feeds"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
                       <p>Access the city’s social media streams</p>
                       
-                      <div py:if="c.userobj" id="gcwu-gcnb3">
-                        <a href="${h.url_for('/user/_logout')}">Logout</a>
-                      </div>
-                      <div py:if="not c.userobj" id="gcwu-gcnb3">
-                        <a href="${h.url_for(controller='user',action='login')}">Login</a>
-                      </div>
+                        <div py:if="c.userobj" id="gcwu-gcnb3">
+                          <a href="${h.url_for('/user/_logout')}">Logout</a>
+                        </div>
+                        <div py:if="not c.userobj" id="gcwu-gcnb3">
+                          <a href="${h.url_for(controller='user',action='login')}">Login</a>
+                        </div>
                       
                       </div>
+                      
+                      <div py:when="'fr'" class="social">
+                        <a href="http://www.youtube.com/user/cityottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/youtube.png')}" alt="Youtube" width="24" height="25"/></a>
+                        <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
+                        <a href="http://ottawa.ca/fr/node/297238"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/twitter.png')}" alt="Twitter" width="30" height="24"/></a>
+                        <a href="http://ottawa.ca/fr/flux-rss"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
+                      <p>Accès aux réseaux sociaux de la Ville</p>
+                      
+                        <div py:if="c.userobj" id="gcwu-gcnb3">
+                          <a href="${h.url_for('/user/_logout')}">Logout</a>
+                        </div>
+                        <div py:if="not c.userobj" id="gcwu-gcnb3">
+                          <a href="${h.url_for(controller='user',action='login')}">Login</a>
+                        </div>
+                      
+                      </div>
+                      
                     </div>
                   </section>
                 </div>
