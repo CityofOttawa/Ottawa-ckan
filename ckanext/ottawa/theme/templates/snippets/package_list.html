@@ -6,11 +6,6 @@
   py:strip=""
   >
   
-  <?python
-        from genshi.filters import HTMLSanitizer
-        from genshi import Stream
-  ?>
-  
   <div class="datasets">
     <div py:for="package in packages"
         class="${'fullyopen' if (package.isopen and package.get('resources')) else None} dataset_listing">
@@ -31,14 +26,25 @@
 
       <div class="search_meta">
         <py:if test="package.has_key('resources')">
-          <div class="dataset_formats">
-            <py:for each="resource in package.resources">
-              <py:if test="resource.get('format')">
-                <code><a href="${resource.get('url')}" class="resource-url-analytics"
-                  title="${resource.get('description')}">${resource.get('format')}</a></code>
-              </py:if>
-            </py:for>
-          </div>
+          <py:with vars="types = [resource.get('format') for resource in package.resources]">
+        
+            <div class="dataset_formats">
+              <py:for each="resource in package.resources">
+                <py:if test="resource.get('format')">
+                  <py:choose test="types.count(resource.get('format'))">
+                    <py:when test="1">
+                      <code><a href="${resource.get('url')}" class="resource-url-analytics"
+                    title="${resource.get('description')}">${resource.get('format')}</a></code>
+                    </py:when>
+                    <py:otherwise>
+                      <code><a href="${resource.get('url')}" class="resource-url-analytics"
+                    title="${resource.get('description')}">${resource.get('format')} (${resource.get('name')})</a></code>
+                    </py:otherwise>
+                  </py:choose>
+                </py:if>
+              </py:for>
+            </div>
+            </py:with>
         </py:if>
         <div class="openness">
           <py:if test="package.isopen">

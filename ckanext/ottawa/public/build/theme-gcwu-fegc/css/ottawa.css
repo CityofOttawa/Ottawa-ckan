@@ -223,6 +223,10 @@ a:hover {
     text-align: right;
 }
 
+.dataset_formats a {
+    padding-left: 0;
+}
+
 .module-summary {
     padding-top: 0px !important;
 }

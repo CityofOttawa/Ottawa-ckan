@@ -6668,7 +6668,7 @@ div#gcwu-headlines ul, div#gcwu-headlines ul li {
   }
 
   #wb-head-in {
-    background-color: #406C93;
+    background-color: white;
   }
 
   #gcwu-sig-eng {
@@ -6853,7 +6853,7 @@ div#gcwu-headlines ul, div#gcwu-headlines ul li {
     background: url(../images/header-bg-ie.jpg) repeat-x center 3.1em white;
   }
   .ie7 #wb-head-in, .ie8 #wb-head-in {
-    background-color: #406C93;
+    background-color: white;
   }
   .ie7 #gcwu-psnb .mb-mega .mb-sm-open, .ie8 #gcwu-psnb .mb-mega .mb-sm-open {
     *zoom: 1;
