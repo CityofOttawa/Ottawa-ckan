@@ -4156,7 +4156,6 @@ msgstr "Tableau de bord - statistiques"
 msgid "Dataset Leaderboard"
 msgstr "Tableau de bord des jeux de données"
 
-
 #: ottawa/public/templates/layout_base.html:118
 msgid "City of Ottawa Open Data Catalog"
 msgstr "Catalogue des Données ouvertes Ottawa"
@@ -4170,8 +4169,8 @@ msgid "Help"
 msgstr "Aide"
 
 #: ottawa/theme/templates/forms/ottawa_dataset_form:98
-msgid: "Data Owner Details"
-msgstr: "Coordonnées du propriétaire des données"
+msgid "Data Owner Details"
+msgstr "Coordonnées du propriétaire des données"
 
 #: ottawa/theme/templates/forms/ottawa_dataset_form:146
 msgid "General Information"
@@ -4180,3 +4179,15 @@ msgstr "Renseignements généraux"
 #: ottawa/templates/public/layout_base:footer
 msgid "Access the city’s social media streams"
 msgstr "Accès aux réseaux sociaux de la Ville"
+
+#: ottawa/templates/public/layour_base
+msgid "Browse by Department"
+msgstr "Recherche par Service"
+
+#: ottawa/theme/templates/package/edit
+msgid "Change Active State"
+msgstr "Changement de l'état actif"
+
+#: ottawa/theme/templates/package/edit
+msgid "Date Published"
+msgstr "Date de publication"
