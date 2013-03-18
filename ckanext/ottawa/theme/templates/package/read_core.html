@@ -27,7 +27,7 @@
           </py:when>
           <py:when test="'fr'">
             <div id="notes-extract">
-              ${c.pkg_dict['resume']}
+              ${h.render_markdown(c.pkg_dict['resume'])}
             </div>
           </py:when>
         </py:choose>
@@ -116,12 +116,12 @@
             
             <tr>
               <td class="dataset-label" property="rdfs:label">Accuracy</td>
-              <td class="dataset-details" property="rdf:value">${c.pkg_dict['accuracy']}</td>
+              <td class="dataset-details" property="rdf:value">${h.render_markdown(c.pkg_dict['accuracy'])}</td>
             </tr>
             
             <tr>
               <td class="dataset-label" property="rdfs:label">Attributes</td>
-              <td class="dataset-details" property="rdf:value">${c.pkg_dict['attributes']}</td>
+              <td class="dataset-details" property="rdf:value">${h.render_markdown(c.pkg_dict['attributes'])}</td>
             </tr>
             
             <tr>
@@ -185,12 +185,12 @@
             
             <tr>
               <td class="dataset-label" property="rdfs:label">Exactitude des données</td>
-              <td class="dataset-details" property="rdf:value">${c.pkg_dict['exactitude']}</td>
+              <td class="dataset-details" property="rdf:value">${h.render_markdown(c.pkg_dict['exactitude'])}</td>
             </tr>
             
             <tr>
               <td class="dataset-label" property="rdfs:label">Métadonnées supplémentaires</td>
-              <td class="dataset-details" property="rdf:value">${c.pkg_dict['supplementaires']}</td>
+              <td class="dataset-details" property="rdf:value">${h.render_markdown(c.pkg_dict['supplementaires'])}</td>
             </tr>
             
             <tr>
