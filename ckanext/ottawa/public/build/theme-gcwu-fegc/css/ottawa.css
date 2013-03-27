@@ -370,6 +370,11 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
     width: auto;
 }
 
+.module-menu-section h3 a{
+    background-color: transparent !important;
+    color: white !important;
+}
+
 /* dataset read pages */
 .resource-list li a img{
     width: auto;
@@ -394,6 +399,10 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 .follow_button{
     margin:10px 20px 10px 10px;
+}
+
+.follow_button:hover {
+    background-color: #285228 !important;
 }
 
 .sidebar-section a img{
