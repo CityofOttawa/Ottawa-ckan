@@ -58,7 +58,15 @@ py:strip="">
         Would you like to <a href="${h.url_for(action='new', id=None)}">create a new dataset?</a>
       </p>
     </py:if>
+    
     ${package_list_from_dict(c.page.items)}
+    
+    <div class="span-2">
+      <a href="${h.url(controller='feed', action='custom')}?${c.search_url_params}">
+      <img class="image-actual margin-bottom-none" src="/build/theme-gcwu-fegc/images/sub.png" alt="Subscription" width="25" height="24"/>  RSS Feed for this Page
+      </a>
+    </div>
+    
     ${c.page.pager(q=c.q)}
 
   </div>

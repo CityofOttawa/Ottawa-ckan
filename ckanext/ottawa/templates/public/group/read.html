@@ -71,6 +71,13 @@ py:strip="">
         </p>
         ${c.page.pager()}
         ${package_list_from_dict(c.page.items)}
+        
+        <div class="span-2">
+          <a href="${h.url(controller='feed', action='group', id=c.group['name'])}">
+          <img class="image-actual margin-bottom-none" src="/build/theme-gcwu-fegc/images/sub.png" alt="Subscription" width="25" height="24"/>  RSS Feed for this Page
+          </a>
+        </div>
+        
         ${c.page.pager()}
       </div>
     </div>
