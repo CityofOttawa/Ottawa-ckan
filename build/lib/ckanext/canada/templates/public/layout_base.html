@@ -36,7 +36,7 @@
         wet_no_css = '/build/theme-gcwu-fegc/css/theme-ns-min.css'
     ?>
     
-    <!--
+    
     <py:choose>
     <py:when test="defined('optional_feed')">
     ${optional_feed()}
@@ -45,7 +45,7 @@
     <link rel="alternate" type="application/atom+xml" title="${g.site_title} - Recent Revision History" href="${h.url_for(controller='revision', action='list', format='atom', days=1)}" />
     </py:otherwise>
     </py:choose>
-    -->
+    
     <!--[if lte IE 8]>
     <script src="${h.url_for_static('/build/js/polyfills/html5shiv-min.js')}"></script>
     <link rel="stylesheet" href="${h.url_for_static('/build/grids/css/util-ie-min.css')}"/>

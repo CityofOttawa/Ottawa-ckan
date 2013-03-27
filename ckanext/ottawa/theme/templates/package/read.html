@@ -126,7 +126,7 @@
 
   <py:def function="optional_feed">
   <link rel="alternate" type="application/atom+xml" title="Dataset History"
-    href="${h.url(controller='package', action='history', id=c.pkg.name, format='atom', days=7, qualified=True)}" />
+    href="${h.url(controller='package', action='history', id=c.pkg.name, format='atom', days=30, qualified=True)}" />
   </py:def>
 
   <xi:include href="layout.html" />
