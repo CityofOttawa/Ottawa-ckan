@@ -9,81 +9,377 @@ py:strip=""
   </py:def>
 
   <div id="gcwu-bc" py:match="breadcrumb" style="height: 0px"></div>
-
-  <div py:match="content">
-
-
-    <div class="span-4">
-      <h1>Find data</h1>
-      <p>
-        ${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can
-        browse, learn about and download.
-      </p>
-    </div>
-
-   <div class="span-4">
-      <h1>Share data</h1>
-
-      <p>
-        Add your own datasets to share them with others and
-        to find other people interested in your data.
-      </p>
-
-      <py:choose test="h.check_access('package_create')">
-        <a py:when="" href="${h.url_for(controller='package', action='new')}" class="create-button">Create a dataset &raquo;</a>
-        <py:otherwise>
-          <a href="${h.url_for(controller='user', action='login')}" class="create-button">Sign up / Login &raquo;</a>
-        </py:otherwise>
-      </py:choose>
-
-    </div>
-
-   <div class="clear"></div>
-
-   <div class="span-4">
-      <div class="action-box">
-        <div class="action-box-inner collaborate clearfix">
-          <h1>Collaborate</h1>
-
-          <p>
-            Find out more about working with open data by exploring
-            these resources:
-          </p>
-          <ul>
-            <li>
-              <a href="http://getthedata.org">GetTheData.org</a>
-            </li>
-            <li>
-              <a href="http://datapatterns.org">DataPatterns.org</a>
-            </li>
-            <li>
-              <a href="http://opendatahandbook.org">Open Data Handbook</a>
-            </li>
-          </ul>
+  
+  <div py:match="content" >
+    
+    <div py:choose="c.language" class="span-6">
+      <div py:when="'en'">
+      
+        <h1>
+        <a name="the-action-api" class="anchor" href="#the-action-api"><span class="mini-icon mini-icon-link"></span></a>The Action API</h1>
+        <p>CKAN's Action API is a powerful, RPC-style API that exposes all of CKAN's core
+        features to API clients. All of a CKAN website's core functionality (everything
+        you can do with the web interface and more) can be used by external code that
+        calls the CKAN API.  For example, using the CKAN API your app can:</p>
+        <ul>
+        <li>
+        <p>Get JSON-formatted lists of a site's datasets, groups or other CKAN objects:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_list">http://demo.ckan.org/api/3/action/package_list</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/group_list">http://demo.ckan.org/api/3/action/group_list</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/tag_list">http://demo.ckan.org/api/3/action/tag_list</a></p>
+        </li>
+        <li>
+        <p>Get a full JSON representation of a dataset, resource or other object:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending">http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/tag_show?id=gold">http://demo.ckan.org/api/3/action/tag_show?id=gold</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/group_show?id=data-explorer">http://demo.ckan.org/api/3/action/group_show?id=data-explorer</a></p>
+        </li>
+        <li>
+        <p>Search for packages or resources matching a query:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search?q=spending">http://demo.ckan.org/api/3/action/package_search?q=spending</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/resource_search?query=name:District%20Names">http://demo.ckan.org/api/3/action/resource_search?query=name:District%20Names</a></p>
+        </li>
+        <li>
+        <p>Create, update and delete datasets, resources and other objects</p>
+        </li>
+        <li>
+        <p>Get an activity stream of recently changed datasets on a site:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/recently_changed_packages_activity_list">http://demo.ckan.org/api/3/action/recently_changed_packages_activity_list</a></p>
+        </li>
+        </ul>
+        <div>
+        <h2>
+        <a name="making-an-api-request" class="anchor" href="#making-an-api-request"><span class="mini-icon mini-icon-link"></span></a>Making an API Request</h2>
+        <p>To call the CKAN API, post a JSON dictionary in an HTTP POST request to one of
+        CKAN's API URLs. The parameters for the API function should be given in the
+        JSON dictionary. CKAN will also return its response in a JSON dictionary.</p>
+        <p>One way to post a JSON dictionary to a URL is using the command-line HTTP
+        client <a href="http://httpie.org/">HTTPie</a>.  For example, to get a list of the names
+        of all the datasets in the <tt>data-explorer</tt> group on demo.ckan.org, install
+        HTTPie and then call the <tt>group_list</tt> API function by running this command
+        in a terminal:</p>
+        <pre>http http://demo.ckan.org/api/3/action/group_list id=data-explorer
+        </pre>
+        <p>The response from CKAN will look like this:</p>
+        <pre>{
+            "help": "...",
+            "result": [
+                "data-explorer",
+                "department-of-ricky",
+                "geo-examples",
+                "geothermal-data",
+                "reykjavik",
+                "skeenawild-conservation-trust"
+            ],
+            "success": true
+        }
+        </pre>
+        <p>The response is a JSON dictionary with three keys:</p>
+        <ol>
+        <li>
+        <p><tt>"sucess"</tt>: <tt>true</tt> or <tt>false</tt>.</p>
+        <p>The API aims to always return <tt>200 OK</tt> as the status code of its HTTP
+        response, whether there were errors with the request or not, so it's
+        important to always check the value of the <tt>"success"</tt> key in the response
+        dictionary and (if success is <tt>False</tt>) check the value of the <tt>"error"</tt>
+        key.</p>
+        </li>
+        </ol>
+        <div>
+        <p>Note</p>
+        <p>If there are major formatting problems with a request to the API, CKAN
+        may still return an HTTP response with a <tt>409</tt>, <tt>400</tt> or <tt>500</tt>
+        status code (in increasing order of severity). In future CKAN versions
+        we intend to remove these responses, and instead send a <tt>200 OK</tt>
+        response and use the <tt>"success"</tt> and <tt>"error"</tt> items.</p>
         </div>
+        <ol start="2">
+        <li>
+        <p><tt>"result"</tt>: the returned result from the function you called. The type
+        and value of the result depend on which function you called. In the case of
+        the <tt>group_list</tt> function it's a list of strings, the names of all the
+        datasets that belong to the group.</p>
+        <p>If there was an error responding to your request, the dictionary will
+        contain an <tt>"error"</tt> key with details of the error instead of the
+        <tt>"result"</tt> key. A response dictionary containing an error will look like
+        this:</p>
+        <pre>{
+            "help": "Creates a package",
+            "success": false,
+            "error": {
+                "message": "Access denied",
+                "__type": "Authorization Error"
+                }
+         }
+        </pre>
+        </li>
+        <li>
+        <p><tt>"help"</tt>: the documentation string for the function you called.</p>
+        </li>
+        </ol>
+        <p>The same HTTP request can be made using Python's standard <tt>urllib2</tt> module,
+        with this Python code:</p>
+        <pre>#!/usr/bin/env python
+        import urllib2
+        import urllib
+        import json
+        import pprint
+
+        # Use the json module to dump a dictionary to a string for posting.
+        data_string = urllib.quote(json.dumps({'id': 'data-explorer'}))
+
+        # Make the HTTP request.
+        response = urllib2.urlopen('http://demo.ckan.org/api/3/action/group_list',
+                data_string)
+        assert response.code == 200
+
+        # Use the json module to load CKAN's response into a dictionary.
+        response_dict = json.loads(response.read())
+
+        # Check the contents of the response.
+        assert response_dict['success'] is True
+        result = response_dict['result']
+        pprint.pprint(result)
+        </pre>
+        </div>
+        <div>
+        <h2>
+        <a name="api-versions" class="anchor" href="#api-versions"><span class="mini-icon mini-icon-link"></span></a>API Versions</h2>
+        <p>The CKAN APIs are versioned. If you make a request to an API URL without a
+        version number, CKAN will choose the latest version of the API:</p>
+        <pre>http://demo.ckan.org/api/action/package_list
+        </pre>
+        <p>Alternatively, you can specify the desired API version number in the URL that
+        you request:</p>
+        <pre>http://demo.ckan.org/api/3/action/package_list
+        </pre>
+        <p>Version 3 is currently the only version of the Action API.</p>
+        <p>We recommend that you specify the API number in your requests, because this
+        ensures that your API client will work across different sites running different
+        version of CKAN (and will keep working on the same sites, when those sites
+        upgrade to new versions of CKAN). Because the latest version of the API may
+        change when a site is upgraded to a new version of CKAN, or may differ on
+        different sites running different versions of CKAN, the result of an API
+        request that doesn't specify the API version number cannot be relied on.</p>
+        </div>
+        <div>
+        <h2>
+        <a name="authentication-and-api-keys" class="anchor" href="#authentication-and-api-keys"><span class="mini-icon mini-icon-link"></span></a>Authentication and API Keys</h2>
+        <p>Some API functions require authorization. The API uses the same authorization
+        functions and configuration as the web interface, so if a user is authorized to
+        do something in the web interface they'll be authorized to do it via the API as
+        well.</p>
+        <p>When calling an API function that requires authorization, you must authenticate
+        yourself by providing your API key with your HTTP request. To find your API
+        key, login to the CKAN site using its web interface and visit your user profile
+        page.</p>
+        <p>To provide your API key in an HTTP request, include it in either an
+        <tt>Authorization</tt> or <tt>X-CKAN-API-Key</tt> header.  (The name of the HTTP header
+        can be configured with the <tt>apikey_header_name</tt> option in your CKAN
+        configuration file.)</p>
+        <p>For example, to ask whether or not you're currently following the user
+        <tt>markw</tt> on demo.ckan.org using HTTPie, run this command:</p>
+        <pre>http http://demo.ckan.org/api/3/action/am_following_user id=markw Authorization:XXX
+        </pre>
+        <p>(Replacing <tt>XXX</tt> with your API key.)</p>
+        <p>Or, to get the list of activities from your user dashboard on demo.ckan.org,
+        run this Python code:</p>
+        <pre>request = urllib2.Request('http://demo.ckan.org/api/3/action/dashboard_activity_list')
+        request.add_header('Authorization', 'XXX')
+        response_dict = json.loads(urllib2.urlopen(request, '{}').read())
+        </pre>
+        </div>
+        <div>
+        <h2>
+        <a name="get-able-api-functions" class="anchor" href="#get-able-api-functions"><span class="mini-icon mini-icon-link"></span></a>GET-able API Functions</h2>
+        <p>Functions defined in <a href="#id1">:doc:`ckan.logic.action.get`</a> can also be called with an HTTP
+        GET request.  For example, to get the list of datasets (packages) from
+        demo.ckan.org, open this URL in your browser:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_list">http://demo.ckan.org/api/3/action/package_list</a></p>
+        <p>Or, to search for datasets (packages) matching the search query <tt>spending</tt>,
+        on demo.ckan.org, open this URL in your browser:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search?q=spending">http://demo.ckan.org/api/3/action/package_search?q=spending</a></p>
+        <div>
+        <p>Tip</p>
+        <p>Browser plugins like <a href="https://addons.mozilla.org/en-us/firefox/addon/jsonview/">JSONView for Firefox</a>
+        or <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">Chrome</a>
+        will format and color CKAN's JSON response nicely in your browser.</p>
+        </div>
+        <p>The search query is given as a URL parameter <tt>?q=spending</tt>. Multiple
+        URL parameters can be appended, separated by <tt>&amp;</tt> characters, for example
+        to get only the first 10 matching datasets open this URL:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search?q=spending&amp;rows=10">http://demo.ckan.org/api/3/action/package_search?q=spending&amp;rows=10</a></p>
+        <p>When an action requires a list of strings as the value of a parameter, the
+        value can be sent by giving the parameter multiple times in the URL:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/term_translation_show?terms=russian&amp;terms=romantic%20novel">http://demo.ckan.org/api/3/action/term_translation_show?terms=russian&amp;terms=romantic%20novel</a></p>
+        </div>
+        <div>
+        <h2>
+        <a name="jsonp-support" class="anchor" href="#jsonp-support"><span class="mini-icon mini-icon-link"></span></a>JSONP Support</h2>
+        <p>To cater for scripts from other sites that wish to access the API, the data can
+        be returned in JSONP format, where the JSON data is 'padded' with a function
+        call. The function is named in the 'callback' parameter. For example:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending&amp;callback=myfunction">http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending&amp;callback=myfunction</a></p>
+        </div>
+      
+      </div>
+      
+      
+      
+      
+      <div py:when="'fr'">
+        <h1>
+        <a name="lapi-daction" class="anchor" href="#lapi-daction"><span class="mini-icon mini-icon-link"></span></a>L’API d’action</h1>
+        <p>L’API d’action CKAN est une puissante interface d’application de type RPC qui met à la disposition des clients API les caractéristiques fondamentales de CKAN. Toutes les fonctionnalités fondamentales du site Web CKAN (c’est-à-dire tout ce que vous pouvez réaliser par l’intermédiaire de l’interface Web, et plus encore) peuvent être exécutées à l’aide d’un programme externe qui fait appel à l’API CKAN. Par des exemples, de ce que peut réaliser votre application à l’aide de cette API.</p>
+        <ul>
+        <li>
+        <p>Obtenir une liste au format JSON des jeux de données, des groupes ou d’autres objets JSON d’un site Web&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_list">http://demo.ckan.org/api/3/action/package_list</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/group_list">http://demo.ckan.org/api/3/action/group_list</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/tag_list">http://demo.ckan.org/api/3/action/tag_list</a></p>
+        </li>
+        <li>
+        <p>Obtenir une représentation JSON exhaustive d’un jeu de données, d’une ressource ou d’un autre objet&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending">http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/tag_show?id=gold">http://demo.ckan.org/api/3/action/tag_show?id=gold</a></p>
+        <p><a href="http://demo.ckan.org/api/3/action/group_show?id=data-explorer">http://demo.ckan.org/api/3/action/group_show?id=data-explorer</a></p>
+        </li>
+        <li>
+        <p>Rechercher des ensembles ou des ressources qui correspondent à une requête donnée&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search">http://demo.ckan.org/api/3/action/package_search</a>?q=dépenses</p>
+        <p><a href="http://demo.ckan.org/api/3/action/resource_search?query=name:noms%20de%20district">http://demo.ckan.org/api/3/action/resource_search?query=name:noms%20de%20district</a></p>
+        </li>
+        <li>
+        <p>Créer, actualiser et supprimer des jeux de données, des groupes ou d’autres objets.</p>
+        </li>
+        <li>
+        <p>Obtenir une lecture en continu des modifications récemment apportées aux jeux de données d’un site Web&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/recently_changed_packages_activity_list">http://demo.ckan.org/api/3/action/recently_changed_packages_activity_list</a></p>
+        </li>
+        </ul>
+        <div>
+        <h2>
+        <a name="pour-faire-une-requte-api" class="anchor" href="#pour-faire-une-requte-api"><span class="mini-icon mini-icon-link"></span></a>Pour faire une requête API</h2>
+        <p>Pour faire appel à l’API CKAN, vous devez transmettre un dictionnaire JSON dans une requête HTTP de type POST à l’une des adresses URL de l’API CKAN. Ce dictionnaire doit inclure les paramètres requis par la fonction invoquée. La réponse CKAN est elle aussi retournée dans un dictionnaire JSON.</p>
+        <p>Il est possible d’envoyer un dictionnaire JSON à une adresse URL à l’aide de la ligne de commande du client HTTP en utilisant l’instruction <a href="http://httpie.org/">HTTPie</a>. Par exemple, pour obtenir la liste de tous les noms des jeux de données du groupe <tt>data-explorer</tt>, sur le site demo.ckan.org, installez HTTPie sur un terminal et appelez la fonction <tt>group_list</tt> de l’API en exécutant la commande ci-dessous.</p>
+        <pre>
+        http <a href="http://demo.ckan.org/api/3/action/group_list">http://demo.ckan.org/api/3/action/group_list</a> id=data-explorer</pre>
+        <p>La réponse CKAN sera similaire à celle illustrée ci-dessous.</p>
+        <pre>{
+            "help": "...",
+            "result": [
+                "data-explorer",
+                "department-of-ricky",
+                "geo-examples",
+                "geothermal-data",
+                "reykjavik",
+                "skeenawild-conservation-trust"
+            ],
+            "success": true
+        }
+        </pre>
+        <p>La réponse est un dictionnaire JSON constitué de trios clés.</p>
+        <ol>
+        <li>
+        <tt>"sucess"</tt>: <tt>true</tt> ou <tt>false</tt>.</li>
+        </ol>
+        <p>L’API retourne toujours l’expression <tt>200 OK</tt> comme code d’état de sa réponse HTTP, peu importe qu’il y ait ou non des erreurs dans la requête. C’est pourquoi il est important de vérifier la valeur de la clé <tt>"success"</tt> dans le dictionnaire retourné par la fonction et (si cette valeur est <tt>False</tt>) de vérifier la valeur le la clé <tt>"error"</tt>.</p>
+        <p>Si un problème majeur de formatage survient dans une requête transmise à l’API, CKAN peut renvoyer une réponse HTTP dont le code d’état peut être <tt>409</tt>, <tt>400</tt> ou <tt>500</tt> (par ordre croissant de gravité). Dans les versions ultérieures de CKAN nous entendons inhiber ce type de réponses afin de toujours renvoyer le code d’état <tt>200 OK</tt> et d’utiliser les clés
+        <tt>"success"</tt> et <tt>"error"</tt>.</p>
+        <ol start="2">
+        <li>
+        <tt>"result"</tt> : exprime le résultat retourné par la fonction invoquée. Le type et la valeur de cette clé varient selon la fonction. Dans le cas de la fonction <tt>group_list</tt>, il s’agit d’une liste de chaînes de caractères représentant les noms de tous les jeux de données appartenant au groupe visé.</li>
+        </ol>
+        <p>Si une erreur est survenue dans la réponse à votre requête, au lieu de la clé <tt>"result"</tt>,le dictionnaire contiendra une clé <tt>"error"</tt> qui donne les détails concernant l’erreur en question. Voici une illustration d’une réponse qui contient une clé d’erreur.</p>
+        <pre>{
+            "help": "Creates a package",
+            "success": false,
+            "error": {
+                "message": "Access denied",
+                "__type": "Authorization Error"
+                }
+         }
+        </pre>
+        <ol start="3">
+        <li>
+        <tt>"help"</tt> : chaîne de caractères repésentant la documentation relative à la function invoquée.</li>
+        </ol>
+        <p>On peut effectuer la meme requête HTTP à l’aide du module standard <tt>urllib2</tt> de Python en se servant des instructions ci-après.</p>
+        <pre>#!/usr/bin/env python
+        import urllib2
+        import urllib
+        import json
+        import pprint
+
+        # Use the json module to dump a dictionary to a string for posting.
+        data_string = urllib.quote(json.dumps({'id': 'data-explorer'}))
+
+        # Make the HTTP request.
+        response = urllib2.urlopen('http://demo.ckan.org/api/3/action/group_list',
+                data_string)
+        assert response.code == 200
+
+        # Use the json module to load CKAN's response into a dictionary.
+        response_dict = json.loads(response.read())
+
+        # Check the contents of the response.
+        assert response_dict['success'] is True
+        result = response_dict['result']
+        pprint.pprint(result)
+        </pre>
+        </div>
+        <div>
+        <h2>
+        <a name="version-de-lapi" class="anchor" href="#version-de-lapi"><span class="mini-icon mini-icon-link"></span></a>Version de l’API</h2>
+        <p>Les API CKAN sont identifiées par un numéro de version. Si vous transmettez une requête à l’adresse URL d’une API sans préciser son numéro de version, CKAN utilisera la plus récente version de cette API.</p>
+        <pre>http://demo.ckan.org/api/action/package_list
+        </pre>
+        <p>Vous avez toutefois la possibilité de préciser le numéro de version voulu dans l’adresse URL de votre requête.</p>
+        <pre>http://demo.ckan.org/api/3/action/package_list
+        </pre>
+        <p>Pour l’instant, seule la version 3 de l’API d’action est accessible.</p>
+        <p>Nous recommandons d’indiquer le numéro de version de l’API dans les requêtes parce que l’on s’assure ainsi que le client API sera compatible avec différents sites qui exécutent différentes versions de CKAN (et qu’il continuera d’être compatible advenant une mise à niveau de ces sites vers des versions ultérieures). Étant donné que la plus récente version de l’API peut changer lorsqu’un site migre vers une nouvelle version ou que la version peut différer d’un site à l’autre selon la version de CKAN en cours d’exécution, les résultats d’une requête qui n’indique pas le numéro de version de l’API ne sont pas nécessairement fiables.</p>
+        </div>
+        <div>
+        <h2>
+        <a name="authentication-et-cls-de-lapi" class="anchor" href="#authentication-et-cls-de-lapi"><span class="mini-icon mini-icon-link"></span></a>Authentication et clés de l’API</h2>
+        <p>Certaines fonctions de l’API exigent une permission d’accès. L’API a recours aux mêmes fonctions d’autorisation et de configuration que celles qu’utilise l’interface Web, de sorte que si vous êtes un utilisateur autorisé à effectuer certaines actions dans l’interface Web, vous avez aussi la permission de les effectuer par l’intermédiaire de l’API.</p>
+        <p>Lorsque vous invoquez une fonction de l’API qui exige une permission d’accès, vous devez vous authentifier en incluant votre clé d’API dans votre requête HTTP. Pour connaître votre clé d’API, ouvrez une session sur le site Web de CKAN, par le biais de l’interface Web, et consultez la page de votre profil utilisateur</p>
+        <p>Pour ajouter votre clé d’API dans une requête HTTP, incluez-la dans un en-tête <tt>Authorization</tt> ou <tt>X-CKAN-API-Key</tt>. (Le nom de l’en-tête HTTP peut être configuré à l’aide de l’option <tt>apikey_header_name</tt>, dans  votre fichier de configuration CKAN.)</p>
+        <p>Par exemple, pour demander si vous suivez ou non l’utilisateur <tt>markw</tt> sur le site demo.ckan.org à l’aide de HTTPie, lancez cette commande&nbsp;:</p>
+        <pre>
+        http <a href="http://demo.ckan.org/api/3/action/am_following_user">http://demo.ckan.org/api/3/action/am_following_user</a> id=markw Authorization:XXX</pre>
+        <p>(en y remplaçant l’expression <tt>XXX</tt> par votre proper clé d’API.)</p>
+        <p>Ou encore, pour obtenir la liste des activités en cours sur votre tableau de bord d’utilisateur du site demo.ckan.org, exécutez les instructions Python ci-dessous.</p>
+        <pre>
+        request = urllib2.Request('<a href="http://demo.ckan.org/api/3/action/dashboard_activity_list">http://demo.ckan.org/api/3/action/dashboard_activity_list</a>')
+        request.add_header('Authorization', 'XXX')
+        response_dict = json.loads(urllib2.urlopen(request, '{}').read())</pre>
+        </div>
+        <div>
+        <h2>
+        <a name="fonctions-api-accessibles-par-la-mthode-get" class="anchor" href="#fonctions-api-accessibles-par-la-mthode-get"><span class="mini-icon mini-icon-link"></span></a>Fonctions API accessibles par la méthode GET</h2>
+        <p>Les fonctions définies dans le document <a href="#id1">:doc:`ckan.logic.action.get`</a> peuvent aussi être invoquées à l’aide d’une requête HTTP utilisant la méthode GET.  Par exemple, pour obtenir la liste des jeux de données (packages) du site demo.ckan.org, ouvrez cette adresse URL dans votre navigateur Web&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_list">http://demo.ckan.org/api/3/action/package_list</a></p>
+        <p>Ou encore, pour rechercher tous les jeux de données (packages) détecté par à une recherche sur le mot <tt>spending</tt> dans le site demo.ckan.org, ouvrez cette adresse URL dans votre navigateur Web&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search?q=spending">http://demo.ckan.org/api/3/action/package_search?q=spending</a></p>
+        <p>Des plugiciels comme <a href="https://addons.mozilla.org/en-us/firefox/addon/jsonview/">JSONView for Firefox</a> ou <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">Chrome</a> permettent aux navigateurs Web de mettre en forme et de surligner en couleurs de façon adéquate les réponses renvoyées par le module JSON de CKAN.</p>
+        <p>L’argument de recherche est indiqué dans l’adresse URL par le paramètre <tt>?q=dépenses</tt>. On peut ajouter d’autres paramètres en les délimitant par le caractère <tt>&amp;</tt>. Par exemple, pour retenir uniquement les dix premiers jeux de données correspondants, ouvrez cette adresse URL&nbsp;:</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_search">http://demo.ckan.org/api/3/action/package_search</a>?q=dépenses&amp;rows=10</p>
+        <p>Si une action exige une valeur de paramètre composée d’une liste de chaînes de caractères, on peut la transmettant en répétant plusieurs fois le nom de ce paramètre dans l’adresse URL.</p>
+        <p><a href="http://demo.ckan.org/api/3/action/term_translation_show?terms=russie&amp;terms=roman%20d">http://demo.ckan.org/api/3/action/term_translation_show?terms=russie&amp;terms=roman%20d</a>’amour</p>
+        </div>
+        <div>
+        <h2>
+        <a name="prise-en-charge-de-jsonp" class="anchor" href="#prise-en-charge-de-jsonp"><span class="mini-icon mini-icon-link"></span></a>Prise en charge de JSONP</h2>
+        <p>Pour tenir compte des scripts provenant d’autres sites Web qui accèdent à l’API, les données peuvent être retournées au format JSONP, dans lequel les données JSON sont imbriquées dans l’appel de fonction. Cette fonction est désignée par le paramètre 'callback'. Voici un exemple.</p>
+        <p><a href="http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending&amp;callback=myfunction">http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending&amp;callback=myfunction</a></p>
+        </div>
+        
+        
       </div>
     </div>
-
-    <div class="span-4">
-      <div py:if="c.groups" class="row whoelse">
-
-        <h2>Who else is here?</h2>
-
-      </div>
-
-      <py:for each="i, group_dict in enumerate(c.groups[:6])">
-        <div class="span4">
-          <div class="group">
-            <h3><a href="${h.url_for(controller='group', action='read', id=group_dict['name'])}">${group_dict['title']}</a></h3>
-            <p>
-              ${h.markdown_extract(group_dict['description'])}
-            </p>
-            <strong>${group_dict['title']} has ${group_dict['packages']} datasets.</strong>
-          </div>
-        </div>
-      </py:for>
-   <div class="clear"></div>
-</div> 
+    
   </div>
 
 
