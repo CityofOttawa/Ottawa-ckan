@@ -1,0 +1,3 @@
+API_KEY = "b3527cef-9829-4971-abe4-9a2df91b1c7b"
+API_USER = "ottawa"
+IMPORT_SERVER = "http://67.205.104.160:8006/"

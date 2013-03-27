@@ -5,13 +5,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   py:strip=""
   >
-
-<?python
-  import ckanext.ottawa.web as w
-  import ckan.lib.helpers as h
-?>
-
-${w.render_new_group(
-  template=_("{actor} created a new group: {object}"), 
-  activity=activity)}
+${h.activity_div(
+  template=_("{actor} created the group {object}"),
+  activity=activity,
+  actor=h.linked_user(activity.user_id),
+  object=h.group_link(activity.data.group),
+  )}
 </html>

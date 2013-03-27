@@ -43,21 +43,25 @@
         </py:if>
     </div>
     
-    <div class="span-2"></div>
-    <div py:if="c.pkg_dict.get('tags')" class="sidebar-section span-6">
-      <h3>Tags</h3>
-      ${tag_list(c.pkg_dict.get('tags', ''))}
-    </div>
+    <py:if test="c.pkg_dict.get('tags')">
+      <div class="span-2"></div>
+      <div class="sidebar-section span-6">
+        <h3>Tags</h3>
+        ${tag_list(c.pkg_dict.get('tags', ''))}
+      </div>
+    </py:if>
 
-    <div class="span-2"></div>
-    <div py:if="'groups' in c.pkg_dict" class="sidebar-section span-6">
-      <h3>Groups</h3>
-      <ul class="groups menu-horizontal">
-        <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
-        <a class="button button-small button-alert" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
-        </li>
-      </ul>
-    </div>
+    <py:if test="'groups' in c.pkg_dict" >
+      <div class="span-2"></div>
+      <div class="sidebar-section span-6">
+        <h3>Groups</h3>
+        <ul class="groups menu-horizontal">
+          <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
+          <a class="button button-small button-alert" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
+          </li>
+        </ul>
+      </div>
+    </py:if>
 
     <div class="span-2"></div>
     <li py:if="c.package_relationships" class="sidebar-section span-6">

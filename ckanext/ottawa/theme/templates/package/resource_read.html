@@ -74,12 +74,17 @@
         <py:choose test="c.resource.get('resource_type')">
           <py:when test="'listing'">View</py:when>
           <py:when test="'service'">View</py:when>
-          <py:when test="'api'">API Endpoint</py:when>
+          <py:when test="'api'">
+            <button class="download button button-accent button-large">
+              <img src="${h.icon_url('arrow-right-16')}"/>
+              API Endpoint
+            </button>
+          </py:when>
           <py:otherwise>
-            <div class="download button button-confirm">
+            <button class="download button button-accent button-large">
               <img src="${h.icon_url('arrow-down-16')}"/>
-              Download this Resource
-            </div>
+              Download
+            </button>
           </py:otherwise>
         </py:choose>
       </a>
@@ -194,7 +199,7 @@
           
           <tr>
             <td class="dataset-label" property="rdfs:label">Size</td>
-            <td class="dataset-details" property="rdf:value">${size(int(c.resource['size']))}</td>
+            <td class="dataset-details" property="rdf:value">${size(int(c.resource['size'] or 0))}</td>
           </tr>
           
           <tr>
