@@ -205,6 +205,10 @@ a:hover {
     width: auto;
 }
 
+.filter-entry .button-alert span{
+    color: white !important;
+}
+
 .title {
     font-weight: bold;
     font-size: 1.2em;

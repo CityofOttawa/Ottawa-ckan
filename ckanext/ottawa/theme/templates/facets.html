@@ -84,22 +84,30 @@ count_label
 </py:def>
 
 <py:def function="field_list()">
-    <div class="filter-list" py:if="c.fields">
-        <div class="filter-entry" py:for="(field, value) in c.fields">
-            <span class="name">${h.facet_title(field)}</span>
-            <span class="value" py:choose="">
-                <py:when test="c.translated_fields and c.translated_fields.has_key((field,value))">
-                    ${c.translated_fields[(field,value)]}
+    <ul class="filter-list menu-horizontal" py:if="c.fields">
+        <li class="filter-entry" py:for="(field, value) in c.fields">
+          <button class="button button-small button-alert">
+            <a href="${c.remove_field(field, value)}">
+              <span class="name" py:choose="">
+                <py:when test="h.facet_title(field) == 'Res_format'">
+                  Format
                 </py:when>
                 <py:otherwise>
-                    ${value}
+                  ${h.facet_title(field)}
                 </py:otherwise>
-            </span>
-            <a href="${c.remove_field(field, value)}">
-                ${h.icon('unfilter')}
+              </span>
+              <span class="value" py:choose="">
+                  <py:when test="c.translated_fields and c.translated_fields.has_key((field,value))">
+                      ${c.translated_fields[(field,value)]}
+                  </py:when>
+                  <py:otherwise>
+                      ${value}
+                  </py:otherwise>
+              </span>
             </a>
-        </div>  
-    </div>
+          </button>
+        </li>  
+    </ul>
 </py:def>
 
 </html>
