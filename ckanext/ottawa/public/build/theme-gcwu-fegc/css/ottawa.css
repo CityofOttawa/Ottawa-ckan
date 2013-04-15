@@ -334,7 +334,7 @@ For reference, CKAN pagination code is in ckan/lib/helpers.py:512
 
 /* dataset forms */
 .wet-boew-formvalid{
-    
+    display: block !important;
     margin-left: 20px;
 }
 
