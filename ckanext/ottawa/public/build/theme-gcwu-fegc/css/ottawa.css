@@ -568,3 +568,9 @@ div.activity {
     width: auto !important;
     margin-bottom: 0;
 }
+
+.gravatar {
+  width: auto !important;
+  margin-bottom: 0;
+	margin-right: 10px !important;
+}
