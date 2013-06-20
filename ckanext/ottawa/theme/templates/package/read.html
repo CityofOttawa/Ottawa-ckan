@@ -77,6 +77,12 @@
         </py:for>
       </ul>
     </li>
+    
+    <div class="span-2">
+      <a href="${h.url(controller='package', action='history', id=c.pkg.name, format='atom', days=30, qualified=True)}">
+      <img class="image-actual margin-bottom-none" src="/build/theme-gcwu-fegc/images/sub.png" alt="Subscription" width="25" height="24"/>  RSS Feed for this Page
+      </a>
+    </div>
 
     <!-- <py:if test="not(c.pkg.isopen() and c.pkg.resources)"> -->
     <!--   <h3 i18n:msg="">This dataset is Not Open</h3>  -->
