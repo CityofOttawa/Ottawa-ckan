@@ -1,0 +1,12 @@
+User-agent: *
+Crawl-Delay: 10
+Disallow: /*/dataset/followers/
+Disallow: /*/dataset/history/
+Disallow: /*/dataset/rate/
+Disallow: /*/api/
+Disallow: /*/feeds/
+Disallow: /*/group/
+Disallow: /*/revision/
+Disallow: /*/storage/
+Disallow: /*/user/
+Disallow: /*/tag/
