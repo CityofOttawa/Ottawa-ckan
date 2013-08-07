@@ -4,4 +4,7 @@
 	    ottawa_bilingual_dataset=ckanext.ottawa.forms:OttawaDatasetForm
 	    ottawa_bilingual_search_listing=ckanext.ottawa.listing:OttawaPackageListing
 	    ottawa_route_overrides=ckanext.ottawa.routes:OttawaRoutes
+	    
+	    [paste.paster_command]
+        import_geo=ckanext.ottawa.commands:ImportGeoCommand
 	
