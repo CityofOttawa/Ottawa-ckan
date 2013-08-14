@@ -6,3 +6,6 @@ ckanext_canada.egg-info
 dist
 *.swp
 .DS_Store
+*.kmz
+*.log
+temp_data/
