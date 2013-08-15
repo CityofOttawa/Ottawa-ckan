@@ -42,66 +42,79 @@ class ImportGeoCommand(CkanCommand):
         'xml': 'XML/PR_Ball_Diamonds.xml',
         'csv': 'Tables/PR_Ball_Diamonds.csv',
         'kml': 'KMZ/PR_Ball_Diamonds.kmz',
+        'dwg': 'DWG/PR_Ball_Diamonds.dwg',
         },
     'basket-ball-courts-2009': {
         'xml': 'XML/PR_Basketball_Courts.xml',
         'csv': 'Tables/PR_Basketball_Courts.csv',
         'kml': 'KMZ/PR_Basketball_Courts.kmz',
+        'dwg': 'DWG/PR_Basketball_Courts.dwg',
         },
     'lawn-bowling': {
         'xml': 'XML/PR_Lawn_Bowling.xml',
         'csv': 'Tables/PR_Lawn_Bowling.csv',
         'kml': 'KMZ/PR_Lawn_Bowling.kmz',
+        'dwg': 'DWG/PR_Lawn_Bowling.dwg',
         },
     'wading-pools': {
         'xml': 'XML/PR_Outdoor_Pools_Wading.xml',
         'csv': 'Tables/PR_Outdoor_Pools_Wading.csv',
         'kml': 'KMZ/PR_Outdoor_Pools_Wading.kmz',
+        'dwg': 'DWG/PR_Outdoor_Pools_Wading.dwg',
         },
     'outdoor-rinks': {
         'xml': 'XML/PR_Outdoor_Rinks.xml',
         #'csv': None,
         'kml': 'KMZ/PR_Outdoor_Rinks.kmz',
+        'dwg': 'DWG/PR_Outdoor_Rinks.dwg',
         },
     'parks': {
         'xml': 'XML/PR_Parks.xml',
         'csv': 'Tables/PR_Parks.csv',
         'kml': 'KMZ/PR_Parks.kmz',
+        'dwg': 'DWG/PR_Parks.dwg',
         },
     'parks-pathway-links': {
         'xml': 'XML/PR_Pathway_Links.xml',
         'csv': 'Tables/PR_Pathway_Links.csv',
         'kml': 'KMZ/PR_Pathway_Links.kmz',
+        'dwg': 'DWG/PR_Pathway_Links.dwg',
         },
     'skateboard-parks': {
         'xml': 'XML/PR_Skateboard_Parks.xml',
         'csv': 'Tables/PR_Skateboard_Parks.csv',
         'kml': 'KMZ/PR_Skateboard_Parks.kmz',
+        'dwg': 'DWG/PR_Skateboard_Parks.dwg',
         },
     'sledding-hills': {
         'xml': 'XML/PR_Sledding_Hills.xml',
         #'csv': None,
         'kml': 'KMZ/PR_Sledding_Hills.kmz',
+        'dwg': 'DWG/PR_Sledding_Hills.dwg',
         },
     'splash-pads': {
         'xml': 'XML/PR_Splash_Pads.xml',
         'csv': 'Tables/PR_Splash_Pads.csv',
         'kml': 'KMZ/PR_Splash_Pads.kmz',
+        'dwg': 'DWG/PR_Splash_Pads.dwg',
         },
     'sports-fields': {
         'xml': 'XML/PR_Sports_Fields.xml',
         'csv': 'Tables/PR_Sports_Fields.csv',
         'kml': 'KMZ/PR_Sports_Fields.kmz',
+        'dwg': 'DWG/PR_Sports_Fields.dwg',
         },
     'tennis-courts': {
         'xml': 'XML/PR_Tennis_Courts.xml',
         'csv': 'Tables/PR_Tennis_Courts.csv',
         'kml': 'KMZ/PR_Tennis_Courts.kmz',
+        'dwg': 'DWG/PR_Tennis_Courts.dwg',
         },
     'volleyball-courts': {
         'xml': 'XML/PR_Volleyball_Courts.xml',
         'csv': 'Tables/PR_Volleyball_Courts.csv',
         'kml': 'KMZ/PR_Volleyball_Courts.kmz',
+        'dwg': 'DWG/PR_Volleyball_Courts.dwg',
         }
     }
     
