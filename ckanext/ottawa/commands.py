@@ -131,6 +131,7 @@ class ImportGeoCommand(CkanCommand):
         
         resource_base_url = config.get('ottawa.geo_url')
         dirty = False
+        writelog("running geo update...")
         
         model.repo.new_revision()
         for dataset, resources in self.mapping.iteritems():
@@ -147,7 +148,10 @@ class ImportGeoCommand(CkanCommand):
                             dirty = True
          
         if dirty:
-            model.Session.commit()                  
+            model.Session.commit()  
+            writelog("geo update commited")     
+        else:
+            writelog("no new resources detected")           
         
     def download_temp_file(self, resource_path, file_name):
         r = requests.get(resource_path, stream=True)
