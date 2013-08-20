@@ -145,6 +145,7 @@ class ImportGeoCommand(CkanCommand):
                         if resource_exists and self.update_required(existing_resource, file_name):
                             self.replace_resource(existing_resource, file_name)
                             self.update_checksum(existing_resource, file_name)
+                            self.update_dates(existing_resource)
                             dirty = True
          
         if dirty:
@@ -187,6 +188,9 @@ class ImportGeoCommand(CkanCommand):
         
     def update_checksum(self, existing_resource, temp_file):
         existing_resource.hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
+        
+    def update_dates(self, existing_resource):
+        existing_resource.last_modified = datetime.now()
         
     def replace_resource(self, existing_resource, temp_file):
         geo_storage_dir = config.get('ottawa.geo_storage_dir')
