@@ -247,11 +247,19 @@ class ImportGeoCommand(CkanCommand):
             if package is not None:
                 for existing_resource in package.resources:
                     if existing_resource.format in resources:
-                        resource_path = resource_base_url + resources[existing_resource.format]
+                        if existing_resource.format == 'shp':
+                            resource_path = resource_base_url + resources[existing_resource.format]['shp']
+                        else:
+                            resource_path = resource_base_url + resources[existing_resource.format]
+                            
                         file_name = 'temp_data/' + existing_resource.name + '.' + existing_resource.format
                         resource_exists = self.download_temp_file(resource_path, file_name)
                         if resource_exists and self.update_required(existing_resource, file_name):
-                            self.replace_resource(existing_resource, file_name)
+                            if existing_resource.format == 'shp':
+                                self.replace_shape_files(existing_resource, resources['shp'])
+                            else:
+                                self.replace_resource(existing_resource, file_name)
+                                
                             self.update_checksum(existing_resource, file_name)
                             self.update_dates(existing_resource)
                             dirty = True
@@ -299,6 +307,9 @@ class ImportGeoCommand(CkanCommand):
         
     def update_dates(self, existing_resource):
         existing_resource.last_modified = datetime.now()
+        
+    def replace_shape_files(self, existing_resource, shape_file_locations):
+        print shape_file_locations
         
     def replace_resource(self, existing_resource, temp_file):
         geo_storage_dir = config.get('ottawa.geo_storage_dir')
