@@ -38,6 +38,21 @@ class ImportGeoCommand(CkanCommand):
     
         
     mapping = {
+    'cycling-network': {
+        'xml': 'XML/PL_CyclingNetwork.xml',
+        'csv': 'Tables/PL_CyclingNetwork.csv',
+        'kml': 'KMZ/PL_CyclingNetwork.kmz',
+        'dwg': 'DWG/PL_CyclingNetwork.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/PL_CyclingNetwork.dbf',
+                'prj': 'Shapefiles/PL_CyclingNetwork.prj',
+                'sbn': 'Shapefiles/PL_CyclingNetwork.sbn',
+                'sbx': 'Shapefiles/PL_CyclingNetwork.sbx',
+                'shp': 'Shapefiles/PL_CyclingNetwork.shp',
+                'shp.xml': 'Shapefiles/PL_CyclingNetwork.shp.xml',
+                'shx': 'Shapefiles/PL_CyclingNetwork.shx',
+            },
+        },
     'ball-diamonds-2009': {
         'xml': 'XML/PR_Ball_Diamonds.xml',
         'csv': 'Tables/PR_Ball_Diamonds.csv',
