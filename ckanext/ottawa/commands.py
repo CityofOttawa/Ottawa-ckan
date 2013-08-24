@@ -305,8 +305,6 @@ class ImportGeoCommand(CkanCommand):
         
         
     def update_required(self, existing_resource, temp_file):
-        if existing_resource.format == 'shp':
-            return True
         temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
@@ -327,7 +325,6 @@ class ImportGeoCommand(CkanCommand):
         existing_resource.last_modified = datetime.now()
         
     def replace_shape_files(self, existing_resource, shape_file_locations):
-        #import pdb; pdb.set_trace()
         resource_base_url = config.get('ottawa.geo_url')
         
         shape_destination_dir = os.path.join('temp_data', existing_resource.name + '_shp')
