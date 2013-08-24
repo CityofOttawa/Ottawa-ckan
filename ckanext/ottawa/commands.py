@@ -12,6 +12,7 @@ import gzip
 import requests
 import hashlib
 import shutil
+import zipfile
 from datetime import datetime, timedelta
 
 class ImportGeoCommand(CkanCommand):
@@ -304,6 +305,8 @@ class ImportGeoCommand(CkanCommand):
         
         
     def update_required(self, existing_resource, temp_file):
+        if existing_resource.format == 'shp':
+            return True
         temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
@@ -324,7 +327,28 @@ class ImportGeoCommand(CkanCommand):
         existing_resource.last_modified = datetime.now()
         
     def replace_shape_files(self, existing_resource, shape_file_locations):
-        print shape_file_locations
+        #import pdb; pdb.set_trace()
+        resource_base_url = config.get('ottawa.geo_url')
+        
+        shape_destination_dir = os.path.join('temp_data', existing_resource.name + '_shp')
+        if not os.path.exists(shape_destination_dir):
+            os.makedirs(shape_destination_dir)
+        
+        for shape_format, shape_location in shape_file_locations.iteritems():
+            resource_location = resource_base_url + shape_location
+            file_name = existing_resource.name + '.' + shape_format
+            download_location = os.path.join(shape_destination_dir, file_name)
+            self.download_temp_file(resource_location, download_location)
+            
+        zip_filename = os.path.join('temp_data', existing_resource.name + '.shp.zip')
+        zip = zipfile.ZipFile(zip_filename, 'w')
+        for root, dirs, files in os.walk(shape_destination_dir):
+            for file in files:
+                print 'writing file %s to %s' % (os.path.join(root, file), zip)
+                zip.write(os.path.join(root, file), file)
+        zip.close()
+        
+        self.replace_resource(existing_resource, zip_filename)
         
     def replace_resource(self, existing_resource, temp_file):
         geo_storage_dir = config.get('ottawa.geo_storage_dir')
@@ -333,7 +357,10 @@ class ImportGeoCommand(CkanCommand):
         if not os.path.exists(timestamp_dir):
             os.makedirs(timestamp_dir)
         
-        new_file_name = existing_resource.name + '.' + existing_resource.format
+        if existing_resource.format == 'shp':
+            new_file_name = existing_resource.name + '.shp.zip'
+        else:
+            new_file_name = existing_resource.name + '.' + existing_resource.format
         
         end_path = os.path.join(timestamp_dir, new_file_name)
         shutil.copyfile(temp_file, end_path)
