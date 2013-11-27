@@ -279,6 +279,8 @@ class ImportGeoCommand(CkanCommand):
                             self.update_checksum(existing_resource, file_name)
                             self.update_dates(existing_resource)
                             dirty = True
+            else:
+                writelog("could not find package for %s" % dataset)
          
         if dirty:
             model.Session.commit()  
@@ -305,6 +307,8 @@ class ImportGeoCommand(CkanCommand):
         
         
     def update_required(self, existing_resource, temp_file):
+        if existing_resource.format == 'shp':
+            return True
         temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
