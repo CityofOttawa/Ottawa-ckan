@@ -70,21 +70,17 @@
 
   <div py:match="content" class="span-6">
     <div class="resource-actions">
-      <a py:if="c.resource.get('url')" class="btn btn-primary resource-url-analytics resource-type-${c.resource.get('resource_type')}" href="${c.resource.get('url')}">
+      <a py:if="c.resource.get('url')" class="btn btn-primary download button button-accent button-large resource-url-analytics resource-type-${c.resource.get('resource_type')}" href="${c.resource.get('url')}">
         <py:choose test="c.resource.get('resource_type')">
           <py:when test="'listing'">View</py:when>
           <py:when test="'service'">View</py:when>
           <py:when test="'api'">
-            <button class="download button button-accent button-large">
-              <img src="${h.icon_url('arrow-right-16')}"/>
+            <img src="${h.icon_url('arrow-right-16')}"/>
               API Endpoint
-            </button>
           </py:when>
           <py:otherwise>
-            <button class="download button button-accent button-large">
-              <img src="${h.icon_url('arrow-down-16')}"/>
+            <img src="${h.icon_url('arrow-down-16')}"/>
               Download
-            </button>
           </py:otherwise>
         </py:choose>
       </a>

@@ -9,3 +9,4 @@ dist
 *.kmz
 *.log
 temp_data/
+geo_import
