@@ -279,6 +279,8 @@ class ImportGeoCommand(CkanCommand):
                             self.update_checksum(existing_resource, file_name)
                             self.update_dates(existing_resource)
                             dirty = True
+                        else:
+                            writelog("resource cannot be found in data repository: %s" % resource_path)
             else:
                 writelog("could not find package for %s" % dataset)
          
