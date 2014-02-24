@@ -311,7 +311,7 @@ class ImportGeoCommand(CkanCommand):
     def update_required(self, existing_resource, temp_file):
         if existing_resource.format == 'shp':
             return True
-        temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
+	temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
         else:
