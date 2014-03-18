@@ -271,8 +271,14 @@
                   <section>
                     <div class="span-4">
                       <div py:choose="c.language" class="footer_open_logo">
-                        <img py:when="'en'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
-                        <img py:when="'fr'" src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" />
+                        <p py:when="'en'">
+                          <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_en.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" /><br/>
+                          <a href="http://ottawa.ca/en/mobile-apps-and-open-data/open-data-terms-use">City of Ottawa Open Data Terms of Use</a>
+                        </p>
+                        <p py:when="'fr'">
+                          <img src="${h.url_for_static('/build/theme-gcwu-fegc/images/open_data_logo_fr.png')}" width="126" height="30" alt="City of Ottawa Open Data Logo" /><br/>
+                          <a href="http://ottawa.ca/fr/applications-pour-appareils-mobiles-et-donnees-ouvertes/donnees-ouvertes-conditions-dutilisation">Données ouvertes - Conditions d'utilisation</a>
+                        </p>
                         </div>
                     </div>
                   </section>
@@ -285,7 +291,9 @@
                         <a href="http://instagram.com/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/instagram_logo.png')}" alt="Instagram icon" width="24" height="24"/></a>
                         <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
                         <a href="http://ottawa.ca/en/rss-feeds"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
-                      <p>Access the city’s social media streams</p>
+                      <p>
+                        <a href="http://ottawa.ca/en/node/297237">Access the city’s social media streams</a>
+                      </p>
                       
                         <div py:if="c.userobj" id="gcwu-gcnb3">
                           <a href="${h.url_for('/user/_logout')}">Logout</a>
@@ -303,7 +311,9 @@
                         <a href="http://instagram.com/villedottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/instagram_logo.png')}" alt="Instagram icon" width="24" height="24"/></a>
                         <a href="http://www.flickr.com/photos/cityofottawa"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/flickr.png')}" alt="Flickr" width="24" height="24"/></a>
                         <a href="http://ottawa.ca/fr/flux-rss"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/sub.png')}" alt="Subscription" width="25" height="24"/></a>
-                      <p>Accès aux réseaux sociaux de la Ville</p>
+                      <p>
+                        <a href="http://ottawa.ca/fr/node/297238">Accès aux réseaux sociaux de la Ville&nbsp;</a>
+                      </p>
                       
                         <div py:if="c.userobj" id="gcwu-gcnb3">
                           <a href="${h.url_for('/user/_logout')}">Logout</a>
