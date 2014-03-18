@@ -4189,5 +4189,5 @@ msgid "Change Active State"
 msgstr "Changement de l'état actif"
 
 #: ottawa/theme/templates/package/edit
-msgid "Date Published"
-msgstr "Date de publication"
+msgid "Date First Published"
+msgstr "Première date de publication"

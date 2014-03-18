@@ -254,8 +254,16 @@
                       <div class="boxes-box-content">
                         <div class="logo" id="footer-logo">
                           <a href="http://ottawa.ca/"><img src="${h.url_for_static('/build/theme-gcwu-fegc/images/footer-ottawalogo.png')}" alt="Ottawa Logo" width="107" height="47"/></a>
-                          <p>© 2001-2013 City of Ottawa</p>
-                          <p>110 Laurier Avenue West <br/> Ottawa, Ontario, K1P 1J1</p>
+                          <py:choose test="c.language">
+                            <py:when test="'en'">
+                              <p>© 2001-2014 City of Ottawa</p>
+                              <p>110 Laurier Avenue West <br/> Ottawa, Ontario, K1P 1J1</p>
+                            </py:when>
+                            <py:when test="'fr'">
+                              <p>© 2001-2014 Ville d'Ottawa</p>
+                              <p>110, avenue Laurier Ouest <br/> Ottawa (Ontario) K1P 1J1</p>
+                            </py:when>
+                          </py:choose>
                         </div>
                       </div>
                     </div>

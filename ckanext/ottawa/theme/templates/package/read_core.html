@@ -125,7 +125,7 @@
             </tr>
             
             <tr>
-              <td class="dataset-label" property="rdfs:label">Date Published</td>
+              <td class="dataset-label" property="rdfs:label">Date First Published</td>
               <td py:choose="len(c.pkg_dict['date_published'])" class="dataset-details" property="rdf:value">
                 <span py:when="0">${c.pkg.metadata_created.strftime("%d/%m/%Y")}</span>
                 <span py:otherwise="">${c.pkg_dict['date_published']}</span>
@@ -198,7 +198,7 @@
             </tr>
             
             <tr>
-              <td class="dataset-label" property="rdfs:label">Date de publication</td>
+              <td class="dataset-label" property="rdfs:label">Première date de publication</td>
               <td class="dataset-details" property="rdf:value">${c.pkg_dict['date_published']}</td>
             </tr>
             
