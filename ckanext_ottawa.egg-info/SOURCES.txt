@@ -1,6 +1,7 @@
 COPYING
 COPYING.fr
 MANIFEST.in
+README.rst
 setup.py
 ckanext/__init__.py
 ckanext/ottawa/__init__.py
