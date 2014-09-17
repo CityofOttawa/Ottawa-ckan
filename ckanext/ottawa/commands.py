@@ -587,7 +587,13 @@ class ImportGeoCommand(CkanCommand):
 
                         file_name = 'temp_data/' + existing_resource.name + '.' + existing_resource.format
                         resource_exists = self.download_temp_file(resource_path, file_name)
-                        if resource_exists and self.update_required(existing_resource, file_name):
+
+                        if not resource_exists:
+                            writelog("resource cannot be found in data repository: %s" % resource_path)
+                            continue
+
+                        if self.update_required(existing_resource, file_name):
+                            writelog("Updating resource: %s" % resource_path)
                             if existing_resource.format == 'shp':
                                 self.replace_shape_files(existing_resource, resources['shp'])
                             else:
@@ -597,7 +603,7 @@ class ImportGeoCommand(CkanCommand):
                             self.update_dates(existing_resource)
                             dirty = True
                         else:
-                            writelog("resource cannot be found in data repository: %s" % resource_path)
+                            writelog("update not required for: %s" % resource_path)
             else:
                 writelog("could not find package for %s" % dataset)
 
