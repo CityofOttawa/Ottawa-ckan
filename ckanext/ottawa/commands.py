@@ -16,7 +16,7 @@ import zipfile
 from datetime import datetime, timedelta
 
 class ImportGeoCommand(CkanCommand):
-    
+
     """
     CKAN Ottawa Extension
 
@@ -29,15 +29,15 @@ class ImportGeoCommand(CkanCommand):
         -c/--config <ckan config>   use named ckan config file
                                     (available to all commands)
     """
-    
+
     summary = __doc__.split('\n')[0]
     usage = __doc__
-    
+
     parser = paste.script.command.Command.standard_parser(verbose=True)
     parser.add_option('-c', '--config', dest='config',
         default='development.ini', help='Config file to use.')
-    
-        
+
+
     mapping = {
     'cycling-network': {
         'xml': 'XML/PL_CyclingNetwork.xml',
@@ -239,10 +239,327 @@ class ImportGeoCommand(CkanCommand):
                 'shp.xml': 'Shapefiles/PR_Volleyball_Courts.shp.xml',
                 'shx': 'Shapefiles/PR_Volleyball_Courts.shx',
             },
-        }
+        },
+    'wards-2010-2': {
+        'xml': 'XML/SAM_wards2010.xml',
+        'csv': 'Tables/SAM_wards2010.csv',
+        'kml': 'KMZ/SAM_wards2010.kmz',
+        'dwg': 'DWG/SAM_wards2010.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_wards2010.dbf',
+                'prj': 'Shapefiles/SAM_wards2010.prj',
+                'sbn': 'Shapefiles/SAM_wards2010.sbn',
+                'sbx': 'Shapefiles/SAM_wards2010.sbx',
+                'shp': 'Shapefiles/SAM_wards2010.shp',
+                'shp.xml': 'Shapefiles/SAM_wards2010.shp.xml',
+                'shx': 'Shapefiles/SAM_wards2010.shx',
+            },
+        },
+    'wards-2006': {
+        'xml': 'XML/SAM_wards2006.xml',
+        'csv': 'Tables/SAM_wards2006.csv',
+        'kml': 'KMZ/SAM_wards2006.kmz',
+        'dwg': 'DWG/SAM_wards2006.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_wards2006.dbf',
+                'prj': 'Shapefiles/SAM_wards2006.prj',
+                'sbn': 'Shapefiles/SAM_wards2006.sbn',
+                'sbx': 'Shapefiles/SAM_wards2006.sbx',
+                'shp': 'Shapefiles/SAM_wards2006.shp',
+                'shp.xml': 'Shapefiles/SAM_wards2006.shp.xml',
+                'shx': 'Shapefiles/SAM_wards2006.shx',
+            },
+        },
+    'wards-2003': {
+        'xml': 'XML/SAM_wards2003.xml',
+        'csv': 'Tables/SAM_wards2003.csv',
+        'kml': 'KMZ/SAM_wards2003.kmz',
+        'dwg': 'DWG/SAM_wards2003.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_wards2003.dbf',
+                'prj': 'Shapefiles/SAM_wards2003.prj',
+                'sbn': 'Shapefiles/SAM_wards2003.sbn',
+                'sbx': 'Shapefiles/SAM_wards2003.sbx',
+                'shp': 'Shapefiles/SAM_wards2003.shp',
+                'shp.xml': 'Shapefiles/SAM_wards2003.shp.xml',
+                'shx': 'Shapefiles/SAM_wards2003.shx',
+            },
+        },
+    'trans-canada-trail': {
+        'xml': 'XML/SAM_transCanadaTrail.xml',
+        'csv': 'Tables/SAM_transCanadaTrail.csv',
+        'kml': 'KMZ/SAM_transCanadaTrail.kmz',
+        'dwg': 'DWG/SAM_transCanadaTrail.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_transCanadaTrail.dbf',
+                'prj': 'Shapefiles/SAM_transCanadaTrail.prj',
+                'sbn': 'Shapefiles/SAM_transCanadaTrail.sbn',
+                'sbx': 'Shapefiles/SAM_transCanadaTrail.sbx',
+                'shp': 'Shapefiles/SAM_transCanadaTrail.shp',
+                'shp.xml': 'Shapefiles/SAM_transCanadaTrail.shp.xml',
+                'shx': 'Shapefiles/SAM_transCanadaTrail.shx',
+            },
+        },
+
+    'former-townships': {
+        'xml': 'XML/SAM_townships_Former.xml',
+        'csv': 'Tables/SAM_townships_Former.csv',
+        'kml': 'KMZ/SAM_townships_Former.kmz',
+        'dwg': 'DWG/SAM_townships_Former.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_townships_Former.dbf',
+                'prj': 'Shapefiles/SAM_townships_Former.prj',
+                'sbn': 'Shapefiles/SAM_townships_Former.sbn',
+                'sbx': 'Shapefiles/SAM_townships_Former.sbx',
+                'shp': 'Shapefiles/SAM_townships_Former.shp',
+                'shp.xml': 'Shapefiles/SAM_townships_Former.shp.xml',
+                'shx': 'Shapefiles/SAM_townships_Former.shx',
+            },
+        },
+
+    'township-lot-centroids': {
+        'xml': 'XML/SAM_townshipLotsCentroids.xml',
+        'csv': 'Tables/SAM_townshipLotsCentroids.csv',
+        'kml': 'KMZ/SAM_townshipLotsCentroids.kmz',
+        'dwg': 'DWG/SAM_townshipLotsCentroids.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_townshipLotsCentroids.dbf',
+                'prj': 'Shapefiles/SAM_townshipLotsCentroids.prj',
+                'sbn': 'Shapefiles/SAM_townshipLotsCentroids.sbn',
+                'sbx': 'Shapefiles/SAM_townshipLotsCentroids.sbx',
+                'shp': 'Shapefiles/SAM_townshipLotsCentroids.shp',
+                'shp.xml': 'Shapefiles/SAM_townshipLotsCentroids.shp.xml',
+                'shx': 'Shapefiles/SAM_townshipLotsCentroids.shx',
+            },
+        },
+    'rideau-trail': {
+        'xml': 'XML/SAM_rideauTrail.xml',
+        'csv': 'Tables/SAM_rideauTrail.csv',
+        'kml': 'KMZ/SAM_rideauTrail.kmz',
+        'dwg': 'DWG/SAM_rideauTrail.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_rideauTrail.dbf',
+                'prj': 'Shapefiles/SAM_rideauTrail.prj',
+                'sbn': 'Shapefiles/SAM_rideauTrail.sbn',
+                'sbx': 'Shapefiles/SAM_rideauTrail.sbx',
+                'shp': 'Shapefiles/SAM_rideauTrail.shp',
+                'shp.xml': 'Shapefiles/SAM_rideauTrail.shp.xml',
+                'shx': 'Shapefiles/SAM_rideauTrail.shx',
+            },
+        },
+    'o-train-stations': {
+        'xml': 'XML/SAM_oTrainStations.xml',
+        'csv': 'Tables/SAM_oTrainStations.csv',
+        'kml': 'KMZ/SAM_oTrainStations.kmz',
+        'dwg': 'DWG/SAM_oTrainStations.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_oTrainStations.dbf',
+                'prj': 'Shapefiles/SAM_oTrainStations.prj',
+                'sbn': 'Shapefiles/SAM_oTrainStations.sbn',
+                'sbx': 'Shapefiles/SAM_oTrainStations.sbx',
+                'shp': 'Shapefiles/SAM_oTrainStations.shp',
+                'shp.xml': 'Shapefiles/SAM_oTrainStations.shp.xml',
+                'shx': 'Shapefiles/SAM_oTrainStations.shx',
+            },
+        },
+    'o-train-tracks': {
+        'xml': 'XML/SAM_oTrainCentreline.xml',
+        'csv': 'Tables/SAM_oTrainCentreline.csv',
+        'kml': 'KMZ/SAM_oTrainCentreline.kmz',
+        'dwg': 'DWG/SAM_oTrainCentreline.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_oTrainCentreline.dbf',
+                'prj': 'Shapefiles/SAM_oTrainCentreline.prj',
+                'sbn': 'Shapefiles/SAM_oTrainCentreline.sbn',
+                'sbx': 'Shapefiles/SAM_oTrainCentreline.sbx',
+                'shp': 'Shapefiles/SAM_oTrainCentreline.shp',
+                'shp.xml': 'Shapefiles/SAM_oTrainCentreline.shp.xml',
+                'shx': 'Shapefiles/SAM_oTrainCentreline.shx',
+            },
+        },
+    'neighbourhood-names': {
+        'xml': 'XML/SAM_neighbourhoodNames.xml',
+        'csv': 'Tables/SAM_neighbourhoodNames.csv',
+        'kml': 'KMZ/SAM_neighbourhoodNames.kmz',
+        'dwg': 'DWG/SAM_neighbourhoodNames.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_neighbourhoodNames.dbf',
+                'prj': 'Shapefiles/SAM_neighbourhoodNames.prj',
+                'sbn': 'Shapefiles/SAM_neighbourhoodNames.sbn',
+                'sbx': 'Shapefiles/SAM_neighbourhoodNames.sbx',
+                'shp': 'Shapefiles/SAM_neighbourhoodNames.shp',
+                'shp.xml': 'Shapefiles/SAM_neighbourhoodNames.shp.xml',
+                'shx': 'Shapefiles/SAM_neighbourhoodNames.shx',
+            },
+        },
+    'water-bodies': {
+        'xml': 'XML/SAM_CITYWIDE_water.xml',
+        'csv': 'Tables/SAM_CITYWIDE_water.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_water.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_water.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_water.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_water.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_water.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_water.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_water.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_water.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_water.shx',
+            },
+        },
+    'trails': {
+        'xml': 'XML/SAM_CITYWIDE_trails.xml',
+        'csv': 'Tables/SAM_CITYWIDE_trails.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_trails.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_trails.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_trails.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_trails.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_trails.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_trails.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_trails.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_trails.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_trails.shx',
+            },
+        },
+    'swamps': {
+        'xml': 'XML/SAM_CITYWIDE_swamps.xml',
+        'csv': 'Tables/SAM_CITYWIDE_swamps.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_swamps.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_swamps.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_swamps.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_swamps.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_swamps.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_swamps.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_swamps.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_swamps.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_swamps.shx',
+            },
+        },
+    'airport-runways': {
+        'xml': 'XML/SAM_CITYWIDE_runways.xml',
+        'csv': 'Tables/SAM_CITYWIDE_runways.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_runways.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_runways.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_runways.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_runways.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_runways.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_runways.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_runways.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_runways.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_runways.shx',
+            },
+        },
+    'rivers-2': {
+        'xml': 'XML/SAM_CITYWIDE_rivers.xml',
+        'csv': 'Tables/SAM_CITYWIDE_rivers.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_rivers.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_rivers.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_rivers.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_rivers.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_rivers.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_rivers.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_rivers.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_rivers.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_rivers.shx',
+            },
+        },
+    'rapids': {
+        'xml': 'XML/SAM_CITYWIDE_rapids.xml',
+        'csv': 'Tables/SAM_CITYWIDE_rapids.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_rapids.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_rapids.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_rapids.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_rapids.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_rapids.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_rapids.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_rapids.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_rapids.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_rapids.shx',
+            },
+        },
+    'hydrolines': {
+        'xml': 'XML/SAM_CITYWIDE_hydrolines.xml',
+        'csv': 'Tables/SAM_CITYWIDE_hydrolines.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_hydrolines.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_hydrolines.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_hydrolines.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_hydrolines.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_hydrolines.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_hydrolines.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_hydrolines.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_hydrolines.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_hydrolines.shx',
+            },
+        },
+    'fences': {
+        'xml': 'XML/SAM_CITYWIDE_fences.xml',
+        'csv': 'Tables/SAM_CITYWIDE_fences.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_fences.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_fences.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_fences.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_fences.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_fences.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_fences.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_fences.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_fences.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_fences.shx',
+            },
+        },
+    'drainage': {
+        'xml': 'XML/SAM_CITYWIDE_drainage.xml',
+        'csv': 'Tables/SAM_CITYWIDE_drainage.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_drainage.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_drainage.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_drainage.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_drainage.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_drainage.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_drainage.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_drainage.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_drainage.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_drainage.shx',
+            },
+        },
+    'ditches': {
+        'xml': 'XML/SAM_CITYWIDE_ditches.xml',
+        'csv': 'Tables/SAM_CITYWIDE_ditches.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_ditches.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_ditches.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_ditches.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_ditches.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_ditches.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_ditches.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_ditches.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_ditches.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_ditches.shx',
+            },
+        },
+    'large-buildings': {
+        'xml': 'XML/SAM_CITYWIDE_buildingsLarge.xml',
+        'csv': 'Tables/SAM_CITYWIDE_buildingsLarge.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_buildingsLarge.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_buildingsLarge.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shx',
+            },
+        },
     }
-    
-    def command(self): 
+
+    def command(self):
         '''
         Parse command line arguments and call appropriate method.
         '''
@@ -252,11 +569,11 @@ class ImportGeoCommand(CkanCommand):
 
         cmd = self.args[0]
         self._load_config()
-        
+
         resource_base_url = config.get('ottawa.geo_url')
         dirty = False
         writelog("running geo update...")
-        
+
         model.repo.new_revision()
         for dataset, resources in self.mapping.iteritems():
             package = model.Package.get(dataset)
@@ -267,7 +584,7 @@ class ImportGeoCommand(CkanCommand):
                             resource_path = resource_base_url + resources[existing_resource.format]['shp']
                         else:
                             resource_path = resource_base_url + resources[existing_resource.format]
-                            
+
                         file_name = 'temp_data/' + existing_resource.name + '.' + existing_resource.format
                         resource_exists = self.download_temp_file(resource_path, file_name)
                         if resource_exists and self.update_required(existing_resource, file_name):
@@ -275,7 +592,7 @@ class ImportGeoCommand(CkanCommand):
                                 self.replace_shape_files(existing_resource, resources['shp'])
                             else:
                                 self.replace_resource(existing_resource, file_name)
-                                
+
                             self.update_checksum(existing_resource, file_name)
                             self.update_dates(existing_resource)
                             dirty = True
@@ -283,13 +600,13 @@ class ImportGeoCommand(CkanCommand):
                             writelog("resource cannot be found in data repository: %s" % resource_path)
             else:
                 writelog("could not find package for %s" % dataset)
-         
+
         if dirty:
-            model.Session.commit()  
-            writelog("geo update commited")     
+            model.Session.commit()
+            writelog("geo update commited")
         else:
-            writelog("no new resources detected")           
-        
+            writelog("no new resources detected")
+
     def download_temp_file(self, resource_path, file_name):
         r = requests.get(resource_path, stream=True)
         if r.status_code == 200:
@@ -306,8 +623,8 @@ class ImportGeoCommand(CkanCommand):
                 return True
         else:
             return False
-        
-        
+
+
     def update_required(self, existing_resource, temp_file):
         if existing_resource.format == 'shp':
             return True
@@ -322,27 +639,27 @@ class ImportGeoCommand(CkanCommand):
                                                 temp_file_hash,
                                                 ))
             return True
-        
-        
+
+
     def update_checksum(self, existing_resource, temp_file):
         existing_resource.hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
-        
+
     def update_dates(self, existing_resource):
         existing_resource.last_modified = datetime.now()
-        
+
     def replace_shape_files(self, existing_resource, shape_file_locations):
         resource_base_url = config.get('ottawa.geo_url')
-        
+
         shape_destination_dir = os.path.join('temp_data', existing_resource.name + '_shp')
         if not os.path.exists(shape_destination_dir):
             os.makedirs(shape_destination_dir)
-        
+
         for shape_format, shape_location in shape_file_locations.iteritems():
             resource_location = resource_base_url + shape_location
             file_name = existing_resource.name + '.' + shape_format
             download_location = os.path.join(shape_destination_dir, file_name)
             self.download_temp_file(resource_location, download_location)
-            
+
         zip_filename = os.path.join('temp_data', existing_resource.name + '.shp.zip')
         zip = zipfile.ZipFile(zip_filename, 'w')
         for root, dirs, files in os.walk(shape_destination_dir):
@@ -350,42 +667,38 @@ class ImportGeoCommand(CkanCommand):
                 print 'writing file %s to %s' % (os.path.join(root, file), zip)
                 zip.write(os.path.join(root, file), file)
         zip.close()
-        
+
         self.replace_resource(existing_resource, zip_filename)
-        
+
     def replace_resource(self, existing_resource, temp_file):
         geo_storage_dir = config.get('ottawa.geo_storage_dir')
         timestamp = datetime.now().strftime('%Y-%m-%dT%H%M%S')
         timestamp_dir = os.path.join(geo_storage_dir, timestamp)
         if not os.path.exists(timestamp_dir):
             os.makedirs(timestamp_dir)
-        
+
         if existing_resource.format == 'shp':
             new_file_name = existing_resource.name + '.shp.zip'
         else:
             new_file_name = existing_resource.name + '.' + existing_resource.format
-        
+
         end_path = os.path.join(timestamp_dir, new_file_name)
         shutil.copyfile(temp_file, end_path)
-        
+
         geo_storage_url = config.get('ottawa.geo_storage_url')
         existing_resource.url = "%s%s/%s" % (
                                 geo_storage_url,
-                                timestamp, 
+                                timestamp,
                                 new_file_name,
                             )
-                                
+
         writelog("saved new resource for %s" % existing_resource.id)
         return ""
-        
-        
+
+
 def writelog(message):
     log = open('import_geo.log', 'a')
     m = "[%s] %s \n" % (datetime.now().strftime('%d/%b/%Y:%H:%M:%S %z'), message)
     print m
     log.write(m)
     log.flush()
-    
-    
-        
-        
