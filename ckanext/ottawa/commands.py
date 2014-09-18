@@ -39,6 +39,7 @@ class ImportGeoCommand(CkanCommand):
 
 
     mapping = {
+    """
     'cycling-network': {
         'xml': 'XML/PL_CyclingNetwork.xml',
         'csv': 'Tables/PL_CyclingNetwork.csv',
@@ -240,7 +241,7 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/PR_Volleyball_Courts.shx',
             },
         },
-    'wards-2010-2': {
+    'wards-2010': {
         'xml': 'XML/SAM_wards2010.xml',
         'csv': 'Tables/SAM_wards2010.csv',
         'kml': 'KMZ/SAM_wards2010.kmz',
@@ -392,7 +393,7 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_neighbourhoodNames.shx',
             },
         },
-    'water-bodies': {
+    'water': {
         'xml': 'XML/SAM_CITYWIDE_water.xml',
         'csv': 'Tables/SAM_CITYWIDE_water.csv',
         'kml': 'KMZ/SAM_CITYWIDE_water.kmz',
@@ -452,7 +453,7 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_CITYWIDE_runways.shx',
             },
         },
-    'rivers-2': {
+    'rivers': {
         'xml': 'XML/SAM_CITYWIDE_rivers.xml',
         'csv': 'Tables/SAM_CITYWIDE_rivers.csv',
         'kml': 'KMZ/SAM_CITYWIDE_rivers.kmz',
@@ -557,6 +558,7 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shx',
             },
         },
+    """
     'accessways': {
         'xml': 'XML/SAM_CITYWIDE_accessways.xml',
         'csv': 'Tables/SAM_CITYWIDE_accessways.csv',
@@ -594,7 +596,7 @@ class ImportGeoCommand(CkanCommand):
             package = model.Package.get(dataset)
 
             if package is None:
-                writelog("no such package: %s" % package.name)
+                writelog("no such package: %s" % dataset)
                 continue
 
             writelog("%s" % package.name)
@@ -652,7 +654,8 @@ class ImportGeoCommand(CkanCommand):
     def update_required(self, existing_resource, temp_file):
         if existing_resource.format == 'shp':
             return True
-	    temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
+    
+        temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
         else:
