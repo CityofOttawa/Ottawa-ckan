@@ -39,7 +39,6 @@ class ImportGeoCommand(CkanCommand):
 
 
     mapping = {
-    """
     'cycling-network': {
         'xml': 'XML/PL_CyclingNetwork.xml',
         'csv': 'Tables/PL_CyclingNetwork.csv',
@@ -558,7 +557,6 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shx',
             },
         },
-    """
     'accessways': {
         'xml': 'XML/SAM_CITYWIDE_accessways.xml',
         'csv': 'Tables/SAM_CITYWIDE_accessways.csv',
@@ -654,7 +652,7 @@ class ImportGeoCommand(CkanCommand):
     def update_required(self, existing_resource, temp_file):
         if existing_resource.format == 'shp':
             return True
-    
+
         temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
