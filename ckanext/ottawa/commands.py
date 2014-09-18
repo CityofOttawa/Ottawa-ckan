@@ -577,35 +577,38 @@ class ImportGeoCommand(CkanCommand):
         model.repo.new_revision()
         for dataset, resources in self.mapping.iteritems():
             package = model.Package.get(dataset)
-            if package is not None:
-                for existing_resource in package.resources:
-                    if existing_resource.format in resources:
+
+            if package is None:
+                writelog("no such package: %s" % package.name)
+                continue
+
+            writelog("%s" % package.name)
+            for existing_resource in package.resources:
+                if existing_resource.format in resources:
+                    if existing_resource.format == 'shp':
+                        resource_path = resource_base_url + resources[existing_resource.format]['shp']
+                    else:
+                        resource_path = resource_base_url + resources[existing_resource.format]
+
+                    file_name = 'temp_data/' + existing_resource.name + '.' + existing_resource.format
+                    resource_exists = self.download_temp_file(resource_path, file_name)
+
+                    if not resource_exists:
+                        writelog("resource cannot be found in data repository: %s" % resource_path)
+                        continue
+
+                    if self.update_required(existing_resource, file_name):
+                        writelog("Updating resource: %s" % resource_path)
                         if existing_resource.format == 'shp':
-                            resource_path = resource_base_url + resources[existing_resource.format]['shp']
+                            self.replace_shape_files(existing_resource, resources['shp'])
                         else:
-                            resource_path = resource_base_url + resources[existing_resource.format]
+                            self.replace_resource(existing_resource, file_name)
 
-                        file_name = 'temp_data/' + existing_resource.name + '.' + existing_resource.format
-                        resource_exists = self.download_temp_file(resource_path, file_name)
-
-                        if not resource_exists:
-                            writelog("resource cannot be found in data repository: %s" % resource_path)
-                            continue
-
-                        if self.update_required(existing_resource, file_name):
-                            writelog("Updating resource: %s" % resource_path)
-                            if existing_resource.format == 'shp':
-                                self.replace_shape_files(existing_resource, resources['shp'])
-                            else:
-                                self.replace_resource(existing_resource, file_name)
-
-                            self.update_checksum(existing_resource, file_name)
-                            self.update_dates(existing_resource)
-                            dirty = True
-                        else:
-                            writelog("update not required for: %s" % resource_path)
-            else:
-                writelog("could not find package for %s" % dataset)
+                        self.update_checksum(existing_resource, file_name)
+                        self.update_dates(existing_resource)
+                        dirty = True
+                    else:
+                        writelog("update not required for: %s" % resource_path)
 
         if dirty:
             model.Session.commit()
@@ -634,7 +637,7 @@ class ImportGeoCommand(CkanCommand):
     def update_required(self, existing_resource, temp_file):
         if existing_resource.format == 'shp':
             return True
-	temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
+	    temp_file_hash = 'md5:' + hashlib.md5(open(temp_file, 'rb').read()).hexdigest()
         if temp_file_hash == existing_resource.hash:
             return False
         else:

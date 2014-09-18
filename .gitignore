@@ -10,3 +10,4 @@ dist
 *.log
 temp_data/
 geo_import
+create_resources.py
