@@ -557,6 +557,21 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.shx',
             },
         },
+    'accessways': {
+        'xml': 'XML/SAM_CITYWIDE_accessways.xml',
+        'csv': 'Tables/SAM_CITYWIDE_accessways.csv',
+        'kml': 'KMZ/SAM_CITYWIDE_accessways.kmz',
+        'dwg': 'DWG/SAM_CITYWIDE_accessways.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SAM_CITYWIDE_accessways.dbf',
+                'prj': 'Shapefiles/SAM_CITYWIDE_accessways.prj',
+                'sbn': 'Shapefiles/SAM_CITYWIDE_accessways.sbn',
+                'sbx': 'Shapefiles/SAM_CITYWIDE_accessways.sbx',
+                'shp': 'Shapefiles/SAM_CITYWIDE_accessways.shp',
+                'shp.xml': 'Shapefiles/SAM_CITYWIDE_accessways.shp.xml',
+                'shx': 'Shapefiles/SAM_CITYWIDE_accessways.shx',
+            },
+        },
     }
 
     def command(self):
