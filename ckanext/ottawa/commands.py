@@ -572,6 +572,20 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SAM_CITYWIDE_accessways.shx',
             },
         },
+    'garbage-and-recycling-schedules': {
+        'xml': 'XML/SW_Calendar.xml',
+        'kml': 'KMZ/SW_Calendar.kmz',
+        'dwg': 'DWG/SW_Calendar.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/SW_Calendar.dbf',
+                'prj': 'Shapefiles/SW_Calendar.prj',
+                'sbn': 'Shapefiles/SW_Calendar.sbn',
+                'sbx': 'Shapefiles/SW_Calendar.sbx',
+                'shp': 'Shapefiles/SW_Calendar.shp',
+                'shp.xml': 'Shapefiles/SW_Calendar.shp.xml',
+                'shx': 'Shapefiles/SW_Calendar.shx',
+            },
+        },
     }
 
     def command(self):
