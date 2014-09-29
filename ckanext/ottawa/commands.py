@@ -586,6 +586,21 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/SW_Calendar.shx',
             },
         },
+    'pedestrian-network': {
+        'xml': 'XML/PL_PedestrianNetwork.xml',
+        'csv': 'Tables/PL_PedestrianNetwork.csv',
+        'kml': 'KMZ/PL_PedestrianNetwork.kmz',
+        'dwg': 'DWG/PL_PedestrianNetwork.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/PL_PedestrianNetwork.dbf',
+                'prj': 'Shapefiles/PL_PedestrianNetwork.prj',
+                'sbn': 'Shapefiles/PL_PedestrianNetwork.sbn',
+                'sbx': 'Shapefiles/PL_PedestrianNetwork.sbx',
+                'shp': 'Shapefiles/PL_PedestrianNetwork.shp',
+                'shp.xml': 'Shapefiles/PL_PedestrianNetwork.shp.xml',
+                'shx': 'Shapefiles/PL_PedestrianNetwork.shx',
+            },
+        },
     }
 
     def command(self):
