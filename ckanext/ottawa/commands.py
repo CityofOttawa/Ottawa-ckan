@@ -670,6 +670,21 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/PR_Sledding_Hills.shx',
             },
         },
+    'city-facilities': {
+        'xml': 'XML/RE_CityFacilities_ext.xml',
+        'csv': 'Tables/RE_CityFacilities_ext.csv',
+        'kml': 'KMZ/RE_CityFacilities_ext.kmz',
+        'dwg': 'DWG/RE_CityFacilities_ext.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/RE_CityFacilities_ext.dbf',
+                'prj': 'Shapefiles/RE_CityFacilities_ext.prj',
+                'sbn': 'Shapefiles/RE_CityFacilities_ext.sbn',
+                'sbx': 'Shapefiles/RE_CityFacilities_ext.sbx',
+                'shp': 'Shapefiles/RE_CityFacilities_ext.shp',
+                'shp.xml': 'Shapefiles/RE_CityFacilities_ext.shp.xml',
+                'shx': 'Shapefiles/RE_CityFacilities_ext.shx',
+            },
+        },
     }
 
     def command(self):
