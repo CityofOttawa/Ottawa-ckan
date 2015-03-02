@@ -685,6 +685,21 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/RE_CityFacilities_ext.shx',
             },
         },
+    'heritage-conservation-districts': {
+        'xml': 'XML/PL_HeritageConsDistrict.xml',
+        'csv': 'Tables/PL_HeritageConsDistrict.csv',
+        'kml': 'KMZ/PL_HeritageConsDistrict.kmz',
+        'dwg': 'DWG/PL_HeritageConsDistrict.dwg',
+        'shp': {
+                'dbf': 'Shapefiles/PL_HeritageConsDistrict.dbf',
+                'prj': 'Shapefiles/PL_HeritageConsDistrict.prj',
+                'sbn': 'Shapefiles/PL_HeritageConsDistrict.sbn',
+                'sbx': 'Shapefiles/PL_HeritageConsDistrict.sbx',
+                'shp': 'Shapefiles/PL_HeritageConsDistrict.shp',
+                'shp.xml': 'Shapefiles/PL_HeritageConsDistrict.shp.xml',
+                'shx': 'Shapefiles/PL_HeritageConsDistrict.shx',
+            },
+        },
     }
 
     def command(self):
