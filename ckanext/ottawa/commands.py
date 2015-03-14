@@ -700,6 +700,19 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/PL_HeritageConsDistrict.shx',
             },
         },
+    'tree-inventory-street-trees': {
+        'xml': 'XML/FS_TreeInventory.xml',
+        'csv': 'Tables/FS_TreeInventory.csv',
+        'shp': {
+                'dbf': 'Shapefiles/FS_TreeInventory.dbf',
+                'prj': 'Shapefiles/FS_TreeInventory.prj',
+                'sbn': 'Shapefiles/FS_TreeInventory.sbn',
+                'sbx': 'Shapefiles/FS_TreeInventory.sbx',
+                'shp': 'Shapefiles/FS_TreeInventory.shp',
+                'shp.xml': 'Shapefiles/FS_TreeInventory.shp.xml',
+                'shx': 'Shapefiles/FS_TreeInventory.shx',
+            },
+        },
     }
 
     def command(self):
