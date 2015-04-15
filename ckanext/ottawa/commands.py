@@ -42,7 +42,7 @@ class ImportGeoCommand(CkanCommand):
     'cycling-network': {
         'xml': 'XML/PL_CyclingNetwork.xml',
         'csv': 'Tables/PL_CyclingNetwork.csv',
-        'kml': 'KMZ/PL_CyclingNetwork.kmz',
+        'kmz': 'KMZ/PL_CyclingNetwork.kmz',
         'dwg': 'DWG/PL_CyclingNetwork.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PL_CyclingNetwork.dbf',
@@ -54,10 +54,10 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/PL_CyclingNetwork.shx',
             },
         },
-    'ball-diamonds-2009': {
+    'ball-diamonds': {
         'xml': 'XML/PR_Ball_Diamonds.xml',
         'csv': 'Tables/PR_Ball_Diamonds.csv',
-        'kml': 'KMZ/PR_Ball_Diamonds.kmz',
+        'kmz': 'KMZ/PR_Ball_Diamonds.kmz',
         'dwg': 'DWG/PR_Ball_Diamonds.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Ball_Diamonds.dbf',
@@ -69,10 +69,10 @@ class ImportGeoCommand(CkanCommand):
                 'shx': 'Shapefiles/PR_Ball_Diamonds.shx',
             },
         },
-    'basket-ball-courts-2009': {
+    'basketball-courts': {
         'xml': 'XML/PR_Basketball_Courts.xml',
         'csv': 'Tables/PR_Basketball_Courts.csv',
-        'kml': 'KMZ/PR_Basketball_Courts.kmz',
+        'kmz': 'KMZ/PR_Basketball_Courts.kmz',
         'dwg': 'DWG/PR_Basketball_Courts.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Basketball_Courts.dbf',
@@ -87,7 +87,7 @@ class ImportGeoCommand(CkanCommand):
     'lawn-bowling': {
         'xml': 'XML/PR_Lawn_Bowling.xml',
         'csv': 'Tables/PR_Lawn_Bowling.csv',
-        'kml': 'KMZ/PR_Lawn_Bowling.kmz',
+        'kmz': 'KMZ/PR_Lawn_Bowling.kmz',
         'dwg': 'DWG/PR_Lawn_Bowling.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Lawn_Bowling.dbf',
@@ -102,7 +102,7 @@ class ImportGeoCommand(CkanCommand):
     'wading-pools': {
         'xml': 'XML/PR_Outdoor_Pools_Wading_ext.xml',
         'csv': 'Tables/PR_Outdoor_Pools_Wading_ext.csv',
-        'kml': 'KMZ/PR_Outdoor_Pools_Wading_ext.kmz',
+        'kmz': 'KMZ/PR_Outdoor_Pools_Wading_ext.kmz',
         'dwg': 'DWG/PR_Outdoor_Pools_Wading_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Outdoor_Pools_Wading_ext.dbf',
@@ -117,7 +117,7 @@ class ImportGeoCommand(CkanCommand):
     'outdoor-rinks': {
         'xml': 'XML/PR_Outdoor_Rinks_ext.xml',
         'csv': 'Tables/PR_Outdoor_Rinks_ext.csv',
-        'kml': 'KMZ/PR_Outdoor_Rinks_ext.kmz',
+        'kmz': 'KMZ/PR_Outdoor_Rinks_ext.kmz',
         'dwg': 'DWG/PR_Outdoor_Rinks_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Outdoor_Rinks_ext.dbf',
@@ -132,7 +132,7 @@ class ImportGeoCommand(CkanCommand):
     'parks': {
         'xml': 'XML/PR_Parks_ext.xml',
         'csv': 'Tables/PR_Parks_ext.csv',
-        'kml': 'KMZ/PR_Parks_ext.kmz',
+        'kmz': 'KMZ/PR_Parks_ext.kmz',
         'dwg': 'DWG/PR_Parks_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Parks_ext.dbf',
@@ -147,7 +147,7 @@ class ImportGeoCommand(CkanCommand):
     'parks-pathway-links': {
         'xml': 'XML/PR_Pathway_Links.xml',
         'csv': 'Tables/PR_Pathway_Links.csv',
-        'kml': 'KMZ/PR_Pathway_Links.kmz',
+        'kmz': 'KMZ/PR_Pathway_Links.kmz',
         'dwg': 'DWG/PR_Pathway_Links.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Pathway_Links.dbf',
@@ -162,7 +162,7 @@ class ImportGeoCommand(CkanCommand):
     'skateboard-parks': {
         'xml': 'XML/PR_Skateboard_Parks.xml',
         'csv': 'Tables/PR_Skateboard_Parks.csv',
-        'kml': 'KMZ/PR_Skateboard_Parks.kmz',
+        'kmz': 'KMZ/PR_Skateboard_Parks.kmz',
         'dwg': 'DWG/PR_Skateboard_Parks.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Skateboard_Parks.dbf',
@@ -177,7 +177,7 @@ class ImportGeoCommand(CkanCommand):
     'splash-pads': {
         'xml': 'XML/PR_Splash_Pads_ext.xml',
         'csv': 'Tables/PR_Splash_Pads_ext.csv',
-        'kml': 'KMZ/PR_Splash_Pads_ext.kmz',
+        'kmz': 'KMZ/PR_Splash_Pads_ext.kmz',
         'dwg': 'DWG/PR_Splash_Pads_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Splash_Pads_ext.dbf',
@@ -192,7 +192,7 @@ class ImportGeoCommand(CkanCommand):
     'sports-fields': {
         'xml': 'XML/PR_Sports_Fields.xml',
         'csv': 'Tables/PR_Sports_Fields.csv',
-        'kml': 'KMZ/PR_Sports_Fields.kmz',
+        'kmz': 'KMZ/PR_Sports_Fields.kmz',
         'dwg': 'DWG/PR_Sports_Fields.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Sports_Fields.dbf',
@@ -207,7 +207,7 @@ class ImportGeoCommand(CkanCommand):
     'tennis-courts': {
         'xml': 'XML/PR_Tennis_Courts.xml',
         'csv': 'Tables/PR_Tennis_Courts.csv',
-        'kml': 'KMZ/PR_Tennis_Courts.kmz',
+        'kmz': 'KMZ/PR_Tennis_Courts.kmz',
         'dwg': 'DWG/PR_Tennis_Courts.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Tennis_Courts.dbf',
@@ -222,7 +222,7 @@ class ImportGeoCommand(CkanCommand):
     'volleyball-courts': {
         'xml': 'XML/PR_Volleyball_Courts.xml',
         'csv': 'Tables/PR_Volleyball_Courts.csv',
-        'kml': 'KMZ/PR_Volleyball_Courts.kmz',
+        'kmz': 'KMZ/PR_Volleyball_Courts.kmz',
         'dwg': 'DWG/PR_Volleyball_Courts.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Volleyball_Courts.dbf',
@@ -237,7 +237,7 @@ class ImportGeoCommand(CkanCommand):
     'wards-2010': {
         'xml': 'XML/SAM_wards2010.xml',
         'csv': 'Tables/SAM_wards2010.csv',
-        'kml': 'KMZ/SAM_wards2010.kmz',
+        'kmz': 'KMZ/SAM_wards2010.kmz',
         'dwg': 'DWG/SAM_wards2010.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_wards2010.dbf',
@@ -252,7 +252,7 @@ class ImportGeoCommand(CkanCommand):
     'wards-2006': {
         'xml': 'XML/SAM_wards2006.xml',
         'csv': 'Tables/SAM_wards2006.csv',
-        'kml': 'KMZ/SAM_wards2006.kmz',
+        'kmz': 'KMZ/SAM_wards2006.kmz',
         'dwg': 'DWG/SAM_wards2006.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_wards2006.dbf',
@@ -267,7 +267,7 @@ class ImportGeoCommand(CkanCommand):
     'wards-2003': {
         'xml': 'XML/SAM_wards2003.xml',
         'csv': 'Tables/SAM_wards2003.csv',
-        'kml': 'KMZ/SAM_wards2003.kmz',
+        'kmz': 'KMZ/SAM_wards2003.kmz',
         'dwg': 'DWG/SAM_wards2003.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_wards2003.dbf',
@@ -282,7 +282,7 @@ class ImportGeoCommand(CkanCommand):
     'trans-canada-trail': {
         'xml': 'XML/SAM_transCanadaTrail.xml',
         'csv': 'Tables/SAM_transCanadaTrail.csv',
-        'kml': 'KMZ/SAM_transCanadaTrail.kmz',
+        'kmz': 'KMZ/SAM_transCanadaTrail.kmz',
         'dwg': 'DWG/SAM_transCanadaTrail.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_transCanadaTrail.dbf',
@@ -298,7 +298,7 @@ class ImportGeoCommand(CkanCommand):
     'former-townships': {
         'xml': 'XML/SAM_townships_Former.xml',
         'csv': 'Tables/SAM_townships_Former.csv',
-        'kml': 'KMZ/SAM_townships_Former.kmz',
+        'kmz': 'KMZ/SAM_townships_Former.kmz',
         'dwg': 'DWG/SAM_townships_Former.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_townships_Former.dbf',
@@ -314,7 +314,7 @@ class ImportGeoCommand(CkanCommand):
     'township-lot-centroids': {
         'xml': 'XML/SAM_townshipLotsCentroids.xml',
         'csv': 'Tables/SAM_townshipLotsCentroids.csv',
-        'kml': 'KMZ/SAM_townshipLotsCentroids.kmz',
+        'kmz': 'KMZ/SAM_townshipLotsCentroids.kmz',
         'dwg': 'DWG/SAM_townshipLotsCentroids.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_townshipLotsCentroids.dbf',
@@ -329,7 +329,7 @@ class ImportGeoCommand(CkanCommand):
     'rideau-trail': {
         'xml': 'XML/SAM_rideauTrail.xml',
         'csv': 'Tables/SAM_rideauTrail.csv',
-        'kml': 'KMZ/SAM_rideauTrail.kmz',
+        'kmz': 'KMZ/SAM_rideauTrail.kmz',
         'dwg': 'DWG/SAM_rideauTrail.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_rideauTrail.dbf',
@@ -344,7 +344,7 @@ class ImportGeoCommand(CkanCommand):
     'o-train-stations': {
         'xml': 'XML/SAM_oTrainStations.xml',
         'csv': 'Tables/SAM_oTrainStations.csv',
-        'kml': 'KMZ/SAM_oTrainStations.kmz',
+        'kmz': 'KMZ/SAM_oTrainStations.kmz',
         'dwg': 'DWG/SAM_oTrainStations.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_oTrainStations.dbf',
@@ -359,7 +359,7 @@ class ImportGeoCommand(CkanCommand):
     'o-train-tracks': {
         'xml': 'XML/SAM_oTrainCentreline.xml',
         'csv': 'Tables/SAM_oTrainCentreline.csv',
-        'kml': 'KMZ/SAM_oTrainCentreline.kmz',
+        'kmz': 'KMZ/SAM_oTrainCentreline.kmz',
         'dwg': 'DWG/SAM_oTrainCentreline.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_oTrainCentreline.dbf',
@@ -374,7 +374,7 @@ class ImportGeoCommand(CkanCommand):
     'neighbourhood-names': {
         'xml': 'XML/SAM_neighbourhoodNames.xml',
         'csv': 'Tables/SAM_neighbourhoodNames.csv',
-        'kml': 'KMZ/SAM_neighbourhoodNames.kmz',
+        'kmz': 'KMZ/SAM_neighbourhoodNames.kmz',
         'dwg': 'DWG/SAM_neighbourhoodNames.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_neighbourhoodNames.dbf',
@@ -389,7 +389,7 @@ class ImportGeoCommand(CkanCommand):
     'water': {
         'xml': 'XML/SAM_CITYWIDE_water.xml',
         'csv': 'Tables/SAM_CITYWIDE_water.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_water.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_water.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_water.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_water.dbf',
@@ -404,7 +404,7 @@ class ImportGeoCommand(CkanCommand):
     'trails': {
         'xml': 'XML/SAM_CITYWIDE_trails.xml',
         'csv': 'Tables/SAM_CITYWIDE_trails.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_trails.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_trails.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_trails.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_trails.dbf',
@@ -419,7 +419,7 @@ class ImportGeoCommand(CkanCommand):
     'swamps': {
         'xml': 'XML/SAM_CITYWIDE_swamps.xml',
         'csv': 'Tables/SAM_CITYWIDE_swamps.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_swamps.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_swamps.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_swamps.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_swamps.dbf',
@@ -434,7 +434,7 @@ class ImportGeoCommand(CkanCommand):
     'airport-runways': {
         'xml': 'XML/SAM_CITYWIDE_runways.xml',
         'csv': 'Tables/SAM_CITYWIDE_runways.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_runways.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_runways.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_runways.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_runways.dbf',
@@ -449,7 +449,7 @@ class ImportGeoCommand(CkanCommand):
     'rivers': {
         'xml': 'XML/SAM_CITYWIDE_rivers.xml',
         'csv': 'Tables/SAM_CITYWIDE_rivers.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_rivers.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_rivers.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_rivers.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_rivers.dbf',
@@ -464,7 +464,7 @@ class ImportGeoCommand(CkanCommand):
     'rapids': {
         'xml': 'XML/SAM_CITYWIDE_rapids.xml',
         'csv': 'Tables/SAM_CITYWIDE_rapids.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_rapids.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_rapids.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_rapids.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_rapids.dbf',
@@ -479,7 +479,7 @@ class ImportGeoCommand(CkanCommand):
     'hydrolines': {
         'xml': 'XML/SAM_CITYWIDE_hydrolines.xml',
         'csv': 'Tables/SAM_CITYWIDE_hydrolines.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_hydrolines.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_hydrolines.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_hydrolines.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_hydrolines.dbf',
@@ -494,7 +494,7 @@ class ImportGeoCommand(CkanCommand):
     'fences': {
         'xml': 'XML/SAM_CITYWIDE_fences.xml',
         'csv': 'Tables/SAM_CITYWIDE_fences.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_fences.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_fences.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_fences.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_fences.dbf',
@@ -509,7 +509,7 @@ class ImportGeoCommand(CkanCommand):
     'drainage': {
         'xml': 'XML/SAM_CITYWIDE_drainage.xml',
         'csv': 'Tables/SAM_CITYWIDE_drainage.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_drainage.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_drainage.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_drainage.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_drainage.dbf',
@@ -524,7 +524,7 @@ class ImportGeoCommand(CkanCommand):
     'ditches': {
         'xml': 'XML/SAM_CITYWIDE_ditches.xml',
         'csv': 'Tables/SAM_CITYWIDE_ditches.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_ditches.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_ditches.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_ditches.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_ditches.dbf',
@@ -539,7 +539,7 @@ class ImportGeoCommand(CkanCommand):
     'large-buildings': {
         'xml': 'XML/SAM_CITYWIDE_buildingsLarge.xml',
         'csv': 'Tables/SAM_CITYWIDE_buildingsLarge.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_buildingsLarge.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_buildingsLarge.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_buildingsLarge.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_buildingsLarge.dbf',
@@ -554,7 +554,7 @@ class ImportGeoCommand(CkanCommand):
     'accessways': {
         'xml': 'XML/SAM_CITYWIDE_accessways.xml',
         'csv': 'Tables/SAM_CITYWIDE_accessways.csv',
-        'kml': 'KMZ/SAM_CITYWIDE_accessways.kmz',
+        'kmz': 'KMZ/SAM_CITYWIDE_accessways.kmz',
         'dwg': 'DWG/SAM_CITYWIDE_accessways.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SAM_CITYWIDE_accessways.dbf',
@@ -568,7 +568,7 @@ class ImportGeoCommand(CkanCommand):
         },
     'garbage-and-recycling-schedules': {
         'xml': 'XML/SW_Calendar.xml',
-        'kml': 'KMZ/SW_Calendar.kmz',
+        'kmz': 'KMZ/SW_Calendar.kmz',
         'dwg': 'DWG/SW_Calendar.dwg',
         'shp': {
                 'dbf': 'Shapefiles/SW_Calendar.dbf',
@@ -583,7 +583,7 @@ class ImportGeoCommand(CkanCommand):
     'pedestrian-network': {
         'xml': 'XML/PL_PedestrianNetwork.xml',
         'csv': 'Tables/PL_PedestrianNetwork.csv',
-        'kml': 'KMZ/PL_PedestrianNetwork.kmz',
+        'kmz': 'KMZ/PL_PedestrianNetwork.kmz',
         'dwg': 'DWG/PL_PedestrianNetwork.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PL_PedestrianNetwork.dbf',
@@ -598,7 +598,7 @@ class ImportGeoCommand(CkanCommand):
     'beaches': {
         'xml': 'XML/PR_Beaches_ext.xml',
         'csv': 'Tables/PR_Beaches_ext.csv',
-        'kml': 'KMZ/PR_Beaches_ext.kmz',
+        'kmz': 'KMZ/PR_Beaches_ext.kmz',
         'dwg': 'DWG/PR_Beaches_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Beaches_ext.dbf',
@@ -613,7 +613,7 @@ class ImportGeoCommand(CkanCommand):
     'outdoor-pools': {
         'xml': 'XML/PR_Outdoor_Pools_Full_ext.xml',
         'csv': 'Tables/PR_Outdoor_Pools_Full_ext.csv',
-        'kml': 'KMZ/PR_Outdoor_Pools_Full_ext.kmz',
+        'kmz': 'KMZ/PR_Outdoor_Pools_Full_ext.kmz',
         'dwg': 'DWG/PR_Outdoor_Pools_Full_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Outdoor_Pools_Full_ext.dbf',
@@ -628,7 +628,7 @@ class ImportGeoCommand(CkanCommand):
     'parking-city-parks': {
         'xml': 'XML/PR_Park_Parking.xml',
         'csv': 'Tables/PR_Park_Parking.csv',
-        'kml': 'KMZ/PR_Park_Parking.kmz',
+        'kmz': 'KMZ/PR_Park_Parking.kmz',
         'dwg': 'DWG/PR_Park_Parking.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Park_Parking.dbf',
@@ -643,7 +643,7 @@ class ImportGeoCommand(CkanCommand):
     'play-structures-and-areas': {
         'xml': 'XML/PR_Play_Structures.xml',
         'csv': 'Tables/PR_Play_Structures.csv',
-        'kml': 'KMZ/PR_Play_Structures.kmz',
+        'kmz': 'KMZ/PR_Play_Structures.kmz',
         'dwg': 'DWG/PR_Play_Structures.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Play_Structures.dbf',
@@ -658,7 +658,7 @@ class ImportGeoCommand(CkanCommand):
     'sledding-hills': {
         'xml': 'XML/PR_Sledding_Hills.xml',
         'csv': 'Tables/PR_Sledding_Hills.csv',
-        'kml': 'KMZ/PR_Sledding_Hills.kmz',
+        'kmz': 'KMZ/PR_Sledding_Hills.kmz',
         'dwg': 'DWG/PR_Sledding_Hills.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PR_Sledding_Hills.dbf',
@@ -673,7 +673,7 @@ class ImportGeoCommand(CkanCommand):
     'city-facilities': {
         'xml': 'XML/RE_CityFacilities_ext.xml',
         'csv': 'Tables/RE_CityFacilities_ext.csv',
-        'kml': 'KMZ/RE_CityFacilities_ext.kmz',
+        'kmz': 'KMZ/RE_CityFacilities_ext.kmz',
         'dwg': 'DWG/RE_CityFacilities_ext.dwg',
         'shp': {
                 'dbf': 'Shapefiles/RE_CityFacilities_ext.dbf',
@@ -688,7 +688,7 @@ class ImportGeoCommand(CkanCommand):
     'heritage-conservation-districts': {
         'xml': 'XML/PL_HeritageConsDistrict.xml',
         'csv': 'Tables/PL_HeritageConsDistrict.csv',
-        'kml': 'KMZ/PL_HeritageConsDistrict.kmz',
+        'kmz': 'KMZ/PL_HeritageConsDistrict.kmz',
         'dwg': 'DWG/PL_HeritageConsDistrict.dwg',
         'shp': {
                 'dbf': 'Shapefiles/PL_HeritageConsDistrict.dbf',
